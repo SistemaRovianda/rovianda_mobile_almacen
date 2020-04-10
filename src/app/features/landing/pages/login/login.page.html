@@ -56,8 +56,19 @@
           <ion-button
             (click)="onLogin()"
             [disabled]="loginForm.status=='INVALID'"
-            >Iniciar Sesi&oacute;n</ion-button
           >
+            <label *ngIf="!loading">Iniciar Sesi&oacute;n</label>
+            <ion-spinner
+              *ngIf="loading"
+              name="crescent"
+              diameter="32"
+            ></ion-spinner>
+          </ion-button>
+          <div class="error">
+            <ion-label *ngIf="loginForm.errors?.loginError">
+              {{ loginForm.errors.loginError}} Error
+            </ion-label>
+          </div>
         </ion-grid>
       </form>
     </ion-col>
