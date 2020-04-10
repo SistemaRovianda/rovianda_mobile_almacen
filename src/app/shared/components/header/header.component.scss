@@ -1,6 +1,7 @@
 $color-text-secondary: #adabab;
 ion-toolbar {
   --background: white;
+  margin-top: 3%;
   ion-buttons {
     position: absolute !important;
     color: $color-text-secondary;
