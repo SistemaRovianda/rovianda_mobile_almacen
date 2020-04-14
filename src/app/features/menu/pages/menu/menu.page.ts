@@ -14,10 +14,11 @@ export class MenuPage implements OnInit {
   header: ItemBackInterface = {
     path: "/login",
     titlePath: "Salir",
+    title: " "
   };
 
   options: MenuButtonInterface[] = [
-    { label: "Empaques", path: "/login" }, // agregar path hacia el menu que se requiera 
+    { label: "Empaques", path: "/packaging" },
     { label: "Secos", path: "/menu" },
   ];
 

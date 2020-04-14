@@ -12,13 +12,8 @@ import { SELECT_OPTION_SELECTED } from "src/app/features/menu/store/menu.selecto
 export class HeaderComponent implements OnInit {
   @Input() itemBack: ItemBackInterface;
 
-  title: string;
-
   constructor(private store: Store<AppStateInterface>) {}
 
   ngOnInit() {
-    this.store
-      .select(SELECT_OPTION_SELECTED)
-      .subscribe((option) => (this.title = option.label));
   }
 }
