@@ -21,8 +21,8 @@ const routes: Routes = [
     path: "packaging",
     loadChildren: () =>
       import(
-        "./features/packaging/pages/packaging-menu/packaging-layout.module"
-      ).then((m) => m.PackagingLayoutPageModule),
+        "./features/packaging/pages/packaging-menu/packaging-menu.module"
+      ).then((m) => m.PackagingMenuModule),
   },
 ];
 

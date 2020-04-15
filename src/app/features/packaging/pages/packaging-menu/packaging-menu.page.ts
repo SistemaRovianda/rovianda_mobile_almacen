@@ -7,10 +7,10 @@ import { packagingStepperInit } from "../../store/stepper/stepper-packaging.acti
 
 @Component({
   selector: "app-packaging-layout",
-  templateUrl: "./packaging-layout.page.html",
-  styleUrls: ["./packaging-layout.page.scss"],
+  templateUrl: "./packaging-menu.page.html",
+  styleUrls: ["./packaging-menu.page.scss"],
 })
-export class PackagingLayoutPage implements OnInit {
+export class PackagingMenuPage implements OnInit {
   header: ItemBackInterface = {
     path: "/menu",
     titlePath: "Regresar",
