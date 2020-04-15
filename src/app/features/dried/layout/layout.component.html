@@ -1,3 +1,27 @@
-<p>
-  layout works!
-</p>
+<app-header [itemBack]="header"></app-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <h1 class="title-menu">Menú</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row class="container-button">
+      <ng-container *ngFor="let option of options">
+        <ion-col class="button">
+          <app-button-menu [labelButton]="option"></app-button-menu>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
+  <div class="ion-justify-content-center center">
+    <ion-button expand="block">
+      <ion-label class="label-button">Siguiente</ion-label>
+      <ion-icon
+        lot="end"
+        class="label-button"
+        src="/assets/icons/keyboard_arrow_right.svg"
+      ></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>
