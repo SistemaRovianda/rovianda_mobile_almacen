@@ -4,13 +4,23 @@ import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { PackagingLayoutPage } from "./packaging-layout.page";
 import { ComponentsModule } from "src/app/shared/components/components.module";
-import { StepperModule } from "../components/stepper/stepper.module";
+import { StepperModule } from "../../components/stepper/stepper.module";
+import { Routes, RouterModule } from "@angular/router";
+
+const routes: Routes = [
+  {
+    path: "",
+    component: PackagingLayoutPage,
+  },
+];
+
 const COMMON_IMPORTS = [
   CommonModule,
   FormsModule,
   IonicModule,
   ComponentsModule,
   StepperModule,
+  RouterModule.forChild(routes),
 ];
 
 const COMMON_DECLARATIONS = [PackagingLayoutPage];

@@ -3,7 +3,7 @@ import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
 import { StepperInterface } from "src/app/shared/Models/stepper.interface";
 import { Store } from "@ngrx/store";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import { packagingStepperInit } from "../store/stepper/stepper-packaging.actions";
+import { packagingStepperInit } from "../../store/stepper/stepper-packaging.actions";
 
 @Component({
   selector: "app-packaging-layout",

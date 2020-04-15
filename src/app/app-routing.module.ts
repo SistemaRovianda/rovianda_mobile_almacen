@@ -20,9 +20,9 @@ const routes: Routes = [
   {
     path: "packaging",
     loadChildren: () =>
-      import("./features/packaging/packaging.module").then(
-        (m) => m.PackagingModule
-      ),
+      import(
+        "./features/packaging/pages/packaging-menu/packaging-layout.module"
+      ).then((m) => m.PackagingLayoutPageModule),
   },
 ];
 
