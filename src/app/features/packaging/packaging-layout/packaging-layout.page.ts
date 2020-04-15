@@ -1,6 +1,9 @@
 import { Component, OnInit, OnChanges } from "@angular/core";
 import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
 import { StepperInterface } from "src/app/shared/Models/stepper.interface";
+import { Store } from "@ngrx/store";
+import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { packagingStepperInit } from "../store/stepper/stepper-packaging.actions";
 
 @Component({
   selector: "app-packaging-layout",
@@ -22,9 +25,13 @@ export class PackagingLayoutPage implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private store: Store<AppStateInterface>) {}
 
   ngOnInit() {}
+
+  onBack(event) {
+    this.store.dispatch(packagingStepperInit());
+  }
 
   nextSection() {
     console.log(this.section);

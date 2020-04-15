@@ -3,7 +3,7 @@ import { createReducer, on } from "@ngrx/store";
 import * as fromMenuActions from "./menu.action";
 
 const STATE_INITIAL_MENU: MenuPageInterface = {
-  itemSelected: { label: " ", path: "" },
+  itemSelected: { label: " ", path: "", numSteps: 0 },
   loading: false,
 };
 

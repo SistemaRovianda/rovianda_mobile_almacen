@@ -1,9 +1,9 @@
-<app-header [itemBack]="header"></app-header>
+<app-header (back)="onBack($event)"[itemBack]="header"></app-header>
 <div class="submenu-container">
   <h1 class="header-container">Menu</h1>
   <ion-segment
     [(ngModel)]="section"
-    (ionChange)="steppertag.update(0,(section !== undefined))"
+    (ionChange)="steppertag.next(section!== undefined)"
     class="body-container"
   >
     <ion-grid>
@@ -27,11 +27,7 @@
   <ion-grid class="footer-container">
     <ion-row class="row-stepper">
       <ion-col size="12">
-        <rovianda-stepper
-          [steppers]="stepperPackaging"
-          class="steppers"
-          #steppertag
-        ></rovianda-stepper>
+        <packaging-stepper class="steppers" #steppertag></packaging-stepper>
       </ion-col>
     </ion-row>
     <ion-row class="row-button">

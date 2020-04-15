@@ -1,13 +1,13 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { HeaderComponent } from "./header/header.component";
 import { IonicModule } from "@ionic/angular";
+import { StepperComponent } from './stepper.component';
 
-const DECLARATIONS = [HeaderComponent];
+const DECLARATIONS = [StepperComponent];
 
 @NgModule({
   declarations: DECLARATIONS,
   imports: [CommonModule, IonicModule],
   exports: DECLARATIONS,
 })
-export class ComponentsModule {}
+export class StepperModule {}

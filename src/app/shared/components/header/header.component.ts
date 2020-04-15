@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ItemBackInterface } from "../../Models/item-back.interface";
 import { Store } from "@ngrx/store";
 import { AppStateInterface } from "../../Models/app-state.interface";
-import { SELECT_OPTION_SELECTED } from "src/app/features/menu/store/menu.selector";
+import { SELECT_OPTION_SELECTED } from "src/app/features/menu/store/menu/menu.selector";
 
 @Component({
   selector: "app-header",
@@ -12,8 +12,14 @@ import { SELECT_OPTION_SELECTED } from "src/app/features/menu/store/menu.selecto
 export class HeaderComponent implements OnInit {
   @Input() itemBack: ItemBackInterface;
 
+  @Output()
+  back = new EventEmitter<string>();
+
   constructor(private store: Store<AppStateInterface>) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  onBack() {
+    this.back.emit("back");
   }
 }
