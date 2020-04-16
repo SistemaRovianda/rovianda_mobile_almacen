@@ -7,7 +7,7 @@ import { CloseLotPageModule } from "./pages/close-lot/close-lot.module";
 import { OpenLotPageComponent } from "./pages/open-lot/open-lot.page";
 import { OutputPageComponent } from "./pages/output/output.component";
 import { OutputPageModule } from "./pages/output/output.module";
-import { OpenLotModule } from "./pages/open-lot/open-lot.module";
+import { OpenLotPageModule } from "./pages/open-lot/open-lot.module";
 const routes: Routes = [
   {
     path: "",
@@ -36,7 +36,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     LayoutModule,
-    OpenLotModule,
+    OpenLotPageModule,
     CloseLotPageModule,
     OutputPageModule,
   ],

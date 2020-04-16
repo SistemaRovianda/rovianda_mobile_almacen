@@ -1,0 +1,51 @@
+<form [formGroup]="form" class="container" (ngSubmit)="onSubmit()">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-item class="form-input">
+        <ion-label class="ion-label" position="floating">Lote*</ion-label>
+        <ion-input
+          formControlName="loteId"
+          type="text"
+          placeholder="Ingresa lote"
+        >
+        </ion-input>
+      </ion-item>
+    </ion-row>
+    <div class="error">
+      <ion-label *ngIf="form.hasError('required', 'loteId')">
+        Este campo es requerido.
+      </ion-label>
+    </div>
+    <ion-row>
+      <ion-item class="form-input">
+        <ion-label class="ion-label" position="floating">Producto*</ion-label>
+
+        <ion-select
+          placeholder="Seleccione un producto*"
+          formControlName="productId"
+        >
+          <ion-select-option value="f">Female</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+    <div class="error">
+      <ion-label *ngIf="form.hasError('required', 'productId')">
+        Este campo es requerido.
+      </ion-label>
+    </div>
+
+    <ion-row>
+      <ion-item class="form-input">
+        <ion-label class="ion-label" position="floating"
+          >Fecha de apertura</ion-label
+        >
+        <ion-datetime
+          formControlName="date"
+          placeholder="dd/mm/yyyy"
+          displayFormat="DD/MM/YYYY"
+        >
+        </ion-datetime>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
+</form>
