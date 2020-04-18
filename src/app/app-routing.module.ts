@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { PackagingResolver } from "./shared/Resolvers/packaging.resolver";
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
@@ -23,6 +24,16 @@ const routes: Routes = [
       import(
         "./features/packaging/pages/packaging-menu/packaging-menu.module"
       ).then((m) => m.PackagingMenuModule),
+    resolve: {
+      packaging: PackagingResolver,
+    },
+  },
+  {
+    path: "packaging/open-lot",
+    loadChildren: () =>
+      import("./features/packaging/pages/open-lot/open-lot.module").then(
+        (m) => m.OpenLotePageModule
+      ),
   },
 ];
 
@@ -31,5 +42,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
   exports: [RouterModule],
+  providers: [PackagingResolver],
 })
 export class AppRoutingModule {}

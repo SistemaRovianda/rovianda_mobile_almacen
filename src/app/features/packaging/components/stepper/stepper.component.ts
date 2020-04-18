@@ -19,20 +19,20 @@ export class StepperComponent implements OnInit {
       .select(SELECT_STEPS)
       .subscribe((tempSteps) => (this.steppers = tempSteps));
   }
-  next(value) {
+  next(num, step) {
     this.store.dispatch(
       fromStepperActions.packagingStepperNext({
-        step: { value },
+        num,
+        step,
       })
     );
   }
 
-  prev(){
-    this.store.dispatch(fromStepperActions.packagingStepperPrev())
+  prev() {
+    this.store.dispatch(fromStepperActions.packagingStepperPrev());
   }
 
   getStep(step) {
     return this.steppers[step].value;
   }
-
 }

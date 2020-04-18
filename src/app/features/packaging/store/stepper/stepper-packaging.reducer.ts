@@ -16,9 +16,14 @@ const STATE_INITIAL_STEPPER: StepperPackagingInterface = {
 
 export const StepperInitialReducer = createReducer<StepperPackagingInterface>(
   STATE_INITIAL_STEPPER,
-  on(fromStepperActions.packagingStepperNext, (state, { step }) => ({
+  on(fromStepperActions.packagingStepperNext, (state, { num, step }) => ({
     ...state,
-    steps: state.steps.slice(1).concat(step).reverse(),
+    steps: state.steps.concat().map((tempStep, i) => {
+      if (i === num) {
+        return { value: step };
+      }
+      return tempStep;
+    }),
   })),
   on(fromStepperActions.packagingStepperPrev, (state) => ({
     ...state,

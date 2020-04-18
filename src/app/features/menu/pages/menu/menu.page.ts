@@ -18,8 +18,8 @@ export class MenuPage implements OnInit {
   };
 
   options: MenuButtonInterface[] = [
-    { label: "Empaques", path: "/packaging", numSteps: 2 },
-    { label: "Secos", path: "/menu", numSteps: 0 },
+    { label: "Empaques", path: "/packaging" },
+    { label: "Secos", path: "/menu" },
   ];
 
   constructor(private store: Store<AppStateInterface>) {}

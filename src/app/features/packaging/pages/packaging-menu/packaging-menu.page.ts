@@ -4,6 +4,7 @@ import { StepperInterface } from "src/app/shared/Models/stepper.interface";
 import { Store } from "@ngrx/store";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
 import { packagingStepperInit } from "../../store/stepper/stepper-packaging.actions";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-packaging-layout",
@@ -25,15 +26,18 @@ export class PackagingMenuPage implements OnInit {
     },
   ];
 
-  constructor(private store: Store<AppStateInterface>) {}
+  constructor(
+    private store: Store<AppStateInterface>,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
-  onBack(event) {
-    this.store.dispatch(packagingStepperInit());
-  }
 
   nextSection() {
     console.log(this.section);
+
+    this.router.navigate(["/packaging/" + this.section]);
+    this.section = undefined;
   }
 }
