@@ -1,0 +1,19 @@
+<app-header [itemBack]="header"></app-header>
+<ion-grid class="report-container">
+  <ion-row class="logo"> </ion-row>
+  <ion-row>
+    <ion-label class="title-report">
+      Reporte generado con &eacute;xito
+    </ion-label>
+  </ion-row>
+  <ion-row class="row-button-report">
+    <ion-button (click)="printReport()" class="button-report">
+      <ion-grid>
+        <ion-col size="12">
+          Imprimir Reporte
+        </ion-col>
+        <ion-spinner *ngIf="false" name="crescent"></ion-spinner>
+      </ion-grid>
+    </ion-button>
+  </ion-row>
+</ion-grid>

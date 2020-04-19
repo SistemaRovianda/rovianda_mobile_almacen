@@ -41,7 +41,7 @@ export class ExitEffects {
     this.action$.pipe(
       ofType(fromExitActions.exitLoadRequest),
       exhaustMap((action) =>
-        this.packagingService.exit(action.exit).pipe(
+        this.packagingService.exit(action.request).pipe(
           delay(4000),
           switchMap((_) => [
             fromExitActions.exitLoadRequestSuccess(),
