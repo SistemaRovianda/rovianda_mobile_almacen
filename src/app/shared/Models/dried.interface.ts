@@ -3,3 +3,10 @@ export interface Entrance {
   productId: number;
   date: string;
 }
+
+export interface ExitLot {
+  loteId: string;
+  productId: number;
+  observations: string;
+  date: string;
+}

@@ -17,6 +17,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { effects } from "./features/store/effects/index.effects";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { HttpClientModule } from "@angular/common/http";
+import { AppProvidersModule } from "./providers/app-providers.module";
 
 const DECLARATIONS = [AppComponent];
 
@@ -36,6 +37,7 @@ const IMPORTS = [
     maxAge: 20,
   }),
   HttpClientModule,
+  AppProvidersModule,
 ];
 
 @NgModule({
