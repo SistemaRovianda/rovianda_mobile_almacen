@@ -35,3 +35,11 @@ $color-text-secondary: #dbdbdb;
   --width: 100%;
   --height: 180px;
 }
+
+.linea {
+  width: 62px;
+  height: 5px;
+  border-radius: 13px;
+  background-color: $color-primary;
+  margin: 20px 0px 20px 20px;
+}

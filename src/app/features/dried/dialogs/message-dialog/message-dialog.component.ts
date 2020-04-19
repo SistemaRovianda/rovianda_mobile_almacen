@@ -9,7 +9,7 @@ import { Entrance } from "src/app/shared/Models/dried.interface";
 })
 export class MessageDialogComponent implements OnInit {
   entrance: Entrance;
-
+  action: string;
   constructor(public modalController: ModalController) {}
 
   ngOnInit() {}

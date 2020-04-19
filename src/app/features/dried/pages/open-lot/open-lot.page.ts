@@ -33,6 +33,7 @@ export class OpenLotPageComponent implements OnInit {
       cssClass: "modal-size",
       componentProps: {
         entrance: entrance,
+        action: "abrir",
       },
     });
     return await modal.present();

@@ -11,16 +11,26 @@
       <open-lot-form #form (onSubmit)="onSubmit($event)"></open-lot-form>
     </ion-row>
   </ion-grid>
-  <div class="ion-justify-content-center btn">
-    <ion-button
-      expand="block"
-      color="primary"
-      style="text-transform: none;"
-      size="large"
-      (click)="form.onSubmit()"
-      [disabled]="form.form.invalid"
-    >
-      Abrir lote
-    </ion-button>
+  <div class="ion-justify-content-center">
+    <ion-col>
+      <ion-row size="12">
+        <div class="linea"></div>
+        <div class="linea"></div>
+      </ion-row>
+      <ion-row class="ion-justify-content-center btn">
+        <div class="ion-justify-content-center btn">
+          <ion-button
+            expand="block"
+            color="primary"
+            style="text-transform: none;"
+            size="large"
+            (click)="form.onSubmit()"
+            [disabled]="form.form.invalid"
+          >
+            Abrir lote
+          </ion-button>
+        </div>
+      </ion-row>
+    </ion-col>
   </div>
 </ion-content>
