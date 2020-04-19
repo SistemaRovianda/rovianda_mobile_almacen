@@ -5,12 +5,14 @@ import { userReducer } from "../../landing/store/user/user.reducer";
 import { menuReducer } from "../../menu/store/menu/menu.reducer";
 import { StepperInitialReducer } from "../../packaging/store/stepper/stepper-packaging.reducer";
 import { PackagingReducer } from "../../packaging/store/packaging/packaging.reducer";
+import { exitReducer } from "../../packaging/store/exit/exit.reducer";
 export const reducers: ActionReducerMap<AppStateInterface> = {
   login: loginReducer,
   user: userReducer,
   menu: menuReducer,
   stepper: StepperInitialReducer,
   packaging: PackagingReducer,
+  packaging_exit: exitReducer,
 };
 
 export const metaReducers: MetaReducer<AppStateInterface>[] = [];
