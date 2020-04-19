@@ -7,6 +7,7 @@ const LOAD_MENU_OPTION = "[MENU] Load Menu Option";
 
 const FINISH_LOAD_MENU_OPTION = "[MENU] Finish Load Menu Option";
 
+
 export const StartLoadMenuOption = createAction(
   START_LOAD_MENU_OPTION,
   props<MenuButtonInterface>()

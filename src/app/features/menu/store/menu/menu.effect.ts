@@ -3,10 +3,7 @@ import { Router } from "@angular/router";
 import { Actions, ofType, createEffect } from "@ngrx/effects";
 import * as fromMenuActions from "./menu.action";
 import { delay, exhaustMap, switchMap, catchError, tap } from "rxjs/operators";
-import { from, forkJoin, of } from "rxjs";
-import { Store } from "@ngrx/store";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import { SELECT_OPTION_SELECTED } from "./menu.selector";
+import { StepperInterface } from "src/app/shared/Models/stepper.interface";
 
 @Injectable()
 export class MenuEffects {
@@ -15,7 +12,6 @@ export class MenuEffects {
   loadOptionSelectedEffect$ = createEffect(() =>
     this.action$.pipe(
       ofType(fromMenuActions.StartLoadMenuOption),
-      delay(2000),
       switchMap((itemSelected) => [
         fromMenuActions.loadMenuOption({ itemSelected }),
         fromMenuActions.finishLoadMenuOption(),

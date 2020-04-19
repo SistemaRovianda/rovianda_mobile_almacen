@@ -3,7 +3,7 @@ import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
 import { MenuButtonInterface } from "src/app/shared/Models/menu-button.interface";
 import { Store } from "@ngrx/store";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import { loadMenuOption } from "../../store/menu.action";
+import { loadMenuOption } from "../../store/menu/menu.action";
 
 @Component({
   selector: "app-menu",
@@ -14,18 +14,15 @@ export class MenuPage implements OnInit {
   header: ItemBackInterface = {
     path: "/login",
     titlePath: "Salir",
+    title: " ",
   };
 
   options: MenuButtonInterface[] = [
-    { label: "Empaques", path: "/login" }, // agregar path hacia el menu que se requiera
-    { label: "Secos", path: "/dried/menu" },
+    { label: "Empaques", path: "/packaging", numSteps: 2 }, // agregar path hacia el menu que se requiera
+    { label: "Secos", path: "/dried/menu", numSteps: 0 },
   ];
 
   constructor(private store: Store<AppStateInterface>) {}
 
-  ngOnInit() {
-    this.store.dispatch(
-      loadMenuOption({ itemSelected: { label: " ", path: "" } })
-    );
-  }
+  ngOnInit() {}
 }

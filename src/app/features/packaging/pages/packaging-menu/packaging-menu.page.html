@@ -1,0 +1,50 @@
+<app-header (back)="onBack($event)"[itemBack]="header"></app-header>
+<div class="submenu-container">
+  <h1 class="header-container">Menu</h1>
+  <ion-segment
+    [(ngModel)]="section"
+    (ionChange)="steppertag.next(section!== undefined)"
+    class="body-container"
+  >
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-segment-button value="open-lote"> Abrir Lote</ion-segment-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-segment-button value="close-lote">
+            Cerrar Lote</ion-segment-button
+          >
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="segment-odd">
+          <ion-segment-button value="exit"> Salida</ion-segment-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-segment>
+  <ion-grid class="footer-container">
+    <ion-row class="row-stepper">
+      <ion-col size="12">
+        <packaging-stepper class="steppers" #steppertag></packaging-stepper>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-button">
+      <ion-button
+        class="next-button"
+        [disabled]="!steppertag.getStep(0)"
+        (click)="nextSection()"
+      >
+        <ion-grid>
+          <ion-row>
+            <ion-col size="10">Siguiente</ion-col>
+            <ion-col size="2">
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+</div>
