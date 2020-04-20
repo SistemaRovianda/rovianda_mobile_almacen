@@ -58,6 +58,13 @@ const routes: Routes = [
       exit: PackagingExitResolver,
     },
   },
+  {
+    path: "packaging/report",
+    loadChildren: () =>
+      import("./features/packaging/pages/report/report.module").then(
+        (m) => m.ReportPageModule
+      ),
+  },
 ];
 
 @NgModule({
