@@ -29,4 +29,12 @@ export class PackagingService {
       observer.complete();
     });
   }
+
+  exit(lot: LotInterface): Observable<any> {
+    return new Observable((observer) => {
+      console.log(lot);
+      observer.next(lot);
+      observer.complete();
+    });
+  }
 }

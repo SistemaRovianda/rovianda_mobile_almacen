@@ -1,0 +1,106 @@
+<app-header [itemBack]="header"></app-header>
+<div class="exit-lot-container">
+  <h1 class="header-container">Informaci&oacute;n principal</h1>
+  <form class="body-container" [formGroup]="exitForm">
+    <ion-label class="subtitle">
+      Salida
+    </ion-label>
+    <ion-row>
+      <ion-item>
+        <ion-label position="floating">Fecha*</ion-label>
+        <ion-datetime
+          class="item-form"
+          placeholder="Ingresar fecha"
+          displayFormat="MM/DD/YYYY"
+          formControlName="date"
+        >
+        </ion-datetime>
+      </ion-item>
+    </ion-row>
+    <div class="error">
+      <ion-label *ngIf="date.errors">
+        Por favor seleccione una fecha
+      </ion-label>
+    </div>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="floating">Producto*</ion-label>
+          <ion-select
+            class="item-form"
+            interface="action-sheet"
+            placeholder="Seleccione un producto"
+            formControlName="product"
+            [disabled]="loading"
+          >
+            <ion-select-option
+              *ngFor="let product of products "
+              [value]="product"
+              >{{product.description}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+        <div class="error">
+          <ion-label *ngIf="product.errors">
+            Seleccione un producto
+          </ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="floating">Cantidad*</ion-label>
+          <ion-input
+            type="number"
+            class="item-form"
+            placeholder="Ingresa cantidad"
+            formControlName="quantity"
+          ></ion-input>
+        </ion-item>
+        <div class="error">
+          <ion-label *ngIf="quantity.errors">
+            Ingrese una cantidad
+          </ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-item>
+        <ion-label position="floating">Nombre de quien saco*</ion-label>
+        <ion-input
+          class="item-form"
+          placeholder="Ingresa nombre"
+          formControlName="name"
+        ></ion-input>
+      </ion-item>
+    </ion-row>
+    <div class="error">
+      <ion-label *ngIf="name.errors">
+        Por favor ingrese un nombre
+      </ion-label>
+    </div>
+  </form>
+  <ion-grid class="footer-container">
+    <ion-row class="row-stepper">
+      <ion-col size="12">
+        <packaging-stepper class="steppers" #steppertag></packaging-stepper>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-button">
+      <ion-button
+        (click)="requestExit()"
+        class="button"
+        [disabled]="!steppertag.getStep(1)"
+      >
+        <ion-grid>
+          <ion-row *ngIf="!loading">
+            <ion-col size="10" class="label">Crear reporte</ion-col>
+            <ion-col size="2">
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
+        </ion-grid>
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+</div>

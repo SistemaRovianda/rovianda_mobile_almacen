@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { PackagingResolver } from "./shared/Resolvers/packaging.resolver";
+import { PackagingExitResolver } from "./shared/Resolvers/packaging-exit.resolver";
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
@@ -47,6 +48,16 @@ const routes: Routes = [
         (m) => m.CloseLotPageModule
       ),
   },
+  {
+    path: "packaging/exit",
+    loadChildren: () =>
+      import("./features/packaging/pages/exit/exit.module").then(
+        (m) => m.ExitPageModule
+      ),
+    resolve: {
+      exit: PackagingExitResolver,
+    },
+  },
 ];
 
 @NgModule({
@@ -54,6 +65,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
   exports: [RouterModule],
-  providers: [PackagingResolver],
+  providers: [PackagingResolver, PackagingExitResolver],
 })
 export class AppRoutingModule {}

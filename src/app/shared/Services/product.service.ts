@@ -51,4 +51,10 @@ export class ProductService {
       observer.complete();
     });
   }
+  getAllProductsPacking(): Observable<any> {
+    return new Observable((observer) => {
+      observer.next(this.products);
+      observer.complete();
+    });
+  }
 }
