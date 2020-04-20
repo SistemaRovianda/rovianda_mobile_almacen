@@ -18,8 +18,8 @@ export class MenuPage implements OnInit {
   };
 
   options: MenuButtonInterface[] = [
-    { label: "Empaques", path: "/packaging", numSteps: 2 }, // agregar path hacia el menu que se requiera
-    { label: "Secos", path: "/dried/menu", numSteps: 0 },
+    { label: "Empaques", path: "/packaging" },
+    { label: "Secos", path: "/dried/menu" },
   ];
 
   constructor(private store: Store<AppStateInterface>) {}

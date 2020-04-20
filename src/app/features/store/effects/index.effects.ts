@@ -1,4 +1,11 @@
 import { LogginEffects } from "../../landing/store/login/login.effects";
 import { MenuEffects } from "../../menu/store/menu/menu.effect";
+import { PackagingEffects } from "../../packaging/store/packaging/packaging.effect";
+import { OpenLoteEffects } from "../../packaging/store/open-lot/open-lot.effects";
 
-export const effects = [LogginEffects, MenuEffects];
+export const effects = [
+  LogginEffects,
+  MenuEffects,
+  PackagingEffects,
+  OpenLoteEffects,
+];

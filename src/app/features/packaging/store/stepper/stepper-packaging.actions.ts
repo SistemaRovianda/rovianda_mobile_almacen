@@ -10,7 +10,7 @@ const PACKAGING_STEPPER_INIT = "[STEPPER-PACKAGING] Packaging Stepper Init";
 
 export const packagingStepperNext = createAction(
   PACKAGING_STEPPER_NEXT,
-  props<{ step: StepperInterface }>()
+  props<{ num: number; step: boolean }>()
 );
 
 export const packagingStepperPrev = createAction(PACKAGING_STEPPER_PREV);
