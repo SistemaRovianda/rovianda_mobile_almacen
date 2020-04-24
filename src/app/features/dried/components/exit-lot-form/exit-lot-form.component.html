@@ -1,0 +1,46 @@
+<form [formGroup]="form" class="container" (ngSubmit)="onSubmit()">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-item class="form-input">
+        <ion-label class="ion-label" position="floating">Producto*</ion-label>
+
+        <ion-select
+          placeholder="Seleccione un producto*"
+          formControlName="loteId"
+        >
+          <ion-select-option value="f">Female</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+    <div class="error">
+      <ion-label *ngIf="form.hasError('required', 'loteId')">
+        Este campo es requerido.
+      </ion-label>
+    </div>
+    <ion-row>
+      <ion-item class="form-input">
+        <ion-label class="ion-label" position="floating"
+          >Lote de proveedor*</ion-label
+        >
+
+        <ion-select placeholder="Seleccione lote*" formControlName="productId">
+          <ion-select-option value="f">Female</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+    <div class="error">
+      <ion-label *ngIf="form.hasError('required', 'productId')">
+        Este campo es requerido.
+      </ion-label>
+    </div>
+
+    <ion-row>
+      <ion-item class="form-input">
+        <ion-label class="ion-label" position="floating"
+          >Observaciones</ion-label
+        >
+        <ion-textarea rows="3" formControlName="observations"></ion-textarea>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
+</form>

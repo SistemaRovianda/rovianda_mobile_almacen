@@ -1,13 +1,13 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { LayoutModule } from "./layout/layout.module";
 import { LayoutComponent } from "./layout/layout.component";
-import { CloseLotPageComponent } from "./pages/close-lot/close-lot.page";
+import { LayoutModule } from "./layout/layout.module";
 import { CloseLotPageModule } from "./pages/close-lot/close-lot.module";
-import { OpenLotPageComponent } from "./pages/open-lot/open-lot.page";
-import { OutputPageComponent } from "./pages/output/output.component";
-import { OutputPageModule } from "./pages/output/output.module";
+import { CloseLotPageComponent } from "./pages/close-lot/close-lot.page";
+import { ExitLotPageModule } from "./pages/exit-lot/exit-lot.module";
+import { ExitLotPageComponent } from "./pages/exit-lot/exit-lot.page";
 import { OpenLotPageModule } from "./pages/open-lot/open-lot.module";
+import { OpenLotPageComponent } from "./pages/open-lot/open-lot.page";
 const routes: Routes = [
   {
     path: "",
@@ -25,8 +25,8 @@ const routes: Routes = [
         component: CloseLotPageComponent,
       },
       {
-        path: "output",
-        component: OutputPageComponent,
+        path: "exit-lot",
+        component: ExitLotPageComponent,
       },
     ],
   },
@@ -38,7 +38,7 @@ const routes: Routes = [
     LayoutModule,
     OpenLotPageModule,
     CloseLotPageModule,
-    OutputPageModule,
+    ExitLotPageModule,
   ],
   exports: [RouterModule],
 })

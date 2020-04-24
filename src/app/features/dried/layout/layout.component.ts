@@ -16,7 +16,7 @@ export class LayoutComponent implements OnInit {
   options: MenuButtonInterface[] = [
     { label: "Abrir lote", path: "/dried/open-lot" }, // agregar path hacia el menu que se requiera
     { label: "Cerrar lote", path: "/dried/close-lot" },
-    { label: "Salida", path: "/dried/output" },
+    { label: "Salida", path: "/dried/exit-lot" },
   ];
 
   constructor() {}
