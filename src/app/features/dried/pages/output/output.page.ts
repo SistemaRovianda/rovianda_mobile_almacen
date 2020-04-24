@@ -6,10 +6,10 @@ import { ModalController } from "@ionic/angular";
 
 @Component({
   selector: "app-exit-lot",
-  templateUrl: "./exit-lot.page.html",
-  styleUrls: ["./exit-lot.page.scss"],
+  templateUrl: "./output.page.html",
+  styleUrls: ["./output.page.scss"],
 })
-export class ExitLotPageComponent implements OnInit {
+export class OutputPageComponent implements OnInit {
   header: ItemBackInterface = {
     path: "/dried/menu",
     titlePath: "Regresar",

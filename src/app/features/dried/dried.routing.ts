@@ -4,10 +4,12 @@ import { LayoutComponent } from "./layout/layout.component";
 import { LayoutModule } from "./layout/layout.module";
 import { CloseLotPageModule } from "./pages/close-lot/close-lot.module";
 import { CloseLotPageComponent } from "./pages/close-lot/close-lot.page";
-import { ExitLotPageModule } from "./pages/exit-lot/exit-lot.module";
-import { ExitLotPageComponent } from "./pages/exit-lot/exit-lot.page";
 import { OpenLotPageModule } from "./pages/open-lot/open-lot.module";
 import { OpenLotPageComponent } from "./pages/open-lot/open-lot.page";
+import { OutputPageComponent } from "./pages/output/output.page";
+import { OutputPageModule } from "./pages/output/output.module";
+import { PrintReportComponent } from "./pages/print-report/print-report.component";
+import { PrintReportModule } from "./pages/print-report/print-report.module";
 const routes: Routes = [
   {
     path: "",
@@ -26,7 +28,11 @@ const routes: Routes = [
       },
       {
         path: "exit-lot",
-        component: ExitLotPageComponent,
+        component: OutputPageComponent,
+      },
+      {
+        path: "print-report",
+        component: PrintReportComponent,
       },
     ],
   },
@@ -38,7 +44,8 @@ const routes: Routes = [
     LayoutModule,
     OpenLotPageModule,
     CloseLotPageModule,
-    ExitLotPageModule,
+    OutputPageModule,
+    PrintReportModule,
   ],
   exports: [RouterModule],
 })

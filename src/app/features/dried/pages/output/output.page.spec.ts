@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { ExitLotPageComponent } from "./exit-lot.page";
+import { OutputPageComponent } from "./output.page";
 
 describe("ExitLotComponent", () => {
-  let component: ExitLotPageComponent;
-  let fixture: ComponentFixture<ExitLotPageComponent>;
+  let component: OutputPageComponent;
+  let fixture: ComponentFixture<OutputPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ExitLotPageComponent],
+      declarations: [OutputPageComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ExitLotPageComponent);
+    fixture = TestBed.createComponent(OutputPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

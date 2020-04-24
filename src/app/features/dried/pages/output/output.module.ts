@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ExitLotPageComponent } from "./exit-lot.page";
+import { OutputPageComponent } from "./output.page";
 import { ExitLotFormModule } from "../../components/exit-lot-form/exit-lot-form.module";
 import { IonicModule } from "@ionic/angular";
 import { ButtonMenuModule } from "src/app/features/menu/components/button-menu/button-menu.module";
@@ -16,11 +16,11 @@ const COMMON_IMPORTS = [
   RouterModule,
 ];
 
-const COMMON_DECLARATIONS = [ExitLotPageComponent];
+const COMMON_DECLARATIONS = [OutputPageComponent];
 
 @NgModule({
   imports: COMMON_IMPORTS,
   declarations: COMMON_DECLARATIONS,
   exports: COMMON_DECLARATIONS,
 })
-export class ExitLotPageModule {}
+export class OutputPageModule {}
