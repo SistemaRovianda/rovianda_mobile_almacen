@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { MenuButtonInterface } from "src/app/shared/Models/menu-button.interface";
+import { Router } from "@angular/router";
 import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
+import { MenuButtonInterface } from "src/app/shared/Models/menu-button.interface";
 
 @Component({
   selector: "app-layout",
@@ -19,7 +20,9 @@ export class LayoutComponent implements OnInit {
     { label: "Salida", path: "/dried/output" },
   ];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  print() {}
 }
