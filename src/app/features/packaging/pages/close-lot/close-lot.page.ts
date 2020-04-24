@@ -76,7 +76,6 @@ export class CloseLotPage implements OnInit {
   }
 
   requestCloseLot() {
-    console.log(this.lotForm.value);
     this.createAlert();
   }
 

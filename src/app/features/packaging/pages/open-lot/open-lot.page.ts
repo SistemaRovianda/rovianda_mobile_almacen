@@ -71,7 +71,6 @@ export class OpenLotePage implements OnInit {
   }
 
   requestOpenLote() {
-    console.log(this.lotForm.value);
     this.createAlert();
   }
 

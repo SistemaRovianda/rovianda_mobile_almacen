@@ -50,7 +50,6 @@ export class LoginPage implements OnInit {
   }
 
   onLogin() {
-    console.log(this.loginForm.value);
     this.store.dispatch(fromLoginActions.signIn(this.loginForm.value));
   }
 

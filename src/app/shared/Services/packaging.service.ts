@@ -16,7 +16,6 @@ export class PackagingService {
 
   entrance(lot: LotInterface): Observable<any> {
     return new Observable((observer) => {
-      console.log(lot);
       observer.next(lot);
       observer.complete();
     });
@@ -24,7 +23,6 @@ export class PackagingService {
 
   close(lot: LotInterface): Observable<any> {
     return new Observable((observer) => {
-      console.log(lot);
       observer.next(lot);
       observer.complete();
     });
@@ -32,7 +30,6 @@ export class PackagingService {
 
   exit(lot: LotInterface): Observable<any> {
     return new Observable((observer) => {
-      console.log(lot);
       observer.next(lot);
       observer.complete();
     });

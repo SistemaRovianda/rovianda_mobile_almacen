@@ -57,7 +57,6 @@ export class ExitPage implements OnInit {
   }
 
   requestExit() {
-    console.log(this.exitForm.value);
     this.createAlert();
   }
 

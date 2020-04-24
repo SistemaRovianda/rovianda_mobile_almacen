@@ -33,10 +33,7 @@ export class PackagingMenuPage implements OnInit {
 
   ngOnInit() {}
 
-
   nextSection() {
-    console.log(this.section);
-
     this.router.navigate(["/packaging/" + this.section]);
     this.section = undefined;
   }
