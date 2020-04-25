@@ -27,42 +27,8 @@ const routes: Routes = [
   {
     path: "packaging",
     loadChildren: () =>
-      import(
-        "./features/packaging/pages/packaging-menu/packaging-menu.module"
-      ).then((m) => m.PackagingMenuModule),
-    resolve: {
-      packaging: PackagingResolver,
-    },
-  },
-  {
-    path: "packaging/open-lot",
-    loadChildren: () =>
-      import("./features/packaging/pages/open-lot/open-lot.module").then(
-        (m) => m.OpenLotePageModule
-      ),
-  },
-  {
-    path: "packaging/close-lot",
-    loadChildren: () =>
-      import("./features/packaging/pages/close-lot/close-lot.module").then(
-        (m) => m.CloseLotPageModule
-      ),
-  },
-  {
-    path: "packaging/exit",
-    loadChildren: () =>
-      import("./features/packaging/pages/exit/exit.module").then(
-        (m) => m.ExitPageModule
-      ),
-    resolve: {
-      exit: PackagingExitResolver,
-    },
-  },
-  {
-    path: "packaging/report",
-    loadChildren: () =>
-      import("./features/packaging/pages/report/report.module").then(
-        (m) => m.ReportPageModule
+      import("./features/packaging/packaging.module").then(
+        (m) => m.PackagingModule
       ),
   },
 ];

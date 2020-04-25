@@ -20,7 +20,7 @@ const COMMON_IMPORTS = [
   IonicModule,
   ComponentsModule,
   StepperModule,
-  RouterModule.forChild(routes),
+  // RouterModule.forChild(routes),
 ];
 
 const COMMON_DECLARATIONS = [PackagingMenuPage];

@@ -8,6 +8,7 @@ import * as fromStepperActions from "src/app/features/packaging/store/stepper/st
 import * as fromExitActions from "src/app/features/packaging/store/exit/exit.actions";
 import * as fromExitSelector from "src/app/features/packaging/store/exit/exit.selector";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-exit",
   templateUrl: "./exit.page.html",
@@ -27,7 +28,8 @@ export class ExitPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private router: Router
   ) {}
 
   exitForm = this.fb.group({
@@ -81,6 +83,7 @@ export class ExitPage implements OnInit {
                 },
               })
             );
+            this.router.navigate(["/packaging/print-report"]);
           },
         },
       ],

@@ -18,7 +18,7 @@ export class MenuPage implements OnInit {
   };
 
   options: MenuButtonInterface[] = [
-    { label: "Empaques", path: "/packaging" },
+    { label: "Empaques", path: "/packaging/menu" },
     { label: "Secos", path: "/dried/menu" },
   ];
 
