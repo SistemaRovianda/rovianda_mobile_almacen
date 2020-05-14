@@ -12,4 +12,5 @@ export interface AppStateInterface {
   stepper: StepperPackagingInterface;
   packaging: PackagingInterface;
   packaging_exit: PackagingExitInterface;
+  openLotDried: any;
 }
