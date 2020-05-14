@@ -18,6 +18,10 @@ import { effects } from "./features/store/effects/index.effects";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { HttpClientModule } from "@angular/common/http";
 import { AppProvidersModule } from "./providers/app-providers.module";
+import { AuthGuard } from "./shared/guards/auth.guard";
+import { IsAuthGuard } from "./shared/guards/is-auth.guard";
+
+import { AngularFireAuthModule } from "@angular/fire/auth";
 
 const DECLARATIONS = [AppComponent];
 
@@ -25,6 +29,7 @@ const IMPORTS = [
   BrowserModule,
   IonicModule.forRoot(),
   AppRoutingModule,
+  AngularFireAuthModule,
   StoreModule.forRoot(reducers, {
     metaReducers,
     runtimeChecks: {
@@ -45,6 +50,8 @@ const IMPORTS = [
   entryComponents: [],
   imports: IMPORTS,
   providers: [
+    AuthGuard,
+    IsAuthGuard,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

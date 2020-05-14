@@ -57,7 +57,7 @@
             (click)="onLogin()"
             [disabled]="loginForm.status=='INVALID'"
           >
-            <label *ngIf="!loading">Iniciar Sesi&oacute;n</label>
+            <label *ngIf="!loading">Iniciar Sesión</label>
             <ion-spinner
               *ngIf="loading"
               name="crescent"
@@ -66,7 +66,7 @@
           </ion-button>
           <div class="error">
             <ion-label *ngIf="loginForm.errors?.loginError">
-              {{ loginForm.errors.loginError}} Error
+              {{ translateError(loginForm.errors.loginError) }}
             </ion-label>
           </div>
         </ion-grid>

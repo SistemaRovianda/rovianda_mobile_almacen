@@ -11,25 +11,46 @@ import { Router } from "@angular/router";
 export class LogginEffects {
   constructor(
     private action$: Actions,
-    private auth: AuthService,
-    private router: Router
+    private _authService: AuthService,
+    private _router: Router
   ) {}
 
   signInEffect$ = createEffect(() =>
     this.action$.pipe(
       ofType(fromLoginActions.signIn),
       delay(2000),
-      exhaustMap((action) => {
-        return forkJoin(
-          this.auth.signIn(action.email, action.password),
-          this.auth.getTokenCurrentUser()
-        ).pipe(
-          switchMap(([{ uid, token }, { currentToken }]) => {
+      exhaustMap((action) =>
+        this._authService.signIn(action.email, action.password).pipe(
+          switchMap(({ uid, token }) => {
             return [
               fromLoginActions.startLoad(),
               fromUserActions.loadUser({ uid, token }),
-              fromUserActions.loadCurrentToken({ currentToken }),
-              fromLoginActions.signAuthSuccess({ uid }),
+              fromUserActions.loadCurrentToken({
+                uid,
+              }),
+            ];
+          }),
+          catchError((error) =>
+            of(
+              fromLoginActions.finishLoad(),
+              fromLoginActions.signInFailure({ error: error.message })
+            )
+          )
+        )
+      )
+    )
+  );
+
+  loadCurrentTokenEffect$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(fromUserActions.loadCurrentToken),
+      exhaustMap((action) =>
+        this._authService.getTokenCurrentUser().pipe(
+          switchMap(({ currentToken }) => {
+            localStorage.setItem("token", currentToken);
+            return [
+              fromUserActions.loadUser({ currentToken }),
+              fromLoginActions.signAuthSuccess({ uid: action.uid }),
             ];
           }),
           catchError((error) =>
@@ -38,8 +59,8 @@ export class LogginEffects {
               fromLoginActions.signInFailure(error)
             )
           )
-        );
-      })
+        )
+      )
     )
   );
 
@@ -47,12 +68,15 @@ export class LogginEffects {
     this.action$.pipe(
       ofType(fromLoginActions.signAuthSuccess),
       exhaustMap((action) =>
-        this.auth.getUserData(action.uid).pipe(
+        this._authService.getUserData(action.uid).pipe(
           delay(3000),
-          switchMap(({ token }) => [
-            fromUserActions.loadUser({ token }),
-            fromLoginActions.signInSuccess(),
-          ]),
+          switchMap(({ name, lastname, surname, role }) => {
+            localStorage.setItem("role", role);
+            return [
+              fromUserActions.loadUser({ name, lastname, surname, role }),
+              fromLoginActions.signInSuccess(),
+            ];
+          }),
           catchError((error) =>
             of(
               fromLoginActions.finishLoad(),
@@ -68,7 +92,7 @@ export class LogginEffects {
     this.action$.pipe(
       ofType(fromLoginActions.signInSuccess),
       exhaustMap((action) =>
-        from(this.router.navigate(["/menu"])).pipe(
+        from(this._router.navigate(["/menu"])).pipe(
           switchMap((result) =>
             result
               ? [fromLoginActions.finishLoad()]

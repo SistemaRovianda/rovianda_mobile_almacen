@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { AbstractControl, Validators, FormBuilder } from "@angular/forms";
+import {
+  AbstractControl,
+  Validators,
+  FormBuilder,
+  FormGroup,
+} from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
 import * as fromLoginActions from "src/app/features/landing/store/login/login.action";
@@ -10,6 +15,10 @@ import {
 import { emailValidator } from "src/app/shared/Validators/email.validator";
 import { passwordValidator } from "src/app/shared/Validators/password.validator";
 import { StoreValidator } from "src/app/shared/Validators/store.validator";
+import {
+  ERROR_EMAIL_NOT_FOUND,
+  ERROR_PASSWORD_INVALID,
+} from "src/app/providers/conts";
 
 @Component({
   selector: "app-login",
@@ -17,27 +26,31 @@ import { StoreValidator } from "src/app/shared/Validators/store.validator";
   styleUrls: ["./login.page.scss"],
 })
 export class LoginPage implements OnInit {
+  loginForm: FormGroup;
+
+  loading: boolean;
+
   constructor(
     private fb: FormBuilder,
     private store: Store<AppStateInterface>
-  ) {}
+  ) {
+    this.loginForm = this.fb.group(
+      {
+        email: ["", [Validators.required, emailValidator]],
+        password: ["", [Validators.required]],
+      },
+      {
+        asyncValidators: [
+          StoreValidator.hasStoreError(
+            this.store.select(SELECT_LOGIN_ERROR),
+            "loginError"
+          ),
+        ],
+      }
+    );
 
-  loginForm = this.fb.group(
-    {
-      email: ["", [Validators.required, emailValidator]],
-      password: ["", [Validators.required, passwordValidator]],
-    },
-    {
-      asyncValidators: [
-        StoreValidator.hasStoreError(
-          this.store.select(SELECT_LOGIN_ERROR),
-          "Login error"
-        ),
-      ],
-    }
-  );
-
-  loading: boolean;
+    this.loading = false;
+  }
 
   ngOnInit() {
     this.store
@@ -59,5 +72,15 @@ export class LoginPage implements OnInit {
 
   get password() {
     return this.loginForm.get("password");
+  }
+
+  translateError(errorMessage: string): string {
+    if (errorMessage == ERROR_EMAIL_NOT_FOUND) {
+      return "Correo no registrado.";
+    }
+    if (errorMessage == ERROR_PASSWORD_INVALID) {
+      return "Contraseña invalida.";
+    }
+    return "Varios intentos fallidos, consulte con el administrador o intente mas tarde";
   }
 }
