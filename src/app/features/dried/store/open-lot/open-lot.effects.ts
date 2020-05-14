@@ -12,15 +12,15 @@ import * as fromActions from "./open-lot.actions";
 export class OpenLotEffects {
   constructor(private actions$: Actions, private driedService: DriedService) {}
 
-  // openLote$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(fromActions.openLot),
-  //     exhaustMap((action) =>
-  //       this.driedService.openLot(action.payload).pipe(
-  //         map(payload => fromActions.openLotSuccess({ payload })),
-  //         catchError(error=> of: any(fromActions.openLotError(error)))
-  //       )
-  //     )
-  //   )
-  // );
+  openLote$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.openLot),
+      exhaustMap((action) =>
+        this.driedService.openLot(action.payload).pipe(
+          map((payload) => fromActions.openLotSuccess({ payload })),
+          catchError((error) => of(fromActions.openLotError(error)))
+        )
+      )
+    )
+  );
 }
