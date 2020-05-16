@@ -14,11 +14,11 @@ export class DriedService {
     private http: HttpClient,
     @Inject(API_ENDPOINT_PROVIDER) private endpoint
   ) {
-    this.url = `${this.endpoint}/dried`;
+    this.url = `${endpoint}/dried`;
   }
 
   openLot(body: Entrance): Observable<any> {
-    return this.http.post<any>(`${this.url}/entrance`, body);
+    return this.http.patch<any>(`${this.url}/status`, body);
   }
 
   closeLot(body: Entrance) {

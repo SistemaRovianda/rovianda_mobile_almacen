@@ -7,6 +7,7 @@ import { StepperInitialReducer } from "src/app/features/packaging/store/stepper/
 import { PackagingReducer } from "src/app/features/packaging/store/packaging/packaging.reducer";
 import { exitReducer } from "src/app/features/packaging/store/exit/exit.reducer";
 import { openLotReducer } from "src/app/features/dried/store/open-lot/open-lot.reducer";
+import { catalogProductsReducer } from "src/app/features/dried/store/catalog-products/catalog-products.reducer";
 
 export const reducers: ActionReducerMap<AppStateInterface> = {
   login: loginReducer,
@@ -16,6 +17,7 @@ export const reducers: ActionReducerMap<AppStateInterface> = {
   packaging: PackagingReducer,
   packaging_exit: exitReducer,
   openLotDried: openLotReducer,
+  catalogProducts: catalogProductsReducer,
 };
 
 export const metaReducers: MetaReducer<AppStateInterface>[] = [];

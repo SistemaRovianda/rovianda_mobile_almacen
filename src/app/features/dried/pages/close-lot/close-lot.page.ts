@@ -1,8 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
-import { Entrance } from "src/app/shared/Models/dried.interface";
 import { ModalController } from "@ionic/angular";
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { Entrance } from "src/app/shared/Models/dried.interface";
+import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
+import { ProductInterface } from "src/app/shared/Models/product.interface";
 import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dialog.component";
+import * as fromCatalogProductsActions from "../../store/catalog-products/catalog-products.actions";
+import * as fromCatalogProducts from "../../store/catalog-products/catalog-products.selector";
 
 @Component({
   selector: "close-lot",
@@ -15,9 +21,18 @@ export class CloseLotPageComponent implements OnInit {
     titlePath: "Regresar",
   };
 
-  constructor(public modalController: ModalController) {}
+  products$: Observable<ProductInterface[]> = this.store.select(
+    fromCatalogProducts.fetchAllProducts
+  );
 
-  ngOnInit() {}
+  constructor(
+    public modalController: ModalController,
+    private store: Store<AppStateInterface>
+  ) {}
+
+  ngOnInit() {
+    this.store.dispatch(fromCatalogProductsActions.fetchAllProducts());
+  }
 
   onSubmit(entrance: Entrance) {
     this.openModal(entrance);

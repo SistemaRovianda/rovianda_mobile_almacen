@@ -5,6 +5,7 @@ import { OpenLoteEffects } from "src/app/features/packaging/store/open-lot/open-
 import { CloseLotEffects } from "src/app/features/packaging/store/close-lot/close-lot.effects";
 import { ExitEffects } from "src/app/features/packaging/store/exit/exit.effects";
 import { OpenLotEffects } from "src/app/features/dried/store/open-lot/open-lot.effects";
+import { CatalogProductsEffects } from "src/app/features/dried/store/catalog-products/catalog-products.effects";
 
 export const effects = [
   LogginEffects,
@@ -14,4 +15,5 @@ export const effects = [
   CloseLotEffects,
   ExitEffects,
   OpenLotEffects,
+  CatalogProductsEffects,
 ];

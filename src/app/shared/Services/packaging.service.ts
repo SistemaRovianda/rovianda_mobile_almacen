@@ -8,10 +8,10 @@ import { LotInterface } from "../Models/lot.interface";
   providedIn: "root",
 })
 export class PackagingService {
-  API;
+  url: string;
 
   constructor(private http: HttpClient) {
-    this.API = `${environment.basePath}/packing`;
+    this.url = `${environment.basePath}/packing`;
   }
 
   entrance(lot: LotInterface): Observable<any> {

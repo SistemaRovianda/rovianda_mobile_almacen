@@ -8,10 +8,10 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class ProductService {
-  API;
+  url;
 
   constructor(private http: HttpClient) {
-    this.API = `${environment.basePath}/products`;
+    this.url = `${environment.basePath}/products`;
   }
 
   products: ProductInterface[] = [
@@ -56,5 +56,9 @@ export class ProductService {
       observer.next(this.products);
       observer.complete();
     });
+  }
+
+  getAllProductsDried(): Observable<any> {
+    return this.http.get<ProductInterface[]>(`${this.url}/DRIEF`);
   }
 }

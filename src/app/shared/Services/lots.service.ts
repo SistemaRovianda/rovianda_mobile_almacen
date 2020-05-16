@@ -1,42 +1,29 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { environment } from "src/environments/environment";
-import { LotInterface } from "../Models/lot.interface";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { API_ENDPOINT_PROVIDER } from "src/app/providers/tokens";
 
 @Injectable({
   providedIn: "root",
 })
 export class LotsService {
-  API;
+  url: string;
 
-  constructor(private http: HttpClient) {
-    this.API = `${environment.basePath}/losts`;
+  constructor(
+    private http: HttpClient,
+    @Inject(API_ENDPOINT_PROVIDER) private endpoint
+  ) {
+    this.url = `${endpoint}`;
   }
 
-  lotsFake: LotInterface[] = [
-    {
-      loteId: 4525,
-      name: "lote1",
-    },
-    {
-      loteId: 4526,
-      name: "lote2",
-    },
-    {
-      loteId: 4527,
-      name: "lote3",
-    },
-    {
-      loteId: 4528,
-      name: "lote4",
-    },
-  ];
-
-  getLots(): Observable<any> {
-    return new Observable((observer) => {
-      observer.next(this.lotsFake);
-      observer.complete();
+  getLots(type: string, status: string): Observable<any> {
+    const params = new HttpParams({
+      fromObject: {
+        type: type,
+        status: status,
+      },
     });
+
+    return this.http.get<any>(`${this.url}/lots`, { params });
   }
 }

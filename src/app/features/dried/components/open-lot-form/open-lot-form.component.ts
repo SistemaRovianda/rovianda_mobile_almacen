@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ProductInterface } from "src/app/shared/Models/product.interface";
 
 @Component({
   selector: "open-lot-form",
@@ -8,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class OpenLotFormComponent implements OnInit {
   form: FormGroup;
+  @Input() products: ProductInterface[];
   @Output("onSubmit") submit = new EventEmitter();
 
   constructor(private fb: FormBuilder) {

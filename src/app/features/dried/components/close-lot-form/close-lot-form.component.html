@@ -21,7 +21,11 @@
           placeholder="Seleccione un producto*"
           formControlName="productId"
         >
-          <ion-select-option value="f">Female</ion-select-option>
+          <ng-container *ngFor="let product of products">
+            <ion-select-option [value]="product">
+              {{ product.description }}
+            </ion-select-option>
+          </ng-container>
         </ion-select>
       </ion-item>
     </ion-row>

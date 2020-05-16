@@ -44,6 +44,7 @@ export class ExitPage implements OnInit {
     this.store
       .select(fromExitSelector.SELECT_PACKAGING_EXIT_LOADING)
       .subscribe((tempLoading) => (this.loading = tempLoading));
+
     this.store
       .select(fromExitSelector.SELECT_PACKAGING_EXIT_PRODUCTS)
       .subscribe((tempProducts) => (this.products = tempProducts));

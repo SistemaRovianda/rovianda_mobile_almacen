@@ -8,7 +8,11 @@
       </ion-col>
     </ion-row>
     <ion-row size="12">
-      <close-lot-form #form (onSubmit)="onSubmit($event)"></close-lot-form>
+      <close-lot-form
+        #form
+        (onSubmit)="onSubmit($event)"
+        [products]="products$ | async"
+      ></close-lot-form>
     </ion-row>
   </ion-grid>
   <div class="ion-justify-content-center">

@@ -20,8 +20,9 @@ export class PackagingEffects {
     this.action$.pipe(
       ofType(fromPackagingActions.packagingStartLoad),
       exhaustMap((action) =>
-        this.lotsService.getLots().pipe(
+        this.lotsService.getLots("PACKING", "OPENED").pipe(
           delay(5000),
+          tap((v) => console.log(v)),
           switchMap((lots) => [
             fromPackagingActions.packagingLoadLots({ lots }),
             fromPackagingActions.packagingFinishLoad(),
@@ -35,12 +36,14 @@ export class PackagingEffects {
     this.action$.pipe(
       ofType(fromPackagingActions.packagingSelectLot),
       exhaustMap((action) =>
-        this.productsService.getProducts(action.lot).pipe(
-          switchMap((products) => [
-            fromPackagingActions.packagingLoadProducts({ products }),
-            fromPackagingActions.packagingFinishLoad(),
-          ])
-        )
+        this.productsService
+          .getProducts(action.lot)
+          .pipe(
+            switchMap((products) => [
+              fromPackagingActions.packagingLoadProducts({ products }),
+              fromPackagingActions.packagingFinishLoad(),
+            ])
+          )
       )
     )
   );

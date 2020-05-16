@@ -1,17 +1,20 @@
-import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { environment } from "src/environments/environment";
+import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { API_ENDPOINT_PROVIDER } from "src/app/providers/tokens";
 import { UserInterface } from "../Models/user.interface";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
-  API;
+  url: string;
 
-  constructor(private http: HttpClient) {
-    this.API = `${environment.basePath}/`;
+  constructor(
+    private http: HttpClient,
+    @Inject(API_ENDPOINT_PROVIDER) private endpoint
+  ) {
+    this.url = `${endpoint.basePath}/`;
   }
 
   userFake: UserInterface = {
