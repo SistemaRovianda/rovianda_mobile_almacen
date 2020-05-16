@@ -2,15 +2,15 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { OpenLotePage } from "./pages/open-lot/open-lot.page";
 import { ExitPageModule } from "./pages/exit/exit.module";
-import { CloseLotPageModule } from "../dried/pages/close-lot/close-lot.module";
+import { CloseLotPageModule } from "./pages/close-lot/close-lot.module";
 import { PackagingMenuModule } from "./pages/packaging-menu/packaging-menu.module";
 import { ReportPageModule } from "./pages/report/report.module";
 import { PackagingMenuPage } from "./pages/packaging-menu/packaging-menu.page";
 import { PackagingResolver } from "src/app/shared/Resolvers/packaging.resolver";
 import { PackagingExitResolver } from "src/app/shared/Resolvers/packaging-exit.resolver";
-import { OpenLotPageComponent } from "../dried/pages/open-lot/open-lot.page";
-import { OpenLotPageModule } from "../dried/pages/open-lot/open-lot.module";
-import { CloseLotPageComponent } from "../dried/pages/close-lot/close-lot.page";
+// import { OpenLotPageComponent } from "./pages/open-lot/open-lot.page";
+import { OpenLotePageModule } from "./pages/open-lot/open-lot.module";
+import { CloseLotPage } from "./pages/close-lot/close-lot.page";
 import { ExitPage } from "./pages/exit/exit.page";
 import { ReportPage } from "./pages/report/report.page";
 
@@ -27,11 +27,11 @@ const routes: Routes = [
       },
       {
         path: "open-lot",
-        component: OpenLotPageComponent,
+        component: OpenLotePage,
       },
       {
         path: "close-lot",
-        component: CloseLotPageComponent,
+        component: CloseLotPage,
       },
       {
         path: "exit-lot",
@@ -52,7 +52,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     PackagingMenuModule,
-    OpenLotPageModule,
+    OpenLotePageModule,
     ExitPageModule,
     CloseLotPageModule,
     ReportPageModule,
