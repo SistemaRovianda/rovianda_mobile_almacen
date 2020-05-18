@@ -21,11 +21,11 @@ export class DriedService {
     return this.http.patch<any>(`${this.url}/status`, body);
   }
 
-  closeLot(body: Entrance) {
-    this.http.post(`${this.url}/close`, body);
+  closeLot(body: Entrance): Observable<any> {
+    return this.http.post<any>(`${this.url}/close`, body);
   }
 
-  exitLot(body: ExitLot) {
-    this.http.post(`${this.url}/exit`, body);
+  exitLot(body: ExitLot): Observable<any> {
+    return this.http.post<any>(`${this.url}/exit`, body);
   }
 }

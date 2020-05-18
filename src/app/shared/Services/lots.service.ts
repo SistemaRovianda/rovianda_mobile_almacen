@@ -23,7 +23,6 @@ export class LotsService {
         status: status,
       },
     });
-
     return this.http.get<any>(`${this.url}/lots`, { params });
   }
 }

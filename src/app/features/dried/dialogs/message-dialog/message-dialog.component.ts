@@ -4,6 +4,7 @@ import { Entrance } from "src/app/shared/Models/dried.interface";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
 import { Store } from "@ngrx/store";
 import * as fromActions from "../../store/open-lot/open-lot.actions";
+import * as fromActionsClose from "../../store/close-lot/close-lot.actions";
 
 @Component({
   selector: "app-message-dialog",
@@ -13,6 +14,8 @@ import * as fromActions from "../../store/open-lot/open-lot.actions";
 export class MessageDialogComponent implements OnInit {
   entrance: Entrance;
   action: string;
+  type: string;
+
   constructor(
     public modalController: ModalController,
     private store: Store<AppStateInterface>
@@ -25,7 +28,13 @@ export class MessageDialogComponent implements OnInit {
   }
 
   save() {
-    this.store.dispatch(fromActions.openLot({ payload: this.entrance }));
+    if (this.type == "open") {
+      this.store.dispatch(fromActions.openLot({ payload: this.entrance }));
+    } else {
+      this.store.dispatch(
+        fromActionsClose.closeLot({ payload: this.entrance })
+      );
+    }
     this.modalController.dismiss();
   }
 }

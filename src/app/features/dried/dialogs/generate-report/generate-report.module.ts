@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { MessageDialogComponent } from "./message-dialog.component";
+import { GenerateReportComponent } from "./generate-report.component";
 import { IonicModule } from "@ionic/angular";
 
 const COMMON_IMPORTS = [CommonModule, IonicModule];
 
-const COMMON_DECLARATIONS = [MessageDialogComponent];
+const COMMON_DECLARATIONS = [GenerateReportComponent];
 
 @NgModule({
   imports: COMMON_IMPORTS,
@@ -13,4 +13,4 @@ const COMMON_DECLARATIONS = [MessageDialogComponent];
   declarations: COMMON_DECLARATIONS,
   entryComponents: COMMON_DECLARATIONS,
 })
-export class MessageDialogModule {}
+export class GenerateReportModule {}

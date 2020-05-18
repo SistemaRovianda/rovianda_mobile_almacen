@@ -49,6 +49,7 @@ const IMPORTS = [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    AppProvidersModule,
   ],
   bootstrap: [AppComponent],
 })

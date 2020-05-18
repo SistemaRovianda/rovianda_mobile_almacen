@@ -1,50 +1,27 @@
 <app-header [itemBack]="header"></app-header>
-<div class="submenu-container">
-  <h1 class="header-container">Menu</h1>
-  <ion-segment
-    [(ngModel)]="section"
-    (ionChange)="steppertag.next(0,section!== undefined)"
-    class="body-container"
-  >
-    <ion-grid>
-      <ion-row>
-        <ion-col size="6">
-          <ion-segment-button value="open-lot"> Abrir Lote</ion-segment-button>
-        </ion-col>
-        <ion-col size="6">
-          <ion-segment-button value="close-lot">
-            Cerrar Lote</ion-segment-button
-          >
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="12" class="segment-odd">
-          <ion-segment-button value="exit-lot"> Salida</ion-segment-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-segment>
-  <ion-grid class="footer-container">
-    <ion-row class="row-stepper">
+<ion-content>
+  <ion-grid>
+    <ion-row>
       <ion-col size="12">
-        <packaging-stepper class="steppers" #steppertag></packaging-stepper>
+        <h1 class="title-menu">Menú</h1>
       </ion-col>
     </ion-row>
-    <ion-row class="row-button">
-      <ion-button
-        class="next-button"
-        [disabled]="!steppertag.getStep(0)"
-        (click)="nextSection()"
-      >
-        <ion-grid>
-          <ion-row>
-            <ion-col size="10">Siguiente</ion-col>
-            <ion-col size="2">
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-button>
+    <ion-row class="container-button">
+      <ng-container *ngFor="let option of options">
+        <ion-col class="button">
+          <app-button-menu [labelButton]="option"></app-button-menu>
+        </ion-col>
+      </ng-container>
     </ion-row>
   </ion-grid>
-</div>
+  <div class="ion-justify-content-center center">
+    <ion-button expand="block" routerLink="/dried/print-report">
+      <ion-label class="label-button">Siguiente</ion-label>
+      <ion-icon
+        lot="end"
+        class="label-button"
+        src="/assets/icons/keyboard_arrow_right.svg"
+      ></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

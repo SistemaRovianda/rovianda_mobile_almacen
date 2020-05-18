@@ -22,7 +22,6 @@ export class PackagingEffects {
       exhaustMap((action) =>
         this.lotsService.getLots("PACKING", "OPENED").pipe(
           delay(5000),
-          tap((v) => console.log(v)),
           switchMap((lots) => [
             fromPackagingActions.packagingLoadLots({ lots }),
             fromPackagingActions.packagingFinishLoad(),

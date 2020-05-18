@@ -10,6 +10,9 @@ import { OpenLotFormComponent } from "../../components/open-lot-form/open-lot-fo
 import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dialog.component";
 import * as fromCatalogProductsActions from "../../store/catalog-products/catalog-products.actions";
 import * as fromCatalogProducts from "../../store/catalog-products/catalog-products.selector";
+import { LotInterface } from "src/app/shared/Models/lot.interface";
+import * as fromCatalogLotsActions from "../../store/catalog-lots/catalog-lots.actions";
+import * as fromCatalogLots from "../../store/catalog-lots/catalog-lots.selector";
 
 @Component({
   selector: "open-lot",
@@ -29,12 +32,22 @@ export class OpenLotPageComponent implements OnInit {
     fromCatalogProducts.fetchAllProducts
   );
 
+  lots$: Observable<LotInterface[]> = this.store.select(
+    fromCatalogLots.fetchAllLots
+  );
+
   constructor(
     public modalController: ModalController,
     private store: Store<AppStateInterface>
   ) {}
 
   ngOnInit() {
+    this.store.dispatch(
+      fromCatalogLotsActions.fetchAllLots({
+        typeLot: "DRIED",
+        status: "OPENED",
+      })
+    );
     this.store.dispatch(fromCatalogProductsActions.fetchAllProducts());
   }
 
@@ -49,6 +62,7 @@ export class OpenLotPageComponent implements OnInit {
       componentProps: {
         entrance: entrance,
         action: "abrir",
+        type: "open",
       },
     });
     return await modal.present();

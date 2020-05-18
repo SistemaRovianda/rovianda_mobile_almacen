@@ -3,12 +3,18 @@
     <ion-row>
       <ion-item class="form-input">
         <ion-label class="ion-label" position="floating">Lote*</ion-label>
-        <ion-input
-          formControlName="loteId"
-          type="text"
+
+        <ion-select
           placeholder="Ingresa lote"
+          formControlName="loteId"
+          (ionChange)="change($event)"
         >
-        </ion-input>
+          <ng-container *ngFor="let lot of lots">
+            <ion-select-option [value]="lot">
+              {{ lot.name }}
+            </ion-select-option>
+          </ng-container>
+        </ion-select>
       </ion-item>
     </ion-row>
     <div class="error">
@@ -21,10 +27,10 @@
         <ion-label class="ion-label" position="floating">Producto*</ion-label>
 
         <ion-select
-          placeholder="Seleccione un producto*"
+          placeholder="Seleccione un producto"
           formControlName="productId"
         >
-          <ng-container *ngFor="let product of products">
+          <ng-container *ngFor="let product of filterProducts">
             <ion-select-option [value]="product">
               {{ product.description }}
             </ion-select-option>

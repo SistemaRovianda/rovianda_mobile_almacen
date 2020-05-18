@@ -1,10 +1,7 @@
-import { Component, OnInit, OnChanges } from "@angular/core";
-import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
-import { StepperInterface } from "src/app/shared/Models/stepper.interface";
-import { Store } from "@ngrx/store";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import { packagingStepperInit } from "../../store/stepper/stepper-packaging.actions";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
+import { MenuButtonInterface } from "src/app/shared/Models/menu-button.interface";
 
 @Component({
   selector: "app-packaging-layout",
@@ -18,23 +15,13 @@ export class PackagingMenuPage implements OnInit {
     title: "Empaque",
   };
 
-  section: string;
-
-  stepperPackaging: StepperInterface[] = [
-    {
-      value: false,
-    },
+  options: MenuButtonInterface[] = [
+    { label: "Abrir lote", path: "/packaging/open-lot" }, // agregar path hacia el menu que se requiera
+    { label: "Cerrar lote", path: "/packaging/close-lot" },
+    { label: "Salida", path: "/packaging/exit-lot" },
   ];
 
-  constructor(
-    private store: Store<AppStateInterface>,
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
-
-  nextSection() {
-    this.router.navigate(["/packaging/" + this.section]);
-    this.section = undefined;
-  }
 }

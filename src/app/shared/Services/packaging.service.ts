@@ -15,13 +15,12 @@ export class PackagingService {
   }
 
   entrance(lot: LotInterface): Observable<any> {
-    return new Observable((observer) => {
-      observer.next(lot);
-      observer.complete();
-    });
+    return this.http.patch<any>(`${this.url}/status`, lot);
   }
 
   close(lot: LotInterface): Observable<any> {
+    // return this.http.post<any>(`${this.url}/close`, lot);
+
     return new Observable((observer) => {
       observer.next(lot);
       observer.complete();
@@ -29,9 +28,6 @@ export class PackagingService {
   }
 
   exit(lot: LotInterface): Observable<any> {
-    return new Observable((observer) => {
-      observer.next(lot);
-      observer.complete();
-    });
+    return this.http.post<any>(`${this.url}/exit`, lot);
   }
 }

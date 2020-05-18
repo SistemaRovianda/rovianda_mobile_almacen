@@ -11,7 +11,12 @@
       </ion-col>
     </ion-row>
     <ion-row size="12">
-      <exit-lot-form #form (onSubmit)="onSubmit($event)"></exit-lot-form>
+      <exit-lot-form
+        #form
+        (onSubmit)="onSubmit($event)"
+        [products]="products$ | async"
+        [lots]="lots$|async"
+      ></exit-lot-form>
     </ion-row>
   </ion-grid>
   <div class="ion-justify-content-center">

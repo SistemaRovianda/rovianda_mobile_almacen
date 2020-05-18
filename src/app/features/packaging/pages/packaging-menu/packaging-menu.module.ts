@@ -6,6 +6,7 @@ import { PackagingMenuPage } from "./packaging-menu.page";
 import { ComponentsModule } from "src/app/shared/components/components.module";
 import { StepperModule } from "../../components/stepper/stepper.module";
 import { Routes, RouterModule } from "@angular/router";
+import { ButtonMenuModule } from "src/app/features/menu/components/button-menu/button-menu.module";
 
 const routes: Routes = [
   {
@@ -20,6 +21,8 @@ const COMMON_IMPORTS = [
   IonicModule,
   ComponentsModule,
   StepperModule,
+  ButtonMenuModule,
+  RouterModule,
   // RouterModule.forChild(routes),
 ];
 

@@ -12,6 +12,7 @@ export class LayoutComponent implements OnInit {
   header: ItemBackInterface = {
     path: "/menu",
     titlePath: "Regresar",
+    title: "Secos",
   };
 
   options: MenuButtonInterface[] = [

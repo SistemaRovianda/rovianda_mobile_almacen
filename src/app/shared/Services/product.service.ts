@@ -51,11 +51,9 @@ export class ProductService {
       observer.complete();
     });
   }
+
   getAllProductsPacking(): Observable<any> {
-    return new Observable((observer) => {
-      observer.next(this.products);
-      observer.complete();
-    });
+    return this.http.get<ProductInterface[]>(`${this.url}/PACKING`);
   }
 
   getAllProductsDried(): Observable<any> {

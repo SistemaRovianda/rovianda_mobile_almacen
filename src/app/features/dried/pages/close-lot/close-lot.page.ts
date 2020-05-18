@@ -9,6 +9,9 @@ import { ProductInterface } from "src/app/shared/Models/product.interface";
 import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dialog.component";
 import * as fromCatalogProductsActions from "../../store/catalog-products/catalog-products.actions";
 import * as fromCatalogProducts from "../../store/catalog-products/catalog-products.selector";
+import * as fromCatalogLotsActions from "../../store/catalog-lots/catalog-lots.actions";
+import * as fromCatalogLots from "../../store/catalog-lots/catalog-lots.selector";
+import { LotInterface } from "src/app/shared/Models/lot.interface";
 
 @Component({
   selector: "close-lot",
@@ -25,12 +28,22 @@ export class CloseLotPageComponent implements OnInit {
     fromCatalogProducts.fetchAllProducts
   );
 
+  lots$: Observable<LotInterface[]> = this.store.select(
+    fromCatalogLots.fetchAllLots
+  );
+
   constructor(
     public modalController: ModalController,
     private store: Store<AppStateInterface>
   ) {}
 
   ngOnInit() {
+    this.store.dispatch(
+      fromCatalogLotsActions.fetchAllLots({
+        typeLot: "DRIED",
+        status: "OPENED",
+      })
+    );
     this.store.dispatch(fromCatalogProductsActions.fetchAllProducts());
   }
 
@@ -45,6 +58,7 @@ export class CloseLotPageComponent implements OnInit {
       componentProps: {
         entrance: entrance,
         action: "cerrar",
+        type: "close",
       },
     });
     return await modal.present();
