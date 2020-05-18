@@ -6,11 +6,10 @@ const STATE_INITIAL_USER: UserInterface = {
   uid: null,
   token: null,
   name: null,
-  firstSurname: null,
-  lastSurname: null,
+  lastname: null,
+  surname: null,
   email: null,
   phone: null,
-  type: null,
   role: null,
 };
 

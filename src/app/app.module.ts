@@ -1,5 +1,6 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
+import { AngularFireAuthModule } from "@angular/fire/auth";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouteReuseStrategy } from "@angular/router";
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
@@ -11,8 +12,10 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AppProvidersModule } from "./providers/app-providers.module";
-import { reducers, metaReducers } from "./shared/store/reducers/index.reducer";
+import { AuthGuard } from "./shared/guards/auth.guard";
+import { IsAuthGuard } from "./shared/guards/is-auth.guard";
 import { effects } from "./shared/store/effects/index.effects";
+import { metaReducers, reducers } from "./shared/store/reducers/index.reducer";
 
 const DECLARATIONS = [AppComponent];
 
@@ -20,6 +23,7 @@ const IMPORTS = [
   BrowserModule,
   IonicModule.forRoot(),
   AppRoutingModule,
+  AngularFireAuthModule,
   StoreModule.forRoot(reducers, {
     metaReducers,
     runtimeChecks: {
@@ -40,6 +44,8 @@ const IMPORTS = [
   entryComponents: [],
   imports: IMPORTS,
   providers: [
+    AuthGuard,
+    IsAuthGuard,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

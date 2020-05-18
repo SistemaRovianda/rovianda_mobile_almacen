@@ -1,12 +1,11 @@
 export interface UserInterface {
   uid?: string;
   token?: string;
+  currentToken?: string;
   name?: string;
-  firstSurname?: string;
-  lastSurname?: string;
+  lastname?: string;
+  surname?: string;
   email?: string;
-  password?: string;
   phone?: string;
-  type?: string;
   role?: string;
 }
