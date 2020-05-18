@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
-import { LotInterface } from "src/app/shared/Models/lot.interface";
+import { LotInterface, STATUS_LOT } from "src/app/shared/Models/lot.interface";
 
 @Component({
   selector: "close-lot-form",
@@ -16,11 +16,14 @@ export class CloseLotFormComponent implements OnInit {
 
   filterProducts: ProductInterface[];
 
+  status = STATUS_LOT;
+
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
       loteId: ["", Validators.required],
       productId: ["", Validators.required],
       date: [""],
+      status: [this.status.CLOSE],
     });
   }
 

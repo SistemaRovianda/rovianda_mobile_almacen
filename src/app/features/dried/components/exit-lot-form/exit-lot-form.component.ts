@@ -22,7 +22,7 @@ export class ExitLotFormComponent implements OnInit {
       loteId: ["", Validators.required],
       productId: ["", Validators.required],
       observations: [""],
-      date: [""],
+      date: [new Date().toISOString()],
     });
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
-import { LotInterface } from "src/app/shared/Models/lot.interface";
+import { LotInterface, STATUS_LOT } from "src/app/shared/Models/lot.interface";
 
 @Component({
   selector: "open-lot-form",
@@ -15,12 +15,14 @@ export class OpenLotFormComponent implements OnInit {
   @Output("onSubmit") submit = new EventEmitter();
 
   filterProducts: ProductInterface[];
+  status = STATUS_LOT;
 
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
       loteId: ["", Validators.required],
       productId: ["", Validators.required],
       date: [""],
+      status: [this.status.OPEN],
     });
   }
 

@@ -5,7 +5,7 @@ import { Store } from "@ngrx/store";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
 import * as fromStepperActions from "../../store/stepper/stepper-packaging.actions";
 import * as fromPackagingActios from "../../store/packaging/packaging.actions";
-import { LotInterface } from "src/app/shared/Models/lot.interface";
+import { LotInterface, STATUS_LOT } from "src/app/shared/Models/lot.interface";
 import {
   SELECT_PACKAGING_LOTS,
   SELECT_PACKAGING_PRODUCTS,
@@ -33,6 +33,8 @@ export class OpenLotePage implements OnInit {
 
   loading: boolean;
 
+  status = STATUS_LOT;
+
   constructor(
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
@@ -43,6 +45,7 @@ export class OpenLotePage implements OnInit {
     serie: ["", [Validators.required]],
     product: ["", [Validators.required]],
     date: [new Date().toISOString(), [Validators.required]],
+    status: [this.status.OPEN],
   });
 
   ngOnInit() {

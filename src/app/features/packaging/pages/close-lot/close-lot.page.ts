@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
-import { LotInterface } from "src/app/shared/Models/lot.interface";
+import { LotInterface, STATUS_LOT } from "src/app/shared/Models/lot.interface";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
@@ -33,6 +33,8 @@ export class CloseLotPage implements OnInit {
 
   loading: boolean;
 
+  status = STATUS_LOT;
+
   constructor(
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
@@ -43,6 +45,7 @@ export class CloseLotPage implements OnInit {
     serie: [{ value: "", disabled: this.loading }, [Validators.required]],
     product: ["", [Validators.required]],
     date: [new Date().toISOString(), [Validators.required]],
+    status: [this.status.CLOSE],
   });
 
   ngOnInit() {
