@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { PackagingExitResolver } from "src/app/shared/Resolvers/packaging-exit.resolver";
-import { PackagingResolver } from "src/app/shared/Resolvers/packaging.resolver";
 import { CloseLotPageModule } from "./pages/close-lot/close-lot.module";
 import { CloseLotPage } from "./pages/close-lot/close-lot.page";
 import { ExitPageModule } from "./pages/exit/exit.module";
@@ -12,6 +11,7 @@ import { PackagingMenuModule } from "./pages/packaging-menu/packaging-menu.modul
 import { PackagingMenuPage } from "./pages/packaging-menu/packaging-menu.page";
 import { ReportPageModule } from "./pages/report/report.module";
 import { ReportPage } from "./pages/report/report.page";
+import { PackagingLotsResolver } from "src/app/shared/Resolvers/packaging-lots.resolver";
 
 const routes: Routes = [
   {
@@ -20,16 +20,21 @@ const routes: Routes = [
       {
         path: "menu",
         component: PackagingMenuPage,
-        resolve: {
-          packaging: PackagingResolver,
-        },
       },
       {
         path: "open-lot",
+        data: { type: "PACKING", status: "OPENED" },
+        resolve: {
+          packaging: PackagingLotsResolver,
+        },
         component: OpenLotePage,
       },
       {
         path: "close-lot",
+        data: { type: "PACKING", status: "CLOSED" },
+        resolve: {
+          packaging: PackagingLotsResolver,
+        },
         component: CloseLotPage,
       },
       {
@@ -57,6 +62,6 @@ const routes: Routes = [
     ReportPageModule,
   ],
   exports: [RouterModule],
-  providers: [PackagingResolver, PackagingExitResolver],
+  providers: [PackagingExitResolver, PackagingLotsResolver],
 })
 export class PackagingRoutingModule {}

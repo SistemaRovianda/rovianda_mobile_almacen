@@ -20,7 +20,7 @@ export class PackagingEffects {
     this.action$.pipe(
       ofType(fromPackagingActions.packagingStartLoad),
       exhaustMap((action) =>
-        this.lotsService.getLots("PACKING", "OPENED").pipe(
+        this.lotsService.getLots(action.lotsType, action.status).pipe(
           delay(5000),
           switchMap((lots) => [
             fromPackagingActions.packagingLoadLots({ lots }),

@@ -10,11 +10,17 @@ import * as fromPackagingActions from "src/app/features/packaging/store/packagin
 import { packagingStepperInit } from "src/app/features/packaging/store/stepper/stepper-packaging.actions";
 
 @Injectable()
-export class PackagingResolver implements Resolve<boolean> {
+export class PackagingLotsResolver implements Resolve<boolean> {
   constructor(private store: Store<AppStateInterface>) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    this.store.dispatch(fromPackagingActions.packagingStartLoad());
+    console.log(route.data);
+    this.store.dispatch(
+      fromPackagingActions.packagingStartLoad({
+        lotsType: route.data.type,
+        status: route.data.status,
+      })
+    );
     this.store.dispatch(packagingStepperInit());
     return true;
   }

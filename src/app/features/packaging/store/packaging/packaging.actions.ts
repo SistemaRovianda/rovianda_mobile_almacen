@@ -16,7 +16,10 @@ const PACKAGING_LOAD_PRODUCTS = "[PACKAGING] Packaging Load Products";
 
 const PACKAGING_LOAD_SUCCESS = "[PACKAGING] Load Success";
 
-export const packagingStartLoad = createAction(PACKAGING_START_LOAD);
+export const packagingStartLoad = createAction(
+  PACKAGING_START_LOAD,
+  props<{ lotsType: string; status: string }>()
+);
 
 export const packagingFinishLoad = createAction(PACKAGING_FINISH_LOAD);
 
