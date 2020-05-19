@@ -14,7 +14,7 @@ export class CloseLotEffects {
     this.action$.pipe(
       ofType(closeLotStartLoad),
       exhaustMap((action) =>
-        this.packing.close(action.lot).pipe(
+        this.packing.entrance(action.lot).pipe(
           delay(3000),
           switchMap((_) => [fromPackagingActions.packagingLoadSuccess()]),
           catchError((errors) =>

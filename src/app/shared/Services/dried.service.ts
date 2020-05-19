@@ -22,7 +22,7 @@ export class DriedService {
   }
 
   closeLot(body: Entrance): Observable<any> {
-    return this.http.post<any>(`${this.url}/close`, body);
+    return this.http.post<any>(`${this.url}/status`, body);
   }
 
   exitLot(body: ExitLot): Observable<any> {
