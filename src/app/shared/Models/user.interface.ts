@@ -3,9 +3,8 @@ export interface UserInterface {
   token?: string;
   currentToken?: string;
   name?: string;
-  lastname?: string;
-  surname?: string;
+  firstSurname?: string;
+  lastSurname?: string;
   email?: string;
-  phone?: string;
   role?: string;
 }

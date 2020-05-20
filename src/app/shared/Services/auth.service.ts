@@ -19,13 +19,13 @@ export class AuthService {
     private http: HttpClient,
     @Inject(API_ENDPOINT_PROVIDER) private endpoint
   ) {
+    this.url = `${endpoint}/user`;
     firebase.initializeApp({
       apiKey: "AIzaSyDaoKnC-MSM0b069pawJ5KI1eWlbmng99o",
       authDomain: "rovianda-88249.firebaseapp.com",
     });
 
     this.auth = firebase.auth();
-    this.url = `${endpoint.basePath}`;
   }
 
   signIn(email: string, password: string): Observable<any> {
@@ -42,18 +42,7 @@ export class AuthService {
   }
 
   getUserData(uid: string): Observable<UserInterface> {
-    //return this.http.get<UserInterface>(`${this.API}/${uid}`);
-    let user: UserInterface = {
-      name: "Damian",
-      lastname: "Zamora",
-      surname: "Celiseo",
-      role: "ROLE",
-    };
-
-    return new Observable((observer) => {
-      observer.next(user);
-      observer.complete();
-    });
+    return this.http.get<UserInterface>(`${this.url}/${uid}`);
   }
 
   isAuth(): boolean {

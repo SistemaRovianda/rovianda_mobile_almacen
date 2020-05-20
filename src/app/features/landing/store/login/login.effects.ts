@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { Actions, ofType, createEffect } from "@ngrx/effects";
+import { Router } from "@angular/router";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { from, of } from "rxjs";
+import { catchError, delay, exhaustMap, switchMap } from "rxjs/operators";
 import * as fromLoginActions from "src/app/features/landing/store/login/login.action";
 import * as fromUserActions from "src/app/features/landing/store/user/user.action";
-import { exhaustMap, switchMap, catchError, tap, delay } from "rxjs/operators";
-import { of, forkJoin, from } from "rxjs";
 import { AuthService } from "src/app/shared/Services/auth.service";
-import { Router } from "@angular/router";
 
 @Injectable()
 export class LogginEffects {
@@ -70,10 +70,15 @@ export class LogginEffects {
       exhaustMap((action) =>
         this._authService.getUserData(action.uid).pipe(
           delay(3000),
-          switchMap(({ name, lastname, surname, role }) => {
+          switchMap(({ name, lastSurname, firstSurname, role }) => {
             localStorage.setItem("role", role);
             return [
-              fromUserActions.loadUser({ name, lastname, surname, role }),
+              fromUserActions.loadUser({
+                name,
+                lastSurname,
+                firstSurname,
+                role,
+              }),
               fromLoginActions.signInSuccess(),
             ];
           }),
