@@ -70,14 +70,14 @@ export class LogginEffects {
       exhaustMap((action) =>
         this._authService.getUserData(action.uid).pipe(
           delay(3000),
-          switchMap(({ name, lastSurname, firstSurname, role }) => {
-            localStorage.setItem("role", role);
+          switchMap(({ name, lastSurname, firstSurname, email, rol }) => {
+            localStorage.setItem("role", rol);
             return [
               fromUserActions.loadUser({
                 name,
                 lastSurname,
                 firstSurname,
-                role,
+                rol,
               }),
               fromLoginActions.signInSuccess(),
             ];

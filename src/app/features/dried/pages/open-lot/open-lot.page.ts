@@ -44,7 +44,7 @@ export class OpenLotPageComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(
       fromCatalogLotsActions.fetchAllLots({
-        typeLot: "DRIED",
+        typeLot: "DRIEF",
         status: "OPENED",
       })
     );

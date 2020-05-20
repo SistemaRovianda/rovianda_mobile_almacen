@@ -4,13 +4,11 @@ import * as fromUserActions from "src/app/features/landing/store/user/user.actio
 
 const STATE_INITIAL_USER: UserInterface = {
   uid: null,
-  token: null,
   name: null,
-  lastname: null,
-  surname: null,
+  firstSurname: null,
+  lastSurname: null,
   email: null,
-  phone: null,
-  role: null,
+  rol: null,
 };
 
 export const userReducer = createReducer<UserInterface>(

@@ -6,5 +6,5 @@ export interface UserInterface {
   firstSurname?: string;
   lastSurname?: string;
   email?: string;
-  role?: string;
+  rol?: string;
 }
