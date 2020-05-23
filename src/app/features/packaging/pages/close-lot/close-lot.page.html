@@ -10,10 +10,10 @@
           interface="action-sheet"
           placeholder="Seleciona Lote"
           formControlName="serie"
-          (ionChange)="selectLot($event)"
+          (ionChange)="selectLot()"
           [disabled]="loading"
         >
-          <ion-select-option *ngFor="let lot of lots" [value]="lot.loteId">
+          <ion-select-option *ngFor="let lot of lots" [value]="lot">
             {{lot.loteId}}</ion-select-option
           >
         </ion-select>
@@ -32,9 +32,11 @@
           interface="action-sheet"
           placeholder="Seleccione un producto"
           formControlName="product"
-          [disabled]="products.length=== 0"
+          [disabled]="serie.value ==''"
         >
-          <ion-select-option *ngFor="let product of products" [value]="product"
+          <ion-select-option
+            *ngFor="let product of serie.value.products"
+            [value]="product.id"
             >{{product.description}}</ion-select-option
           >
         </ion-select>

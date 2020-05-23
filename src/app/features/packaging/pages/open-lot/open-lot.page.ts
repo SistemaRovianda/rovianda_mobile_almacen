@@ -33,8 +33,6 @@ export class OpenLotePage implements OnInit {
 
   lots: lotResponse[];
 
-  products: ProductInterface[];
-
   loading: boolean;
 
   status = STATUS_LOT;
@@ -57,9 +55,6 @@ export class OpenLotePage implements OnInit {
     this.store
       .select(SELECT_PACKAGING_LOTS)
       .subscribe((tempLots) => (this.lots = tempLots));
-    this.store
-      .select(SELECT_PACKAGING_PRODUCTS)
-      .subscribe((tempProducts) => (this.products = tempProducts));
     this.store
       .select(SELECT_PACKAGING_LOADING)
       .subscribe((tempLoading) => (this.loading = tempLoading));
@@ -90,9 +85,7 @@ export class OpenLotePage implements OnInit {
     );
   }
   selectLot() {
-    this.store.dispatch(
-      fromPackagingActios.packagingSelectLot({ lot: this.serie.value })
-    );
+    this.product.setValue("");
   }
 
   async createAlert() {
@@ -111,8 +104,9 @@ export class OpenLotePage implements OnInit {
               openLotStarLoad({
                 lot: {
                   loteId: this.serie.value,
-                  productId: this.product.value.loteId,
-                  date: this.date.value,
+                  productId: this.product.value,
+                  date: new Date(this.date.value).toISOString().split("T")[0],
+                  status: "OPENED",
                 },
               })
             );

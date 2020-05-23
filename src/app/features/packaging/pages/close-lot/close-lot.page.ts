@@ -33,8 +33,6 @@ export class CloseLotPage implements OnInit {
 
   lots: lotResponse[];
 
-  products: ProductInterface[] = [];
-
   loading: boolean;
 
   status = STATUS_LOT;
@@ -58,9 +56,6 @@ export class CloseLotPage implements OnInit {
       .select(SELECT_PACKAGING_LOTS)
       .subscribe((tempLots) => (this.lots = tempLots));
     this.store
-      .select(SELECT_PACKAGING_PRODUCTS)
-      .subscribe((tempProducts) => (this.products = tempProducts));
-    this.store
       .select(SELECT_PACKAGING_LOADING)
       .subscribe((tempLoading) => (this.loading = tempLoading));
   }
@@ -75,11 +70,7 @@ export class CloseLotPage implements OnInit {
   }
 
   selectLot() {
-    this.store.dispatch(
-      fromPackagingActions.packagingSelectLot({
-        lot: this.serie.value,
-      })
-    );
+    this.product.setValue("");
   }
 
   requestCloseLot() {
@@ -102,8 +93,9 @@ export class CloseLotPage implements OnInit {
               closeLotStartLoad({
                 lot: {
                   loteId: this.serie.value,
-                  productId: this.product.value.loteId,
-                  date: this.date.value,
+                  productId: this.product.value,
+                  date: new Date(this.date.value).toISOString().split("T")[0],
+                  status: "CLOSED",
                 },
               })
             );
