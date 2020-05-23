@@ -10,11 +10,11 @@
           interface="action-sheet"
           placeholder="Seleciona Lote"
           formControlName="serie"
-          (ionChange)="selectLot()"
+          (ionChange)="selectLot($event)"
           [disabled]="loading"
         >
           <ion-select-option *ngFor="let lot of lots" [value]="lot.loteId">
-            {{lot.name}}</ion-select-option
+            {{lot.loteId}}</ion-select-option
           >
         </ion-select>
       </ion-item>

@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { lotResponse, STATUS_LOT } from "src/app/shared/Models/lot.interface";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
-import { LotInterface, STATUS_LOT } from "src/app/shared/Models/lot.interface";
 
 @Component({
   selector: "open-lot-form",
@@ -10,8 +10,7 @@ import { LotInterface, STATUS_LOT } from "src/app/shared/Models/lot.interface";
 })
 export class OpenLotFormComponent implements OnInit {
   form: FormGroup;
-  @Input() products: ProductInterface[];
-  @Input() lots: LotInterface[];
+  @Input() lots: lotResponse[];
   @Output("onSubmit") submit = new EventEmitter();
 
   filterProducts: ProductInterface[];
@@ -33,8 +32,6 @@ export class OpenLotFormComponent implements OnInit {
   }
 
   change(e) {
-    this.filterProducts = this.products.filter(
-      (product) => product.loteId == e.detail.value.loteId
-    );
+    this.filterProducts = e.detail.value.products;
   }
 }

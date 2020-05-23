@@ -1,3 +1,5 @@
+import { ProductInterface } from "./product.interface";
+
 export interface LotInterface {
   loteId: number;
   name?: string;
@@ -14,3 +16,8 @@ export const STATUS_LOT: { [type in statusLot]: type } = {
   CLOSE: "CLOSE",
   PENDING: "PENDING",
 };
+
+export interface lotResponse {
+  loteId: string;
+  products: ProductInterface[];
+}

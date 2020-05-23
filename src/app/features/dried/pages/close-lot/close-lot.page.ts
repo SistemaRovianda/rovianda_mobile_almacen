@@ -11,7 +11,7 @@ import * as fromCatalogProductsActions from "../../store/catalog-products/catalo
 import * as fromCatalogProducts from "../../store/catalog-products/catalog-products.selector";
 import * as fromCatalogLotsActions from "../../store/catalog-lots/catalog-lots.actions";
 import * as fromCatalogLots from "../../store/catalog-lots/catalog-lots.selector";
-import { LotInterface } from "src/app/shared/Models/lot.interface";
+import { LotInterface, lotResponse } from "src/app/shared/Models/lot.interface";
 
 @Component({
   selector: "close-lot",
@@ -24,11 +24,7 @@ export class CloseLotPageComponent implements OnInit {
     titlePath: "Regresar",
   };
 
-  products$: Observable<ProductInterface[]> = this.store.select(
-    fromCatalogProducts.fetchAllProducts
-  );
-
-  lots$: Observable<LotInterface[]> = this.store.select(
+  lots$: Observable<lotResponse[]> = this.store.select(
     fromCatalogLots.fetchAllLots
   );
 
@@ -40,11 +36,10 @@ export class CloseLotPageComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(
       fromCatalogLotsActions.fetchAllLots({
-        typeLot: "DRIED",
+        typeLot: "DRIEF",
         status: "OPENED",
       })
     );
-    this.store.dispatch(fromCatalogProductsActions.fetchAllProducts());
   }
 
   onSubmit(entrance: Entrance) {

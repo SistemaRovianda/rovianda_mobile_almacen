@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { LotInterface } from "src/app/shared/Models/lot.interface";
+import { lotResponse } from "src/app/shared/Models/lot.interface";
 
 const FETCH_ALL_LOTS = "['LOTS'] Fetch All Lots";
 
@@ -14,7 +14,7 @@ export const fetchAllLots = createAction(
 
 export const fetchAllLotsSuccess = createAction(
   FETCH_ALL_LOTS_SUCCESS,
-  props<{ lots: LotInterface[] }>()
+  props<{ lots: lotResponse[] }>()
 );
 
 export const fetchAllLotsError = createAction(

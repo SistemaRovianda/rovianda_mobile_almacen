@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { LotInterface } from "src/app/shared/Models/lot.interface";
+import { LotInterface, lotResponse } from "src/app/shared/Models/lot.interface";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
 
 const PACKAGING_START_LOAD = "[PACKAGING] Packaging Start Load";
@@ -30,7 +30,7 @@ export const PackagingFailure = createAction(
 
 export const packagingLoadLots = createAction(
   PACKAGING_LOAD_LOTS,
-  props<{ lots: LotInterface[] }>()
+  props<{ lots: lotResponse[] }>()
 );
 
 export const packagingSelectLot = createAction(

@@ -1,8 +1,8 @@
-import { LotInterface } from "./lot.interface";
+import { lotResponse } from "./lot.interface";
 import { ProductInterface } from "./product.interface";
 
 export interface PackagingInterface {
-  lots: LotInterface[];
+  lots: lotResponse[];
   products: ProductInterface[];
   loading: boolean;
   errors: string;
