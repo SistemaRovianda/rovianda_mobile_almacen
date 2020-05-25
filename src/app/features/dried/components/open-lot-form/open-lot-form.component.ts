@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import * as moment from "moment";
 import { lotResponse, STATUS_LOT } from "src/app/shared/Models/lot.interface";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
 
@@ -28,7 +29,14 @@ export class OpenLotFormComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    this.submit.emit(this.form.value);
+    const { date, ...value } = this.form.value;
+
+    const payload = {
+      ...value,
+      date: moment(date).format("YYYY/MM/DD"),
+    };
+
+    this.submit.emit(payload);
   }
 
   change(e) {

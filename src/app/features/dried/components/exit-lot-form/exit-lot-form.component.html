@@ -2,28 +2,6 @@
   <ion-grid fixed>
     <ion-row>
       <ion-item class="form-input">
-        <ion-label class="ion-label" position="floating">Producto*</ion-label>
-
-        <ion-select
-          placeholder="Seleccione un producto*"
-          formControlName="productId"
-          [disabled]="!filterProducts.length"
-        >
-          <ng-container *ngFor="let product of filterProducts">
-            <ion-select-option [value]="product">
-              {{ product.description }}
-            </ion-select-option>
-          </ng-container>
-        </ion-select>
-      </ion-item>
-    </ion-row>
-    <div class="error">
-      <ion-label *ngIf="form.hasError('required', 'loteId')">
-        Este campo es requerido.
-      </ion-label>
-    </div>
-    <ion-row>
-      <ion-item class="form-input">
         <ion-label class="ion-label" position="floating">
           Lote de proveedor*
         </ion-label>
@@ -33,7 +11,7 @@
           (ionChange)="change($event)"
         >
           <ng-container *ngFor="let lot of lots">
-            <ion-select-option [value]="lot">
+            <ion-select-option [value]="lot.loteId">
               {{ lot.loteId }}
             </ion-select-option>
           </ng-container>
@@ -42,6 +20,29 @@
     </ion-row>
     <div class="error">
       <ion-label *ngIf="form.hasError('required', 'productId')">
+        Este campo es requerido.
+      </ion-label>
+    </div>
+
+    <ion-row>
+      <ion-item class="form-input">
+        <ion-label class="ion-label" position="floating">Producto*</ion-label>
+
+        <ion-select
+          placeholder="Seleccione un producto*"
+          formControlName="productId"
+          [disabled]="!filterProducts.length"
+        >
+          <ng-container *ngFor="let product of filterProducts">
+            <ion-select-option [value]="product.loteId">
+              {{ product.description }}
+            </ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+    <div class="error">
+      <ion-label *ngIf="form.hasError('required', 'loteId')">
         Este campo es requerido.
       </ion-label>
     </div>

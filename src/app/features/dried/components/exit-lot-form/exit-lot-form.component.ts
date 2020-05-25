@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { lotResponse } from "src/app/shared/Models/lot.interface";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
+import * as moment from "moment";
 
 @Component({
   selector: "exit-lot-form",
@@ -21,14 +22,21 @@ export class ExitLotFormComponent implements OnInit {
       loteId: ["", Validators.required],
       productId: ["", Validators.required],
       observations: [""],
-      date: [new Date().toISOString()],
+      date: [""],
     });
   }
 
   ngOnInit() {}
 
   onSubmit() {
-    this.submit.emit(this.form.value);
+    const { date, ...value } = this.form.value;
+
+    const payload = {
+      ...value,
+      date: moment().format("YYYY/MM/DD"),
+    };
+
+    this.submit.emit(payload);
   }
 
   change(e) {

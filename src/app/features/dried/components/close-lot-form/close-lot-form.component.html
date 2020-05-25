@@ -9,7 +9,7 @@
           (ionChange)="change($event)"
         >
           <ng-container *ngFor="let lot of lots">
-            <ion-select-option [value]="lot">
+            <ion-select-option [value]="lot.loteId">
               {{ lot.loteId }}
             </ion-select-option>
           </ng-container>
@@ -30,7 +30,7 @@
           formControlName="productId"
         >
           <ng-container *ngFor="let product of filterProducts">
-            <ion-select-option [value]="product">
+            <ion-select-option [value]="product.loteId">
               {{ product.description }}
             </ion-select-option>
           </ng-container>
