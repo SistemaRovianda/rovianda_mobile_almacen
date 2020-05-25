@@ -42,7 +42,19 @@ export class AuthService {
   }
 
   getUserData(uid: string): Observable<UserInterface> {
-    return this.http.get<UserInterface>(`${this.url}/${uid}`);
+    // return this.http.get<UserInterface>(`${this.url}/${uid}`);
+
+    let user: UserInterface = {
+      name: "Damian",
+      lastSurname: "Zamora",
+      firstSurname: "Celiseo",
+      rol: "ROLE",
+    };
+
+    return new Observable((observer) => {
+      observer.next(user);
+      observer.complete();
+    });
   }
 
   isAuth(): boolean {
