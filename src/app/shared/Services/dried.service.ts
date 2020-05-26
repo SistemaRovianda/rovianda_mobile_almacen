@@ -14,7 +14,7 @@ export class DriedService {
     private http: HttpClient,
     @Inject(API_ENDPOINT_PROVIDER) private endpoint
   ) {
-    this.url = `${endpoint}/dried`;
+    this.url = `${endpoint}/drief`;
   }
 
   openLot(body: Entrance): Observable<any> {
