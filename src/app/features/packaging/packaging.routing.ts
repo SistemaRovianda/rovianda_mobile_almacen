@@ -23,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: "open-lot",
-        data: { type: "PACKING", status: "OPENED" },
+        data: { type: "PACKING", status: "PENDING" },
         resolve: {
           packaging: PackagingLotsResolver,
         },
@@ -31,7 +31,7 @@ const routes: Routes = [
       },
       {
         path: "close-lot",
-        data: { type: "PACKING", status: "CLOSED" },
+        data: { type: "PACKING", status: "OPENED" },
         resolve: {
           packaging: PackagingLotsResolver,
         },

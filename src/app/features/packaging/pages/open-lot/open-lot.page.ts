@@ -103,7 +103,7 @@ export class OpenLotePage implements OnInit {
             this.store.dispatch(
               openLotStarLoad({
                 lot: {
-                  loteId: this.serie.value,
+                  loteId: this.serie.value.loteId,
                   productId: this.product.value,
                   date: new Date(this.date.value).toISOString().split("T")[0],
                   status: "OPENED",

@@ -6,7 +6,7 @@ import {
   lotResponse,
 } from "src/app/shared/Models/lot.interface";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
-import { FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
 import { AlertController } from "@ionic/angular";
@@ -37,18 +37,21 @@ export class CloseLotPage implements OnInit {
 
   status = STATUS_LOT;
 
+  lotForm: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
     private alertCtrl: AlertController
-  ) {}
-
-  lotForm = this.fb.group({
-    serie: [{ value: "", disabled: this.loading }, [Validators.required]],
-    product: ["", [Validators.required]],
-    date: [new Date().toISOString(), [Validators.required]],
-    status: [this.status.CLOSE],
-  });
+  ) {
+    this.loading = false;
+    this.lotForm = this.fb.group({
+      serie: [{ value: "", disabled: this.loading }, [Validators.required]],
+      product: ["", [Validators.required]],
+      date: [new Date().toISOString(), [Validators.required]],
+      status: [this.status.CLOSE],
+    });
+  }
 
   ngOnInit() {
     this.lotForm.valueChanges.subscribe((_) => this.checkValues());
@@ -92,7 +95,7 @@ export class CloseLotPage implements OnInit {
             this.store.dispatch(
               closeLotStartLoad({
                 lot: {
-                  loteId: this.serie.value,
+                  loteId: this.serie.value.loteId,
                   productId: this.product.value,
                   date: new Date(this.date.value).toISOString().split("T")[0],
                   status: "CLOSED",
