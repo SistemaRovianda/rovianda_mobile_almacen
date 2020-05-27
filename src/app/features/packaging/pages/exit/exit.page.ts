@@ -34,6 +34,7 @@ export class ExitPage implements OnInit {
 
   exitForm = this.fb.group({
     date: [new Date().toISOString(), [Validators.required]],
+    loteId: ["", [Validators.required]],
     product: ["", [Validators.required]],
     quantity: ["", [Validators.required]],
     name: ["", [Validators.required]],
@@ -77,10 +78,11 @@ export class ExitPage implements OnInit {
             this.store.dispatch(
               fromExitActions.exitLoadRequest({
                 request: {
-                  loteId: this.product.value.loteId,
-                  productId: this.product.value.loteId,
+                  loteId: this.loteId.value,
+                  productId: this.product.value,
                   quantity: this.quantity.value,
                   name: this.name.value,
+                  date: new Date(this.date.value).toISOString().split("T")[0],
                 },
               })
             );
@@ -93,6 +95,10 @@ export class ExitPage implements OnInit {
   }
   get date() {
     return this.exitForm.get("date");
+  }
+
+  get loteId() {
+    return this.exitForm.get("loteId");
   }
 
   get product() {

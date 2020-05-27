@@ -66,14 +66,12 @@
   </form>
   <ion-grid class="footer-container">
     <ion-row class="row-stepper">
-      <ion-col size="12">
-        <packaging-stepper class="steppers" #steppertag></packaging-stepper>
-      </ion-col>
+      <ion-col size="12"> </ion-col>
     </ion-row>
     <ion-row class="row-button">
       <ion-button
         (click)="requestOpenLote()"
-        [disabled]="!steppertag.getStep(1)"
+        [disabled]="lotForm.invalid"
         class="button"
       >
         <ion-grid>
