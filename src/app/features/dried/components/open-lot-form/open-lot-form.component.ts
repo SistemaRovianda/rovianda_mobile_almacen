@@ -40,9 +40,8 @@ export class OpenLotFormComponent implements OnInit {
   }
 
   change(e) {
-    this.filterProducts = this.lots.find(
-      (lot) => lot.loteId == e.detail.value
-    ).products;
+    this.form.get("loteId").setValue(e.detail.value.loteId);
+    this.filterProducts = e.detail.value.products;
   }
 
   changeProduct(e) {

@@ -47,7 +47,7 @@ export class OpenLotePage implements OnInit {
     serie: ["", [Validators.required]],
     product: ["", [Validators.required]],
     date: [new Date().toISOString(), [Validators.required]],
-    status: [this.status.OPEN],
+    status: [this.status.OPENED],
   });
 
   ngOnInit() {
