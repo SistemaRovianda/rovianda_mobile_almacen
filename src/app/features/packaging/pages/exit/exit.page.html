@@ -6,22 +6,39 @@
       Salida
     </ion-label>
     <ion-row>
-      <ion-item>
-        <ion-label position="floating">Fecha*</ion-label>
-        <ion-datetime
-          class="item-form"
-          placeholder="Ingresar fecha"
-          displayFormat="MM/DD/YYYY"
-          formControlName="date"
-        >
-        </ion-datetime>
-      </ion-item>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="floating">Fecha*</ion-label>
+          <ion-datetime
+            class="item-form"
+            placeholder="Ingresar fecha"
+            displayFormat="MM/DD/YYYY"
+            formControlName="date"
+          >
+          </ion-datetime>
+        </ion-item>
+        <div class="error">
+          <ion-label *ngIf="date.errors">
+            Por favor seleccione una fecha
+          </ion-label>
+        </div>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Lote de proveedor</ion-label>
+          <ion-input
+            class="item-form"
+            placeholder="Ingresa lote proveedor"
+            formControlName="loteId"
+          ></ion-input>
+        </ion-item>
+        <div class="error">
+          <ion-label *ngIf="loteId.errors">
+            Por favor seleccione una fecha
+          </ion-label>
+        </div>
+      </ion-col>
     </ion-row>
-    <div class="error">
-      <ion-label *ngIf="date.errors">
-        Por favor seleccione una fecha
-      </ion-label>
-    </div>
     <ion-row>
       <ion-col size="6">
         <ion-item>
@@ -35,7 +52,7 @@
           >
             <ion-select-option
               *ngFor="let product of products "
-              [value]="product"
+              [value]="product.id"
               >{{product.description}}</ion-select-option
             >
           </ion-select>
@@ -81,15 +98,13 @@
   </form>
   <ion-grid class="footer-container">
     <ion-row class="row-stepper">
-      <ion-col size="12">
-        <packaging-stepper class="steppers" #steppertag></packaging-stepper>
-      </ion-col>
+      <ion-col size="12"> </ion-col>
     </ion-row>
     <ion-row class="row-button">
       <ion-button
         (click)="requestExit()"
         class="button"
-        [disabled]="!steppertag.getStep(1)"
+        [disabled]="exitForm.invalid"
       >
         <ion-grid>
           <ion-row *ngIf="!loading">

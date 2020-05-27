@@ -14,9 +14,7 @@
           [disabled]="loading"
         >
           <ng-container *ngFor="let lot of lots">
-            <ion-select-option [value]="lot.loteId">
-              {{lot.loteId}}</ion-select-option
-            >
+            <ion-select-option [value]="lot"> {{lot.loteId}}</ion-select-option>
           </ng-container>
         </ion-select>
       </ion-item>
@@ -34,10 +32,10 @@
           interface="action-sheet"
           placeholder="Seleccione un producto"
           formControlName="product"
-          [disabled]="products.length=== 0"
+          [disabled]="serie.value==''"
         >
-          <ng-container *ngFor="let product of products">
-            <ion-select-option [value]="product"
+          <ng-container *ngFor="let product of serie.value.products">
+            <ion-select-option [value]="product.id"
               >{{product.description}}</ion-select-option
             >
           </ng-container>
@@ -68,14 +66,12 @@
   </form>
   <ion-grid class="footer-container">
     <ion-row class="row-stepper">
-      <ion-col size="12">
-        <packaging-stepper class="steppers" #steppertag></packaging-stepper>
-      </ion-col>
+      <ion-col size="12"> </ion-col>
     </ion-row>
     <ion-row class="row-button">
       <ion-button
         (click)="requestOpenLote()"
-        [disabled]="!steppertag.getStep(1)"
+        [disabled]="lotForm.invalid"
         class="button"
       >
         <ion-grid>

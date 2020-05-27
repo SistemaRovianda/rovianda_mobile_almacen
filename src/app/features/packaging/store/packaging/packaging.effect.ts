@@ -51,7 +51,7 @@ export class PackagingEffects {
     this.action$.pipe(
       ofType(fromPackagingActions.packagingLoadSuccess),
       exhaustMap((action) =>
-        from(this.router.navigate(["/packaging"])).pipe(
+        from(this.router.navigate(["/packaging/menu"])).pipe(
           switchMap((result) =>
             result
               ? [fromPackagingActions.packagingFinishLoad()]
