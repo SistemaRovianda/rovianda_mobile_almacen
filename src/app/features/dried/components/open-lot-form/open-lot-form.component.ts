@@ -22,7 +22,7 @@ export class OpenLotFormComponent implements OnInit {
       loteId: ["", Validators.required],
       productId: ["", Validators.required],
       date: [""],
-      status: [this.status.OPEN],
+      status: [this.status.OPENED],
     });
   }
 
@@ -33,13 +33,19 @@ export class OpenLotFormComponent implements OnInit {
 
     const payload = {
       ...value,
-      date: moment(date).format("YYYY/MM/DD"),
+      date: moment(date).format("YYYY-MM-DD"),
     };
 
     this.submit.emit(payload);
   }
 
   change(e) {
-    this.filterProducts = e.detail.value.products;
+    this.filterProducts = this.lots.find(
+      (lot) => lot.loteId == e.detail.value
+    ).products;
+  }
+
+  changeProduct(e) {
+    this.form.get("productId").setValue(++e.detail.value);
   }
 }

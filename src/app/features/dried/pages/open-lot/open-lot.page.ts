@@ -42,7 +42,7 @@ export class OpenLotPageComponent implements OnInit {
     this.store.dispatch(
       fromCatalogLotsActions.fetchAllLots({
         typeLot: "DRIEF",
-        status: "OPENED",
+        status: "PENDING",
       })
     );
   }
