@@ -4,6 +4,7 @@ import { MenuButtonInterface } from "src/app/shared/Models/menu-button.interface
 import { Store } from "@ngrx/store";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
 import { loadMenuOption } from "../../store/menu/menu.action";
+import { signOut } from "src/app/features/landing/store/login/login.action";
 
 @Component({
   selector: "app-menu",
@@ -25,4 +26,8 @@ export class MenuPage implements OnInit {
   constructor(private store: Store<AppStateInterface>) {}
 
   ngOnInit() {}
+
+  logout() {
+    this.store.dispatch(signOut());
+  }
 }
