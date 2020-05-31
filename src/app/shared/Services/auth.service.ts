@@ -48,9 +48,10 @@ export class AuthService {
   }
 
   isAuth(): boolean {
+    console.log("rol: ", localStorage.getItem("role"));
     return (
-      localStorage.getItem("token") != null ||
-      localStorage.getItem("role") == "WAREHOUSE"
+      localStorage.getItem("token") != null &&
+      localStorage.getItem("role") === "WAREHOUSE"
     );
   }
 

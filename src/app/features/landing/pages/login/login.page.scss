@@ -80,10 +80,14 @@ $color-text-secondary: #dbdbdb;
           }
         }
         .error {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          align-content: center;
           margin-top: 2%;
           color: tomato;
-          text-align: center;
-          font-size: 0.9em;
+          font-size: 1.7vw;
           height: 2%;
           transform: 2s;
         }
