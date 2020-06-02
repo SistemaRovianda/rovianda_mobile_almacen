@@ -13,10 +13,6 @@ const STATE_INITIAL_PACKAGING: PackagingInterface = {
 
 export const PackagingReducer = createReducer<PackagingInterface>(
   STATE_INITIAL_PACKAGING,
-  on(fromPackagingActions.packagingStartLoad, (state) => ({
-    ...state,
-    loading: true,
-  })),
   on(fromPackagingActions.packagingFinishLoad, (state) => ({
     ...state,
     loading: false,

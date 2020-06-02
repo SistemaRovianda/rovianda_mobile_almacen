@@ -11,7 +11,7 @@
           placeholder="Seleciona Lote"
           formControlName="serie"
           (ionChange)="selectLot()"
-          [disabled]="loading"
+          [disabled]="lots.length ==0"
         >
           <ion-select-option *ngFor="let lot of lots" [value]="lot">
             {{lot.loteId}}</ion-select-option

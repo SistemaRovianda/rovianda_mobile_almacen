@@ -11,7 +11,7 @@
           placeholder="Seleccione un producto"
           formControlName="serie"
           (ionChange)="selectLot()"
-          [disabled]="loading"
+          [disabled]="lots.length ==0"
         >
           <ng-container *ngFor="let lot of lots">
             <ion-select-option [value]="lot"> {{lot.loteId}}</ion-select-option>
@@ -82,10 +82,7 @@
       >
         <ion-grid>
           <ion-col *ngIf="!loading" size="12">Abrir lote</ion-col>
-          <ion-spinner
-            *ngIf="loading"
-            name="crescent"
-          ></ion-spinner>
+          <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
         </ion-grid>
       </ion-button>
     </ion-row>

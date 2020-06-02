@@ -31,7 +31,7 @@ export class OpenLotePage implements OnInit {
     title: "Empaque",
   };
 
-  lots: lotResponse[];
+  lots: lotResponse[] = [];
 
   loading: boolean;
 
