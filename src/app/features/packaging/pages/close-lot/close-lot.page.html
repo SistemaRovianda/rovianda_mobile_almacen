@@ -20,7 +20,10 @@
       </ion-item>
     </ion-row>
     <div class="error">
-      <ion-label *ngIf="serie.errors">
+      <ion-label
+        *ngIf="lotForm.hasError('required', 'serie') &&
+      (lotForm.controls.serie.touched || lotForm.controls.serie.dirty)"
+      >
         Por favor seleccione un lote
       </ion-label>
     </div>
@@ -43,7 +46,10 @@
       </ion-item>
     </ion-row>
     <div class="error">
-      <ion-label *ngIf="product.errors">
+      <ion-label
+        *ngIf="lotForm.hasError('required', 'product') &&
+      (lotForm.controls.product.touched || lotForm.controls.product.dirty)"
+      >
         Por favor seleccione un producto
       </ion-label>
     </div>

@@ -3,7 +3,12 @@
     <ion-row>
       <ion-item class="form-input">
         <ion-label class="ion-label" position="floating">Lote*</ion-label>
-        <ion-select placeholder="Ingresa lote" (ionChange)="change($event)">
+        <ion-select
+          placeholder="Ingresa lote"
+          formControlName="loteId"
+          (ionChange)="change()"
+          [disabled]="disabled(lots)"
+        >
           <ng-container *ngFor="let lot of lots">
             <ion-select-option [value]="lot">
               {{ lot.loteId }}
@@ -13,7 +18,12 @@
       </ion-item>
     </ion-row>
     <div class="error">
-      <ion-label *ngIf="form.hasError('required', 'loteId')">
+      <ion-label
+        *ngIf="
+          form.hasError('required', 'loteId') &&
+          (form.controls.loteId.touched || form.controls.loteId.dirty)
+        "
+      >
         Este campo es requerido.
       </ion-label>
     </div>
@@ -23,7 +33,8 @@
 
         <ion-select
           placeholder="Seleccione un producto*"
-          (ionChange)="changeProduct($event)"
+          formControlName="productId"
+          [disabled]="disabled(filterProducts)"
         >
           <ng-container *ngFor="let product of filterProducts">
             <ion-select-option [value]="product.id">
@@ -34,7 +45,12 @@
       </ion-item>
     </ion-row>
     <div class="error">
-      <ion-label *ngIf="form.hasError('required', 'productId')">
+      <ion-label
+        *ngIf="
+          form.hasError('required', 'productId') &&
+          (form.controls.productId.touched || form.controls.productId.dirty)
+        "
+      >
         Este campo es requerido.
       </ion-label>
     </div>

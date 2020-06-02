@@ -18,7 +18,10 @@
           </ion-datetime>
         </ion-item>
         <div class="error">
-          <ion-label *ngIf="date.errors">
+          <ion-label
+            *ngIf="exitForm.hasError('required', 'date') &&
+          (exitForm.controls.date.touched || exitForm.controls.date.dirty)"
+          >
             Por favor seleccione una fecha
           </ion-label>
         </div>
@@ -33,8 +36,11 @@
           ></ion-input>
         </ion-item>
         <div class="error">
-          <ion-label *ngIf="loteId.errors">
-            Por favor seleccione una fecha
+          <ion-label
+            *ngIf="exitForm.hasError('required', 'loteId') &&
+          (exitForm.controls.loteId.touched || exitForm.controls.loteId.dirty)"
+          >
+            Por favor seleccione un lote
           </ion-label>
         </div>
       </ion-col>
@@ -58,7 +64,10 @@
           </ion-select>
         </ion-item>
         <div class="error">
-          <ion-label *ngIf="product.errors">
+          <ion-label
+            *ngIf="exitForm.hasError('required', 'product') &&
+          (exitForm.controls.product.touched || exitForm.controls.product.dirty)"
+          >
             Seleccione un producto
           </ion-label>
         </div>
@@ -74,7 +83,10 @@
           ></ion-input>
         </ion-item>
         <div class="error">
-          <ion-label *ngIf="quantity.errors">
+          <ion-label
+            *ngIf="exitForm.hasError('required', 'quantity') &&
+          (exitForm.controls.quantity.touched || exitForm.controls.quantity.dirty)"
+          >
             Ingrese una cantidad
           </ion-label>
         </div>
@@ -91,7 +103,10 @@
       </ion-item>
     </ion-row>
     <div class="error">
-      <ion-label *ngIf="name.errors">
+      <ion-label
+        *ngIf="exitForm.hasError('required', 'name') &&
+      (exitForm.controls.name.touched || exitForm.controls.name.dirty)"
+      >
         Por favor ingrese un nombre
       </ion-label>
     </div>

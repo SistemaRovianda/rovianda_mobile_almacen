@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import isEmpty from "lodash.isempty";
+import * as moment from "moment";
 import { lotResponse, STATUS_LOT } from "src/app/shared/Models/lot.interface";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
-import * as moment from "moment";
 
 @Component({
   selector: "close-lot-form",
@@ -30,22 +31,23 @@ export class CloseLotFormComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    const { date, ...value } = this.form.value;
+    const { loteId, date, ...value } = this.form.value;
 
     const payload = {
       ...value,
+      loteId: loteId.loteId,
       date: moment(date).format("YYYY-MM-DD"),
     };
 
     this.submit.emit(payload);
   }
 
-  change(e) {
-    this.form.get("loteId").setValue(e.detail.value.loteId);
-    this.filterProducts = e.detail.value.products;
+  change() {
+    const value: lotResponse = this.form.get("loteId").value;
+    this.filterProducts = value.products;
   }
 
-  changeProduct(e) {
-    this.form.get("productId").setValue(++e.detail.value);
+  disabled(e) {
+    return isEmpty(e);
   }
 }
