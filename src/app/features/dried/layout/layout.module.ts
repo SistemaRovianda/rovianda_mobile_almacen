@@ -7,6 +7,7 @@ import { ComponentsModule } from "src/app/shared/components/components.module";
 import { ButtonMenuModule } from "../../menu/components/button-menu/button-menu.module";
 import { LayoutComponent } from "./layout.component";
 import { PrintReportModule } from "../pages/print-report/print-report.module";
+import { StepperModule } from 'src/app/shared/components/stepper/stepper.module';
 
 const COMMON_IMPORTS = [
   CommonModule,
@@ -16,6 +17,7 @@ const COMMON_IMPORTS = [
   ButtonMenuModule,
   RouterModule,
   PrintReportModule,
+  StepperModule
 ];
 
 const COMMON_DECLARATIONS = [LayoutComponent];

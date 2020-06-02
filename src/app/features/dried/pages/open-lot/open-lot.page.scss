@@ -1,7 +1,6 @@
 $color-text-primary: #575552;
 $color-text-secondary: #b2b2b2;
 
-ion-grid {
   .title-menu {
     color: $color-text-primary;
     font-size: 3.8vw;
@@ -16,13 +15,25 @@ ion-grid {
     margin-left: 5%;
     margin-bottom: 15%;
   }
-}
+  .footer {
+    height: 30%;
+    ion-row {
+      height: 75%;
+    }
+    .row-stepper {
+      height: 25%;
+    }
+    .row-button {
+      padding: 0 30%;
+      .button {
+        --ion-color-primary: #e2bd53;
+        --padding-top: 3%;
+        width: 100%;
+        height: 35%;
+        margin-top: 10%;
+        font-size: 3vw;
+        text-transform: none;
+      }
+    }
+  }
 
-.btn {
-  display: flex;
-}
-
-ion-button {
-  width: 80vw;
-  font-size: 4vw;
-}

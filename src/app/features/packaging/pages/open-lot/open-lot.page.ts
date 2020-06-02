@@ -26,7 +26,7 @@ import { openLotStarLoad } from "../../store/open-lot/open-lot.actions";
 })
 export class OpenLotePage implements OnInit {
   header: ItemBackInterface = {
-    path: "/packaging",
+    path: "/packaging/menu",
     titlePath: "Regresar",
     title: "Empaque",
   };

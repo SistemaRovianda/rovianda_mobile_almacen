@@ -7,6 +7,7 @@ import { ComponentsModule } from "src/app/shared/components/components.module";
 import { OpenLotFormModule } from "../../components/open-lot-form/open-lot-form.module";
 import { MessageDialogModule } from "../../dialogs/message-dialog/message-dialog.module";
 import { OpenLotPageComponent } from "./open-lot.page";
+import { StepperModule } from "src/app/shared/components/stepper/stepper.module";
 
 const COMMON_IMPORTS = [
   CommonModule,
@@ -16,6 +17,7 @@ const COMMON_IMPORTS = [
   ComponentsModule,
   RouterModule,
   MessageDialogModule,
+  StepperModule,
 ];
 
 const COMMON_DECLARATIONS = [OpenLotPageComponent];

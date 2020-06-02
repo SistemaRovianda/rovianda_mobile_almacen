@@ -6,8 +6,6 @@ import { IonicModule } from "@ionic/angular";
 import { ReportPage } from "./report.page";
 import { Routes, RouterModule } from "@angular/router";
 import { ComponentsModule } from "src/app/shared/components/components.module";
-import { StepperModule } from "../../components/stepper/stepper.module";
-
 const routes: Routes = [
   {
     path: "",
@@ -22,7 +20,6 @@ const routes: Routes = [
     IonicModule,
     // RouterModule.forChild(routes),
     ComponentsModule,
-    StepperModule,
     ReactiveFormsModule,
   ],
   declarations: [ReportPage],

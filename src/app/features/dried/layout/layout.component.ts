@@ -23,7 +23,12 @@ export class LayoutComponent implements OnInit {
 
   constructor(private router: Router) {}
 
+  section: string;
+
   ngOnInit() {}
 
-  print() {}
+  nextSection() {
+    this.router.navigate(["/" + this.options[this.section].path]);
+    this.section = undefined;
+  }
 }

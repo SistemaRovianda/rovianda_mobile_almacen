@@ -15,25 +15,21 @@
       ></open-lot-form>
     </ion-row>
   </ion-grid>
-  <div class="ion-justify-content-center">
-    <ion-col>
-      <ion-row size="12">
-        <div class="linea"></div>
-        <div class="linea"></div>
-      </ion-row>
-      <ion-row class="ion-justify-content-center btn">
-        <div class="ion-justify-content-center btn">
-          <ion-button
-            expand="block"
-            style="text-transform: none; --background: #e1bc5c;"
-            size="large"
-            (click)="form.onSubmit()"
-            [disabled]="form.form.invalid"
-          >
+  <ion-grid class="footer">
+    <ion-row class="row-stepper">
+      <ion-col size="12">
+        <warehouse-stepper></warehouse-stepper
+      ></ion-col>
+    </ion-row>
+    <ion-row class="row-button">
+      <ion-button (click)="form.onSubmit()" [disabled]="form.form.invalid">
+        <ion-grid>
+          <ion-col>
             Abrir lote
-          </ion-button>
-        </div>
-      </ion-row>
-    </ion-col>
-  </div>
+          </ion-col>
+          <ion-spinner *ngIf="false" name="crescent"></ion-spinner>
+        </ion-grid>
+      </ion-button>
+    </ion-row>
+  </ion-grid>
 </ion-content>

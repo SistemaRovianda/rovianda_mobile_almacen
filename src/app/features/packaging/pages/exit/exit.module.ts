@@ -7,7 +7,7 @@ import { IonicModule } from "@ionic/angular";
 import { ExitPage } from "./exit.page";
 import { Routes, RouterModule } from "@angular/router";
 import { ComponentsModule } from "src/app/shared/components/components.module";
-import { StepperModule } from "../../components/stepper/stepper.module";
+import { StepperModule } from "src/app/shared/components/stepper/stepper.module";
 
 const routes: Routes = [
   {
@@ -23,8 +23,8 @@ const routes: Routes = [
     IonicModule,
     // RouterModule.forChild(routes),
     ComponentsModule,
-    StepperModule,
     ReactiveFormsModule,
+    StepperModule,
   ],
   declarations: [ExitPage],
 })

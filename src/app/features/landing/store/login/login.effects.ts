@@ -57,7 +57,7 @@ export class LogginEffects {
           catchError((error) =>
             of(
               fromLoginActions.finishLoad(),
-              fromLoginActions.signInFailure(error)
+              fromLoginActions.signInFailure({error})
             )
           )
         )
@@ -86,7 +86,7 @@ export class LogginEffects {
           catchError((error) =>
             of(
               fromLoginActions.finishLoad(),
-              fromLoginActions.signInFailure(error)
+              fromLoginActions.signInFailure({error})
             )
           )
         )
@@ -107,7 +107,7 @@ export class LogginEffects {
           catchError((error) =>
             of(
               fromLoginActions.finishLoad(),
-              fromLoginActions.signInFailure(error)
+              fromLoginActions.signInFailure({error})
             )
           )
         )

@@ -12,6 +12,7 @@ import { PackagingMenuPage } from "./pages/packaging-menu/packaging-menu.page";
 import { ReportPageModule } from "./pages/report/report.module";
 import { ReportPage } from "./pages/report/report.page";
 import { PackagingLotsResolver } from "src/app/shared/Resolvers/packaging-lots.resolver";
+import { MenuResolver } from "src/app/shared/Resolvers/menu.resolver";
 
 const routes: Routes = [
   {
@@ -20,6 +21,9 @@ const routes: Routes = [
       {
         path: "menu",
         component: PackagingMenuPage,
+        resolve: {
+          menu: MenuResolver,
+        },
       },
       {
         path: "open-lot",
@@ -62,6 +66,6 @@ const routes: Routes = [
     ReportPageModule,
   ],
   exports: [RouterModule],
-  providers: [PackagingExitResolver, PackagingLotsResolver],
+  providers: [PackagingExitResolver, PackagingLotsResolver, MenuResolver],
 })
 export class PackagingRoutingModule {}

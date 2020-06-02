@@ -10,6 +10,7 @@ import { OutputPageComponent } from "./pages/output/output.page";
 import { OutputPageModule } from "./pages/output/output.module";
 import { PrintReportComponent } from "./pages/print-report/print-report.component";
 import { PrintReportModule } from "./pages/print-report/print-report.module";
+import { MenuResolver } from "src/app/shared/Resolvers/menu.resolver";
 const routes: Routes = [
   {
     path: "",
@@ -17,6 +18,9 @@ const routes: Routes = [
       {
         path: "menu",
         component: LayoutComponent,
+        resolve: {
+          menu: MenuResolver,
+        },
       },
       {
         path: "open-lot",
@@ -48,5 +52,6 @@ const routes: Routes = [
     PrintReportModule,
   ],
   exports: [RouterModule],
+  providers: [MenuResolver],
 })
 export class DriedRoutingModule {}

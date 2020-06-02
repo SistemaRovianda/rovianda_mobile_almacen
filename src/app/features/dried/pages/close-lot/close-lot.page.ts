@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
@@ -12,6 +12,8 @@ import * as fromCatalogProducts from "../../store/catalog-products/catalog-produ
 import * as fromCatalogLotsActions from "../../store/catalog-lots/catalog-lots.actions";
 import * as fromCatalogLots from "../../store/catalog-lots/catalog-lots.selector";
 import { LotInterface, lotResponse } from "src/app/shared/Models/lot.interface";
+import { CloseLotFormComponent } from "../../components/close-lot-form/close-lot-form.component";
+import * as fromStepper from "../../../packaging/store/stepper/stepper-packaging.actions";
 
 @Component({
   selector: "close-lot",
@@ -24,6 +26,9 @@ export class CloseLotPageComponent implements OnInit {
     titlePath: "Regresar",
   };
 
+  @ViewChild(CloseLotFormComponent, { static: true })
+  closeLotFormComponent: CloseLotFormComponent;
+
   lots$: Observable<lotResponse[]> = this.store.select(
     fromCatalogLots.fetchAllLots
   );
@@ -34,10 +39,22 @@ export class CloseLotPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.closeLotFormComponent.form.valueChanges.subscribe((_) =>
+      this.checkForm()
+    );
     this.store.dispatch(
       fromCatalogLotsActions.fetchAllLots({
         typeLot: "DRIEF",
         status: "OPENED",
+      })
+    );
+  }
+
+  checkForm() {
+    this.store.dispatch(
+      fromStepper.packagingStepperNext({
+        num: 1,
+        step: !this.closeLotFormComponent.form.invalid,
       })
     );
   }

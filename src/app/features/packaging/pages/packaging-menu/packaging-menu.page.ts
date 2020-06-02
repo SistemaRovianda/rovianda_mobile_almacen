@@ -21,7 +21,13 @@ export class PackagingMenuPage implements OnInit {
     { label: "Salida", path: "/packaging/exit-lot" },
   ];
 
+  section: string;
   constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  nextSection() {
+    this.router.navigate(["/" + this.options[this.section].path]);
+    this.section = undefined;
+  }
 }

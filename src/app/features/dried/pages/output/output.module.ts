@@ -7,6 +7,7 @@ import { ComponentsModule } from "src/app/shared/components/components.module";
 import { ExitLotFormModule } from "../../components/exit-lot-form/exit-lot-form.module";
 import { GenerateReportModule } from "../../dialogs/generate-report/generate-report.module";
 import { OutputPageComponent } from "./output.page";
+import { StepperModule } from "src/app/shared/components/stepper/stepper.module";
 
 const COMMON_IMPORTS = [
   CommonModule,
@@ -16,6 +17,7 @@ const COMMON_IMPORTS = [
   ComponentsModule,
   RouterModule,
   GenerateReportModule,
+  StepperModule,
 ];
 
 const COMMON_DECLARATIONS = [OutputPageComponent];

@@ -23,7 +23,7 @@ export class CloseLotFormComponent implements OnInit {
     this.form = fb.group({
       loteId: ["", Validators.required],
       productId: ["", Validators.required],
-      date: [""],
+      date: [new Date().toISOString()],
       status: [this.status.CLOSE],
     });
   }

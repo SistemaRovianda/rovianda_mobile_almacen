@@ -4,9 +4,9 @@ import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { PackagingMenuPage } from "./packaging-menu.page";
 import { ComponentsModule } from "src/app/shared/components/components.module";
-import { StepperModule } from "../../components/stepper/stepper.module";
 import { Routes, RouterModule } from "@angular/router";
 import { ButtonMenuModule } from "src/app/features/menu/components/button-menu/button-menu.module";
+import { StepperModule } from 'src/app/shared/components/stepper/stepper.module';
 
 const routes: Routes = [
   {
@@ -20,10 +20,10 @@ const COMMON_IMPORTS = [
   FormsModule,
   IonicModule,
   ComponentsModule,
-  StepperModule,
   ButtonMenuModule,
   RouterModule,
   // RouterModule.forChild(routes),
+  StepperModule
 ];
 
 const COMMON_DECLARATIONS = [PackagingMenuPage];

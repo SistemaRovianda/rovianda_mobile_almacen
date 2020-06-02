@@ -26,7 +26,7 @@ import { closeLotStartLoad } from "../../store/close-lot/close-lot.actions";
 })
 export class CloseLotPage implements OnInit {
   header: ItemBackInterface = {
-    path: "/packaging",
+    path: "/packaging/menu",
     titlePath: "Regresar",
     title: "Empaque",
   };

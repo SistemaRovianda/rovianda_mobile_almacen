@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
@@ -12,6 +12,8 @@ import * as fromCatalogLotsActions from "../../store/catalog-lots/catalog-lots.a
 import * as fromCatalogLots from "../../store/catalog-lots/catalog-lots.selector";
 import * as fromCatalogProductsActions from "../../store/catalog-products/catalog-products.actions";
 import * as fromCatalogProducts from "../../store/catalog-products/catalog-products.selector";
+import { ExitLotFormComponent } from "../../components/exit-lot-form/exit-lot-form.component";
+import * as fromStepper from "../../../packaging/store/stepper/stepper-packaging.actions";
 
 @Component({
   selector: "app-exit-lot",
@@ -24,6 +26,9 @@ export class OutputPageComponent implements OnInit {
     titlePath: "Regresar",
   };
 
+  @ViewChild(ExitLotFormComponent, { static: true })
+  exitLotFormComponent: ExitLotFormComponent;
+
   lots$: Observable<lotResponse[]> = this.store.select(
     fromCatalogLots.fetchAllLots
   );
@@ -34,10 +39,21 @@ export class OutputPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.exitLotFormComponent.form.valueChanges.subscribe((_) =>
+      this.checkForm()
+    );
     this.store.dispatch(
       fromCatalogLotsActions.fetchAllLots({
         typeLot: "DRIEF",
         status: "OPENED",
+      })
+    );
+  }
+  checkForm() {
+    this.store.dispatch(
+      fromStepper.packagingStepperNext({
+        num: 1,
+        step: !this.exitLotFormComponent.form.invalid,
       })
     );
   }

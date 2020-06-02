@@ -12,6 +12,7 @@ import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dia
 import * as fromCatalogLotsActions from "../../store/catalog-lots/catalog-lots.actions";
 import * as fromCatalogLots from "../../store/catalog-lots/catalog-lots.selector";
 import * as fromCatalogProductsActions from "../../store/catalog-products/catalog-products.actions";
+import * as fromStepper from "../../../packaging/store/stepper/stepper-packaging.actions";
 
 @Component({
   selector: "open-lot",
@@ -39,10 +40,22 @@ export class OpenLotPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.openLotFormComponent.form.valueChanges.subscribe((_) =>
+      this.checkForm()
+    );
     this.store.dispatch(
       fromCatalogLotsActions.fetchAllLots({
         typeLot: "DRIEF",
         status: "PENDING",
+      })
+    );
+  }
+
+  checkForm() {
+    this.store.dispatch(
+      fromStepper.packagingStepperNext({
+        num: 1,
+        step: !this.openLotFormComponent.form.invalid,
       })
     );
   }

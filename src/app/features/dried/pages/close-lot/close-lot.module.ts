@@ -7,6 +7,7 @@ import { ComponentsModule } from "src/app/shared/components/components.module";
 import { CloseLotFormModule } from "../../components/close-lot-form/close-lot-form.module";
 import { MessageDialogModule } from "../../dialogs/message-dialog/message-dialog.module";
 import { CloseLotPageComponent } from "./close-lot.page";
+import { StepperModule } from "src/app/shared/components/stepper/stepper.module";
 
 const COMMON_IMPORTS = [
   CommonModule,
@@ -16,6 +17,7 @@ const COMMON_IMPORTS = [
   ComponentsModule,
   RouterModule,
   MessageDialogModule,
+  StepperModule,
 ];
 
 const COMMON_DECLARATIONS = [CloseLotPageComponent];

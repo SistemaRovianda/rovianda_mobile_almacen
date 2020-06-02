@@ -16,7 +16,7 @@ import { Router } from "@angular/router";
 })
 export class ExitPage implements OnInit {
   header: ItemBackInterface = {
-    path: "/packaging",
+    path: "/packaging/menu",
     titlePath: "Regresar",
     title: "Empaque",
   };
