@@ -4,6 +4,7 @@ import isEmpty from "lodash.isempty";
 import * as moment from "moment";
 import { lotResponse } from "src/app/shared/Models/lot.interface";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
+import { noWhiteSpace } from "src/app/shared/Validators/whitespace.validator";
 
 @Component({
   selector: "exit-lot-form",
@@ -22,7 +23,7 @@ export class ExitLotFormComponent implements OnInit {
     this.form = fb.group({
       loteId: ["", Validators.required],
       productId: ["", Validators.required],
-      observations: [""],
+      observations: ["", [noWhiteSpace]],
       date: [""],
     });
   }
@@ -35,6 +36,7 @@ export class ExitLotFormComponent implements OnInit {
     const payload = {
       ...value,
       loteId: loteId.loteId,
+      productId: parseInt(this.form.get("productId").value),
       date: moment().format("YYYY/MM/DD"),
     };
 

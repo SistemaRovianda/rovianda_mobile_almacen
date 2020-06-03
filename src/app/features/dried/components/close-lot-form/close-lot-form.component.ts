@@ -24,7 +24,7 @@ export class CloseLotFormComponent implements OnInit {
       loteId: ["", Validators.required],
       productId: ["", Validators.required],
       date: [new Date().toISOString()],
-      status: [this.status.CLOSE],
+      status: [this.status.CLOSED],
     });
   }
 
@@ -36,6 +36,7 @@ export class CloseLotFormComponent implements OnInit {
     const payload = {
       ...value,
       loteId: loteId.loteId,
+      productId: parseInt(this.form.get("productId").value),
       date: moment(date).format("YYYY-MM-DD"),
     };
 

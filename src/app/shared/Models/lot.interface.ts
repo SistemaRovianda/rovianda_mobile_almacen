@@ -9,11 +9,11 @@ export interface LotInterface {
   status?: string;
 }
 
-type statusLot = "OPENED" | "CLOSE" | "PENDING";
+type statusLot = "OPENED" | "CLOSED" | "PENDING";
 
 export const STATUS_LOT: { [type in statusLot]: type } = {
   OPENED: "OPENED",
-  CLOSE: "CLOSE",
+  CLOSED: "CLOSED",
   PENDING: "PENDING",
 };
 

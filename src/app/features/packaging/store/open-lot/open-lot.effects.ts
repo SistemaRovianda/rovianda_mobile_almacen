@@ -6,12 +6,14 @@ import { exhaustMap, delay, switchMap, catchError } from "rxjs/operators";
 import * as fromPackagingActions from "src/app/features/packaging/store/packaging/packaging.actions";
 import { of } from "rxjs";
 import { Router } from "@angular/router";
+import { ToastService } from "src/app/shared/Services/toast.service";
 
 @Injectable()
 export class OpenLoteEffects {
   constructor(
     private action$: Actions,
     private packing: PackagingService,
+    private toastService: ToastService,
     private router: Router
   ) {}
 

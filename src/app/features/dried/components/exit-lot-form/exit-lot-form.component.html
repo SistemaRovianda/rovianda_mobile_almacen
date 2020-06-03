@@ -40,7 +40,7 @@
           [disabled]="disabled(filterProducts)"
         >
           <ng-container *ngFor="let product of filterProducts">
-            <ion-select-option [value]="product.loteId">
+            <ion-select-option [value]="product.id">
               {{ product.description }}
             </ion-select-option>
           </ng-container>

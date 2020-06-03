@@ -6,6 +6,7 @@ import { exhaustMap, delay, switchMap, catchError } from "rxjs/operators";
 import { of, from } from "rxjs";
 import { PackagingService } from "src/app/shared/Services/packaging.service";
 import { Router } from "@angular/router";
+import { ToastService } from "src/app/shared/Services/toast.service";
 
 @Injectable()
 export class ExitEffects {
@@ -13,6 +14,7 @@ export class ExitEffects {
     private action$: Actions,
     private productsService: ProductService,
     private packagingService: PackagingService,
+    private toastService: ToastService,
     private router: Router
   ) {}
 
@@ -47,12 +49,13 @@ export class ExitEffects {
             fromExitActions.exitLoadRequestSuccess(),
             fromExitActions.exitFinishLoad(),
           ]),
-          catchError((error) =>
-            of(
+          catchError((error) => {
+            this.toastService.presentToastError();
+            return of(
               fromExitActions.exitFinishLoad(),
               fromExitActions.exitFailureLoad(error)
-            )
-          )
+            );
+          })
         )
       )
     )
@@ -61,25 +64,13 @@ export class ExitEffects {
   exitLoadRequestSuccessEffects = createEffect(() =>
     this.action$.pipe(
       ofType(fromExitActions.exitLoadRequestSuccess),
-      exhaustMap((_) =>
-        from(this.router.navigate(["/packaging/report"])).pipe(
-          switchMap((result) =>
-            result
-              ? [fromExitActions.exitFinishLoad()]
-              : [
-                  fromExitActions.exitFailureLoad({
-                    error: "Usuario no valido",
-                  }),
-                ]
-          ),
-          catchError((error) =>
-            of(
-              fromExitActions.exitFinishLoad(),
-              fromExitActions.exitFailureLoad(error)
-            )
-          )
-        )
-      )
+      exhaustMap((action) => {
+        this.toastService.presentToastPackingSuccess();
+        return [];
+      }),
+      catchError((errors) => {
+        return [];
+      })
     )
   );
 }

@@ -6,6 +6,7 @@ import { LotsService } from "src/app/shared/Services/lots.service";
 import { ProductService } from "src/app/shared/Services/product.service";
 import { Router } from "@angular/router";
 import { from, of } from "rxjs";
+import { ToastService } from "src/app/shared/Services/toast.service";
 
 @Injectable()
 export class PackagingEffects {
@@ -13,6 +14,7 @@ export class PackagingEffects {
     private action$: Actions,
     private lotsService: LotsService,
     private productsService: ProductService,
+    private toastService: ToastService,
     private router: Router
   ) {}
 
@@ -47,28 +49,21 @@ export class PackagingEffects {
     )
   );
 
-  loadSuccessEffect = createEffect(() =>
-    this.action$.pipe(
-      ofType(fromPackagingActions.packagingLoadSuccess),
-      exhaustMap((action) =>
-        from(this.router.navigate(["/packaging/menu"])).pipe(
-          switchMap((result) =>
-            result
-              ? [fromPackagingActions.packagingFinishLoad()]
-              : [
-                  fromPackagingActions.PackagingFailure({
-                    errors: "Usuario no valido",
-                  }),
-                ]
-          ),
-          catchError((errors) =>
-            of(
-              fromPackagingActions.packagingFinishLoad(),
-              fromPackagingActions.PackagingFailure(errors)
-            )
-          )
-        )
-      )
-    )
+  loadSuccessEffect = createEffect(
+    () =>
+      this.action$.pipe(
+        ofType(fromPackagingActions.packagingLoadSuccess),
+        exhaustMap((action) => {
+          this.toastService.presentToastPackingSuccess();
+          return [];
+        }),
+        catchError((errors) => {
+          this.toastService.presentToastError();
+          return [];
+        })
+      ),
+    {
+      dispatch: false,
+    }
   );
 }

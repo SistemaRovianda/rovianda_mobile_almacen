@@ -9,6 +9,7 @@ import * as fromExitActions from "src/app/features/packaging/store/exit/exit.act
 import * as fromExitSelector from "src/app/features/packaging/store/exit/exit.selector";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
 import { Router } from "@angular/router";
+import { noWhiteSpace } from "src/app/shared/Validators/whitespace.validator";
 @Component({
   selector: "app-exit",
   templateUrl: "./exit.page.html",
@@ -37,7 +38,7 @@ export class ExitPage implements OnInit {
     loteId: ["", [Validators.required]],
     product: ["", [Validators.required]],
     quantity: ["", [Validators.required]],
-    name: ["", [Validators.required]],
+    name: ["", [Validators.required, noWhiteSpace]],
   });
 
   ngOnInit() {
@@ -86,7 +87,7 @@ export class ExitPage implements OnInit {
                 },
               })
             );
-            this.router.navigate(["/packaging/print-report"]);
+            // this.router.navigate(["/packaging/print-report"]);
           },
         },
       ],
