@@ -66,7 +66,7 @@
           </div>
           <ion-button
             (click)="onLogin()"
-            [disabled]="loginForm.status=='INVALID'"
+            [disabled]="loginForm.invalid || loading"
           >
             <label *ngIf="!loading">Iniciar Sesión</label>
             <ion-spinner
