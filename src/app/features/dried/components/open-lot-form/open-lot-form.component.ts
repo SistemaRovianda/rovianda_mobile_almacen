@@ -34,6 +34,7 @@ export class OpenLotFormComponent implements OnInit {
     const payload = {
       ...value,
       loteId: loteId.loteId,
+      productId: ++this.form.get("productId").value,
       date: moment(date).format("YYYY-MM-DD"),
     };
 
