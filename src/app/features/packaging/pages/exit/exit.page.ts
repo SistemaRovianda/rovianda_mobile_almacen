@@ -43,9 +43,9 @@ export class ExitPage implements OnInit {
 
   ngOnInit() {
     this.exitForm.valueChanges.subscribe((_) => this.checkValues());
-    this.store
-      .select(fromExitSelector.SELECT_PACKAGING_EXIT_LOADING)
-      .subscribe((tempLoading) => (this.loading = tempLoading));
+    // this.store
+    //   .select(fromExitSelector.SELECT_PACKAGING_EXIT_LOADING)
+    //   .subscribe((tempLoading) => (this.loading = tempLoading));
 
     this.store
       .select(fromExitSelector.SELECT_PACKAGING_EXIT_PRODUCTS)

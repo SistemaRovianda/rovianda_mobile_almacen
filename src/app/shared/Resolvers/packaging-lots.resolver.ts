@@ -14,7 +14,6 @@ export class PackagingLotsResolver implements Resolve<boolean> {
   constructor(private store: Store<AppStateInterface>) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    console.log(route.data);
     this.store.dispatch(
       fromPackagingActions.packagingStartLoad({
         lotsType: route.data.type,

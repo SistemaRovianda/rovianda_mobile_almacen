@@ -59,9 +59,7 @@ export class LoginPage implements OnInit {
       .subscribe((tempLoading) => (this.loading = tempLoading));
   }
 
-  recoverPassword() {
-    console.log("evento recover password");
-  }
+  recoverPassword() {}
 
   onLogin() {
     this.store.dispatch(fromLoginActions.signIn(this.loginForm.value));

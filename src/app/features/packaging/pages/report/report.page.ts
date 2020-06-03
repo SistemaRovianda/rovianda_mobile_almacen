@@ -18,6 +18,6 @@ export class ReportPage implements OnInit {
   ngOnInit() {}
 
   printReport() {
-    console.log("imprimiendo reporte");
+    // console.log("imprimiendo reporte");
   }
 }

@@ -51,6 +51,7 @@ $color-primary: #e2bd53;
     }
   }
   .footer-container {
+    position: static;
     height: 30%;
     ion-row {
       height: 75%;
@@ -59,6 +60,7 @@ $color-primary: #e2bd53;
       height: 25%;
     }
     .row-button {
+      width: 100%;
       padding: 0 30%;
       .button {
         --ion-color-primary: #e2bd53;

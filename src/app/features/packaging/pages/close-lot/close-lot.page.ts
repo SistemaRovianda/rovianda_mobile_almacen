@@ -49,7 +49,7 @@ export class CloseLotPage implements OnInit {
       serie: [{ value: "", disabled: this.loading }, [Validators.required]],
       product: ["", [Validators.required]],
       date: [new Date().toISOString(), [Validators.required]],
-      status: [this.status.CLOSE],
+      status: [this.status.CLOSED],
     });
   }
 
