@@ -5,28 +5,36 @@
       <h1 class="title-menu">Menú</h1>
     </ion-col>
   </ion-row>
-  <ion-segment
-    [(ngModel)]="section"
-    (ionChange)="stepper.next(0,section!==undefined)"
-    class="body"
-  >
+  <ion-segment class="body">
     <ion-grid>
       <ion-row>
         <ion-col size="6">
-          <ion-segment-button value="0">Abrir lote</ion-segment-button>
+          <ion-button
+            [routerLink]="['/dried/open-lot']"
+            style="--background: #575552;"
+            >Abrir lote</ion-button
+          >
         </ion-col>
         <ion-col size="6">
-          <ion-segment-button value="1">Cerrar lote</ion-segment-button>
+          <ion-button
+            [routerLink]="['/dried/close-lot']"
+            style="--background: #575552;"
+            >Cerrar lote</ion-button
+          >
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="12" class="segment-odd">
-          <ion-segment-button value="2">Salida</ion-segment-button>
+          <ion-button
+            [routerLink]="['/dried/exit-lot']"
+            style="--background: #575552;"
+            >Salida</ion-button
+          >
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-segment>
-  <ion-grid class="footer">
+  <!-- <ion-grid class="footer">
     <ion-row class="row-stepper">
       <ion-col size="12"
         ><warehouse-stepper #stepper></warehouse-stepper
@@ -48,5 +56,5 @@
       </ion-grid>
     </ion-button>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
 </ion-content>

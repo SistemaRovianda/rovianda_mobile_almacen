@@ -24,13 +24,13 @@ const routes: Routes = [
   },
   {
     path: "dried",
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import("./features/dried/dried.module").then((m) => m.DriedModule),
   },
   {
     path: "packaging",
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () =>
       import("./features/packaging/packaging.module").then(
         (m) => m.PackagingModule

@@ -21,20 +21,20 @@ $color-primary: #e2bd53;
       ion-col {
         padding: 4% 8%;
         box-sizing: border-box;
-        ion-segment-button {
+        ion-button {
           height: 100%;
           width: 100%;
-          background-color: $color-text-secondary;
+          --background: $color-text-primary;
           border-radius: 5px;
           font-size: 4vw;
           font-weight: 500;
           text-transform: none;
-          --indicator-color: transparent;
+          // --indicator-color: transparent;
         }
       }
       .segment-odd {
         padding: 4% 8%;
-        ion-segment-button {
+        ion-button {
           max-width: 200%;
         }
       }
