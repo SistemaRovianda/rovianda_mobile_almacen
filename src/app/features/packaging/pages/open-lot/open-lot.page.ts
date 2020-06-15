@@ -44,7 +44,7 @@ export class OpenLotePage implements OnInit {
   ) {}
 
   lotForm = this.fb.group({
-    serie: ["", [Validators.required]],
+    serie: ["", [Validators.required],],
     product: ["", [Validators.required]],
     date: [new Date().toISOString(), [Validators.required]],
     status: [this.status.OPENED],

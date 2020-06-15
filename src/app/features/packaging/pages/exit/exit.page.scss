@@ -1,6 +1,6 @@
 $color-text-primary: #575552;
 $color-text-secondary: #717171;
-$color-text-ternary: #b2b2b2;
+$color-text-ternary: black;
 $color-primary: #e2bd53;
 
 .exit-lot-container {
@@ -32,7 +32,7 @@ $color-primary: #e2bd53;
         font-size: 4.2vw;
         color: $color-text-ternary;
         .item-form {
-          font-size: 3.1vw;
+          font-size: 1.3rem;
           color: $color-text-ternary;
         }
         &.item-has-focus {

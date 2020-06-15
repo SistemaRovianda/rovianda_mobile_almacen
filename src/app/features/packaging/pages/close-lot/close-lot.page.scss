@@ -1,6 +1,6 @@
 $color-text-primary: #575552;
 $color-text-secondary: #717171;
-$color-text-ternary: #b2b2b2;
+$color-text-ternary: black;
 
 .close-lote-container {
   width: 100%;
@@ -24,10 +24,10 @@ $color-text-ternary: #b2b2b2;
       margin-top: 4%;
       box-sizing: border-box;
       ion-item {
-        font-size: 4.5vw;
+        font-size: 1.3rem;
         color: $color-text-ternary;
         .item-form {
-          font-size: 3.8vw;
+          font-size: 1.3rem;
           color: $color-text-ternary;
         }
         &.item-has-focus {
