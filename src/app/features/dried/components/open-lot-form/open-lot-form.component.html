@@ -6,6 +6,7 @@
 
         <ion-select
           placeholder="Ingresa lote"
+          style="--placeholder-color: black; --placeholder-opacity: 0.9;"
           formControlName="loteId"
           interface="action-sheet"
           (ionBlur)="change()"
@@ -67,6 +68,7 @@
           formControlName="date"
           placeholder="dd/mm/yyyy"
           displayFormat="DD/MM/YYYY"
+          readonly
         >
         </ion-datetime>
       </ion-item>

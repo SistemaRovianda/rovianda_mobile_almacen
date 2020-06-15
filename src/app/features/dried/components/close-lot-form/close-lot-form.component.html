@@ -4,6 +4,7 @@
       <ion-item class="form-input">
         <ion-label class="ion-label" position="floating">Lote*</ion-label>
         <ion-select
+          style="--placeholder: black; --placeholder-opacity: 0.9;"
           placeholder="Ingresa lote"
           formControlName="loteId"
           (ionChange)="change()"
@@ -64,6 +65,7 @@
           formControlName="date"
           placeholder="dd/mm/yyyy"
           displayFormat="DD/MM/YYYY"
+          readonly
         >
         </ion-datetime>
       </ion-item>
