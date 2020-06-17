@@ -41,4 +41,18 @@ export class OutputEffects {
       dispatch: false,
     }
   );
+
+  outputLotErrorEffect$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(fromActions.outputError),
+        exhaustMap((_) => {
+          this.toastService.presentToastError();
+          return [];
+        })
+      ),
+    {
+      dispatch: false,
+    }
+  );
 }

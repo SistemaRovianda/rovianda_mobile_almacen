@@ -41,4 +41,18 @@ export class CloseLotDriedEffects {
       dispatch: false,
     }
   );
+
+  closeLotErrorEffect$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(fromActions.closeLotError),
+        exhaustMap((_) => {
+          this.toastService.presentToastError();
+          return [];
+        })
+      ),
+    {
+      dispatch: false,
+    }
+  );
 }

@@ -6,6 +6,7 @@
         <ion-select
           style="--placeholder: black; --placeholder-opacity: 0.9;"
           placeholder="Ingresa lote"
+          interface="action-sheet"
           formControlName="loteId"
           (ionChange)="change()"
           [disabled]="disabled(lots)"
@@ -35,6 +36,7 @@
         <ion-select
           placeholder="Seleccione un producto*"
           formControlName="productId"
+          interface="action-sheet"
           [disabled]="disabled(filterProducts)"
         >
           <ng-container *ngFor="let product of filterProducts">

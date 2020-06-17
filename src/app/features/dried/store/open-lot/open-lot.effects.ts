@@ -42,4 +42,18 @@ export class OpenLotEffects {
       dispatch: false,
     }
   );
+
+  openLotErrorEffect$ = createEffect(
+    () => 
+      this.actions$.pipe(
+        ofType(fromActions.openLotError),
+        exhaustMap(_ => {
+          this.toastService.presentToastError();
+          return []
+        })
+      ),
+      {
+        dispatch: false
+      }
+  )
 }
