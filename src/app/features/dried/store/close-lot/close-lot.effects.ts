@@ -20,10 +20,12 @@ export class CloseLotDriedEffects {
     this.actions$.pipe(
       ofType(fromActions.closeLot),
       exhaustMap((action) =>
-        this.driedService.closeLot(action.payload).pipe(
-          map((payload) => fromActions.closeLotSuccess({ payload })),
-          catchError((error) => of(fromActions.closeLotError(error)))
-        )
+        this.driedService
+          .closeLot(action.payload, action.warehouseDriefId)
+          .pipe(
+            map((payload) => fromActions.closeLotSuccess({ payload })),
+            catchError((error) => of(fromActions.closeLotError(error)))
+          )
       )
     )
   );

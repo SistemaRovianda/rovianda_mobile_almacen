@@ -19,6 +19,8 @@ export class CloseLotFormComponent implements OnInit {
 
   status = STATUS_LOT;
 
+  warehouseDriefId: string;
+
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
       loteId: ["", Validators.required],
@@ -36,11 +38,20 @@ export class CloseLotFormComponent implements OnInit {
     const payload = {
       ...value,
       loteId: loteId.loteId,
-      productId: parseInt(this.form.get("productId").value),
+      productId: this.form.get("productId").value,
       date: moment(date).format("YYYY-MM-DD"),
     };
 
-    this.submit.emit(payload);
+    this.submit.emit({
+      data: payload,
+      warehouseDriefId: this.warehouseDriefId,
+    });
+  }
+
+  onChangeProduct(evt) {
+    console.log("product: ", evt.detail.value);
+    this.form.get("productId").setValue(evt.detail.value.id);
+    this.warehouseDriefId = evt.detail.value.warehouseDriefId;
   }
 
   change() {

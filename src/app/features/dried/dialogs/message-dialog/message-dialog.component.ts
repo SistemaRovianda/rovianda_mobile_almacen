@@ -6,6 +6,8 @@ import { Store } from "@ngrx/store";
 import * as fromActions from "../../store/open-lot/open-lot.actions";
 import * as fromActionsClose from "../../store/close-lot/close-lot.actions";
 
+import { getProductWarehouseDriefId } from "../../store/catalog-lots/catalog-lots.selector";
+
 @Component({
   selector: "app-message-dialog",
   templateUrl: "./message-dialog.component.html",
@@ -15,13 +17,16 @@ export class MessageDialogComponent implements OnInit {
   entrance: Entrance;
   action: string;
   type: string;
+  warehouseDriefId: string;
 
   constructor(
     public modalController: ModalController,
     private store: Store<AppStateInterface>
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("warehouseDriefId -->  ", this.warehouseDriefId);
+  }
 
   cancel() {
     this.modalController.dismiss();
@@ -29,10 +34,18 @@ export class MessageDialogComponent implements OnInit {
 
   save() {
     if (this.type == "open") {
-      this.store.dispatch(fromActions.openLot({ payload: this.entrance }));
+      this.store.dispatch(
+        fromActions.openLot({
+          payload: this.entrance,
+          warehouseDriefId: this.warehouseDriefId,
+        })
+      );
     } else {
       this.store.dispatch(
-        fromActionsClose.closeLot({ payload: this.entrance })
+        fromActionsClose.closeLot({
+          payload: this.entrance,
+          warehouseDriefId: this.warehouseDriefId,
+        })
       );
     }
     this.modalController.dismiss();

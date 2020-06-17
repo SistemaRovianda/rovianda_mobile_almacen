@@ -23,6 +23,7 @@ export class OpenLotPageComponent implements OnInit {
   header: ItemBackInterface = {
     path: "/dried/menu",
     titlePath: "Regresar",
+    title: "Secos",
   };
 
   @ViewChild(OpenLotFormComponent, { static: true })
@@ -60,16 +61,18 @@ export class OpenLotPageComponent implements OnInit {
     );
   }
 
-  onSubmit(entrance: Entrance) {
-    this.openModal(entrance);
+  onSubmit(event) {
+    console.log("event: ", event);
+    this.openModal(event.data, event.warehouseDriefId);
   }
 
-  async openModal(entrance: Entrance) {
+  async openModal(entrance: Entrance, warehouseDriefId: string) {
     const modal = await this.modalController.create({
       component: MessageDialogComponent,
       cssClass: "modal-size",
       componentProps: {
         entrance: entrance,
+        warehouseDriefId: warehouseDriefId,
         action: "abrir",
         type: "open",
       },

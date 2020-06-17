@@ -17,6 +17,7 @@ export class OpenLotFormComponent implements OnInit {
 
   filterProducts: ProductInterface[];
   status = STATUS_LOT;
+  warehouseDriefId: string;
 
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
@@ -34,11 +35,22 @@ export class OpenLotFormComponent implements OnInit {
     const payload = {
       ...value,
       loteId: loteId.loteId,
-      productId: ++this.form.get("productId").value,
+      productId: this.form.get("productId").value,
       date: moment(date).format("YYYY-MM-DD"),
     };
 
-    this.submit.emit(payload);
+    console.log("payload: ", payload);
+
+    this.submit.emit({
+      data: payload,
+      warehouseDriefId: this.warehouseDriefId,
+    });
+  }
+
+  onChangeProduct(evt) {
+    console.log("product: ", evt.detail.value);
+    this.form.get("productId").setValue(evt.detail.value.id);
+    this.warehouseDriefId = evt.detail.value.warehouseDriefId;
   }
 
   change() {

@@ -24,6 +24,7 @@ export class CloseLotPageComponent implements OnInit {
   header: ItemBackInterface = {
     path: "/dried/menu",
     titlePath: "Regresar",
+    title: "Secos",
   };
 
   @ViewChild(CloseLotFormComponent, { static: true })
@@ -59,16 +60,17 @@ export class CloseLotPageComponent implements OnInit {
     );
   }
 
-  onSubmit(entrance: Entrance) {
-    this.openModal(entrance);
+  onSubmit(event) {
+    this.openModal(event.data, event.warehouseDriefId);
   }
 
-  async openModal(entrance: Entrance) {
+  async openModal(entrance: Entrance, warehouseDriefId) {
     const modal = await this.modalController.create({
       component: MessageDialogComponent,
       cssClass: "modal-size",
       componentProps: {
         entrance: entrance,
+        warehouseDriefId: warehouseDriefId,
         action: "cerrar",
         type: "close",
       },

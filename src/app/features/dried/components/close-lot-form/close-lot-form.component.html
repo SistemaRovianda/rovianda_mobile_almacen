@@ -35,13 +35,13 @@
 
         <ion-select
           placeholder="Seleccione un producto*"
-          formControlName="productId"
+          (ionChange)="onChangeProduct($event)"
           interface="action-sheet"
           [disabled]="disabled(filterProducts)"
         >
           <ng-container *ngFor="let product of filterProducts">
-            <ion-select-option [value]="product.id">
-              {{ product.description }}
+            <ion-select-option [value]="product">
+              {{ product.description }} - {{ product.quantity }}
             </ion-select-option>
           </ng-container>
         </ion-select>

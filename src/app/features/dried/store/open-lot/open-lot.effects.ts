@@ -21,7 +21,7 @@ export class OpenLotEffects {
     this.actions$.pipe(
       ofType(fromActions.openLot),
       exhaustMap((action) =>
-        this.driedService.openLot(action.payload).pipe(
+        this.driedService.openLot(action.payload, action.warehouseDriefId).pipe(
           map((payload) => fromActions.openLotSuccess({ payload })),
           catchError((error) => of(fromActions.openLotError(error)))
         )
@@ -44,16 +44,16 @@ export class OpenLotEffects {
   );
 
   openLotErrorEffect$ = createEffect(
-    () => 
+    () =>
       this.actions$.pipe(
         ofType(fromActions.openLotError),
-        exhaustMap(_ => {
+        exhaustMap((_) => {
           this.toastService.presentToastError();
-          return []
+          return [];
         })
       ),
-      {
-        dispatch: false
-      }
-  )
+    {
+      dispatch: false,
+    }
+  );
 }

@@ -2,7 +2,7 @@ import { Injectable, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { API_ENDPOINT_PROVIDER } from "src/app/providers/tokens";
 import { Entrance, ExitLot } from "../Models/dried.interface";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -17,12 +17,14 @@ export class DriedService {
     this.url = `${endpoint}/drief`;
   }
 
-  openLot(body: Entrance): Observable<any> {
-    return this.http.patch<any>(`${this.url}/status`, body);
+  openLot(body: Entrance, warehouseDriefId: string): Observable<any> {
+    console.log("openLot: ", body);
+    return this.http.patch<any>(`${this.url}/status/${warehouseDriefId}`, body);
   }
 
-  closeLot(body: Entrance): Observable<any> {
-    return this.http.patch<any>(`${this.url}/status`, body);
+  closeLot(body: Entrance, warehouseDriefId: string): Observable<any> {
+    console.log("closeLot: ", body, warehouseDriefId);
+    return this.http.patch<any>(`${this.url}/status/${warehouseDriefId}`, body);
   }
 
   exitLot(body: ExitLot): Observable<any> {

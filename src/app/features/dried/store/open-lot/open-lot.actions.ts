@@ -7,7 +7,10 @@ const OPEN_LOT_SUCCESS = "['LOT'] Open Lot Success";
 
 const OPEN_LOT_ERROR = "['LOT'] Open Lot Error";
 
-export const openLot = createAction(OPEN_LOT, props<{ payload: Entrance }>());
+export const openLot = createAction(
+  OPEN_LOT,
+  props<{ payload: Entrance; warehouseDriefId?: string }>()
+);
 
 export const openLotSuccess = createAction(
   OPEN_LOT_SUCCESS,
