@@ -1,26 +1,91 @@
 $color-text-primary: #575552;
 $color-text-secondary: #b2b2b2;
 
-ion-grid {
-  .title-menu {
-    color: $color-text-primary;
-    font-size: 3.8vw;
-    margin-top: 5%;
+@import "../../../../../theme/mixins.scss";
+
+.container {
+  height: 100%;
+  // border: 1px solid blue;
+
+  &__row {
+    &--title {
+      @include breakpoint-size(ms-extra-small) {
+        height: 25%;
+      }
+
+      @include breakpoint-size(ms-small) {
+        height: 25%;
+      }
+
+      @include breakpoint-size(ms-extra-large) {
+        height: 20%;
+      }
+    }
+
+    &--buttons {
+      @include breakpoint-size(ms-extra-small) {
+        height: 75%;
+      }
+
+      @include breakpoint-size(ms-small) {
+        height: 75%;
+      }
+
+      @include breakpoint-size(ms-extra-large) {
+        height: 80%;
+      }
+    }
+  }
+
+  &__column {
+    height: 100%;
+
+    &--buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      // border: 1px solid red;
+    }
+  }
+
+  &__title {
+    height: auto;
     font-weight: 700;
-    margin-left: 5%;
+    color: var(--ion-color-secondary);
+
+    @include breakpoint-size(ms-extra-small) {
+      margin: 15px;
+    }
+
+    @include breakpoint-size(ms-small) {
+      margin: 20px;
+      font-size: var(--fs-text-title-sm);
+    }
+
+    @include breakpoint-size(ms-extra-large) {
+      margin: 25px;
+      font-size: var(--fs-text-title-xl);
+    }
   }
-  .subtitle-menu {
-    color: $color-text-secondary;
-    margin-top: 4%;
-    font-size: 3.4vw;
-    margin-left: 5%;
-    margin-bottom: 15%;
-  }
-  .container-button {
-    height: 37vh;
-    width: 100%;
-    .button {
-      padding: 7%;
+
+  &__subtitle {
+    margin: 30px 15px;
+    color: var(--ion-color-secondary);
+    height: auto;
+
+    @include breakpoint-size(ms-extra-small) {
+      margin: 30px 15px;
+    }
+
+    @include breakpoint-size(ms-small) {
+      margin: 30px 15px;
+      font-size: var(--fs-text-title-sm);
+    }
+
+    @include breakpoint-size(ms-extra-large) {
+      margin: 30px 15px;
+      font-size: var(--fs-text-title-xl);
     }
   }
 }

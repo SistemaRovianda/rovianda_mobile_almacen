@@ -1,10 +1,30 @@
-ion-button {
-  height: 100%;
-  width: 100%;
+@import "../../../../../theme/mixins.scss";
+
+.button {
+  height: 200px;
+  width: 200px;
   text-transform: none;
   --ion-color-primary: #575552;
-  .label-button {
-    font-size: 4vw;
-    font-weight: 100 !important;
+
+  @include breakpoint-size(ms-small) {
+    height: 300px;
+    width: 300px;
+  }
+
+  @include breakpoint-size(ms-extra-large) {
+    height: 250px;
+    width: 250px;
+  }
+
+  &__label {
+    color: var(--ion-color-medium-contrast);
+
+    @include breakpoint-size(ms-extra-small) {
+      font-size: var(--fs-text-xsm);
+    }
+
+    @include breakpoint-size(ms-small) {
+      font-size: var(--fs-text-sm);
+    }
   }
 }

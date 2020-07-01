@@ -1,17 +1,25 @@
 <app-header [itemBack]="header" (click)="logout()"></app-header>
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12">
-        <h1 class="title-menu">Tipo de almac&eacute;n</h1>
-      </ion-col>
-      <ion-col size="12">
-        <h1 class="subtitle-menu">Seleccione el tipo almac&eacute;n</h1>
+  <ion-grid class="container container--all">
+    <ion-row class="container container__row container__row--title">
+      <ion-col
+        class="container container__column container__column--title"
+        size="12"
+      >
+        <h1 class="container container__title">
+          Tipo de almacén
+        </h1>
+        <h5 class="container container__subtitle">
+          Seleccione el tipo almacén
+        </h5>
       </ion-col>
     </ion-row>
-    <ion-row class="container-button">
+    <ion-row class="container container__row container__row--buttons">
       <ng-container *ngFor="let option of options">
-        <ion-col size="6" class="button">
+        <ion-col
+          class="container container__column container__column--buttons"
+          size="6"
+        >
           <app-button-menu [labelButton]="option"></app-button-menu>
         </ion-col>
       </ng-container>
