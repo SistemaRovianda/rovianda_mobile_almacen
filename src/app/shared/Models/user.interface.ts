@@ -8,3 +8,8 @@ export interface UserInterface {
   email?: string;
   rol?: string;
 }
+
+export interface SignIn {
+  email: string;
+  password: string;
+}

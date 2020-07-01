@@ -10,8 +10,8 @@ const routes: Routes = [
     path: "login",
     canActivate: [IsAuthGuard],
     loadChildren: () =>
-      import("./features/landing/pages/login/login.module").then(
-        (m) => m.LoginPageModule
+      import("./features/landing/layout/layout.module").then(
+        (m) => m.LayoutModule
       ),
   },
   {

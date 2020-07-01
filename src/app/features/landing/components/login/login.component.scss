@@ -1,0 +1,353 @@
+@import "../../../../../theme/mixins.scss";
+
+form {
+  background-color: var(--ion-color-medium-contrast);
+  border-radius: 18px;
+  box-shadow: 0px 0px 25px -1px rgba(0, 0, 0, 0.75);
+  height: 100%;
+
+  .form-grid {
+    height: 100%;
+    padding: 8%;
+
+    .row {
+      // row for image
+      &-1 {
+        height: 25%;
+
+        ion-col {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          img.header__logo {
+            width: 180px;
+
+            @include breakpoint-size(ms-extra-small) {
+              width: 70%;
+            }
+
+            @include breakpoint-size(ms-small) {
+              width: 64%;
+            }
+
+            @include breakpoint-size(ms-medium) {
+              width: 30%;
+            }
+
+            @include breakpoint-size(ms-large) {
+              width: 20%;
+            }
+
+            @include breakpoint-size(ms-extra-large) {
+              width: 35%;
+            }
+          }
+        }
+      }
+
+      // row for instruction
+      &-2 {
+        height: 10%;
+        @include breakpoint-size(ms-medium) {
+          height: 10%;
+        }
+
+        h6 {
+          margin: 0;
+
+          @include breakpoint-size(ms-extra-small) {
+            font-size: var(--fs-text-xsm);
+          }
+
+          @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-sm);
+          }
+
+          @include breakpoint-size(ms-medium) {
+            font-size: var(--fs-text-medium);
+          }
+
+          @include breakpoint-size(ms-extra-large) {
+            text-align: center;
+            font-size: var(--fs-text-xl);
+          }
+        }
+      }
+
+      // row for input email
+      &-3 {
+        height: 16%;
+
+        @include breakpoint-size(ms-extra-small) {
+          height: 12%;
+        }
+
+        @include breakpoint-size(ms-small) {
+          height: 9%;
+        }
+
+        @include breakpoint-size(ms-medium) {
+          height: 16%;
+        }
+
+        @include breakpoint-size(ms-large) {
+          height: 11%;
+        }
+
+        @include breakpoint-size(ms-extra-large) {
+          height: 15%;
+        }
+
+        ion-col {
+          width: 90%;
+          ion-item {
+            border: 2px solid var(--ion-color-secondary-tint);
+            border-radius: 10px;
+            height: 100%;
+
+            ion-input {
+              margin-left: 4%;
+              font-size: 1.4rem;
+              // --placeholder-font-weight: 900;
+              --placeholder-font-size: 1.2rem;
+
+              @include breakpoint-size(ms-medium) {
+                font-size: var(--fs-text-md);
+              }
+
+              @include breakpoint-size(ms-extra-large) {
+                font-size: var(--fs-text-xl);
+              }
+            }
+
+            &.item-has-focus {
+              border: 2.5px solid var(--ion-color-primary-shade);
+              color: var(--ion-color-dark);
+              ion-icon {
+                &.color {
+                  color: var(--ion-color-dark) !important;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // row for message error email
+      &-4 {
+        height: 5%;
+
+        @include breakpoint-size(ms-extra-small) {
+          height: 7%;
+        }
+
+        @include breakpoint-size(ms-small) {
+          height: 10%;
+        }
+
+        @include breakpoint-size(ms-medium) {
+          height: 6%;
+        }
+
+        ion-col {
+          .error {
+            ion-label {
+              @include message-error(1.2rem, var(--ion-color-error));
+
+              @include breakpoint-size(ms-small) {
+                font-size: var(--font-size-sm);
+              }
+
+              @include breakpoint-size(ms-medium) {
+                font-size: var(--fs-text-md);
+              }
+
+              @include breakpoint-size(ms-extra-large) {
+                font-size: 1.5rem;
+              }
+            }
+          }
+        }
+      }
+
+      // row for input password
+      &-5 {
+        height: 16%;
+
+        @include breakpoint-size(ms-extra-small) {
+          height: 12%;
+        }
+
+        @include breakpoint-size(ms-small) {
+          height: 9%;
+        }
+
+        @include breakpoint-size(ms-medium) {
+          height: 16%;
+        }
+
+        @include breakpoint-size(ms-large) {
+          height: 11%;
+        }
+
+        @include breakpoint-size(ms-extra-large) {
+          height: 15%;
+        }
+
+        ion-col {
+          width: 90%;
+          ion-item {
+            border: 2px solid var(--ion-color-secondary-tint);
+            border-radius: 5px;
+            height: 100%;
+
+            ion-input {
+              margin-left: 4%;
+              font-size: 1.4rem;
+              --placeholder-font-size: 1.2rem;
+
+              @include breakpoint-size(ms-medium) {
+                font-size: var(--fs-text-md);
+              }
+
+              @include breakpoint-size(ms-extra-large) {
+                font-size: var(--fs-text-xl);
+              }
+            }
+
+            &.item-has-focus {
+              border: 2.5px solid var(--ion-color-primary-shade);
+              color: var(--ion-color-dark);
+              ion-icon {
+                &.color {
+                  color: var(--ion-color-dark) !important;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // row for error message password
+      &-6 {
+        height: 5%;
+
+        @include breakpoint-size(ms-extra-small) {
+          height: 7%;
+        }
+
+        @include breakpoint-size(ms-small) {
+          height: 10%;
+        }
+
+        @include breakpoint-size(ms-medium) {
+          height: 6%;
+        }
+
+        ion-col {
+          .error {
+            ion-label {
+              @include message-error(1.2rem, var(--ion-color-error));
+
+              @include breakpoint-size(ms-small) {
+                font-size: var(--font-size-sm);
+              }
+
+              @include breakpoint-size(ms-medium) {
+                font-size: var(--fs-text-md);
+              }
+
+              @include breakpoint-size(ms-extra-large) {
+                font-size: 1.5rem;
+              }
+            }
+          }
+        }
+      }
+
+      // row for button
+      &-7 {
+        height: 15%;
+
+        @include breakpoint-size(ms-medium) {
+          height: 22%;
+        }
+
+        @include breakpoint-size(ms-extra-large) {
+          height: 20%;
+        }
+
+        ion-col {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          ion-button {
+            height: 75px;
+            width: 300px;
+
+            @include breakpoint-size(ms-extra-small) {
+              height: 75px;
+              width: 280px;
+            }
+
+            @include breakpoint-size(ms-small) {
+              height: 80px;
+              width: 290x;
+            }
+
+            @include breakpoint-size(ms-medium) {
+              height: 60px;
+              width: 310px;
+            }
+
+            @include breakpoint-size(ms-extra-large) {
+              height: 80px;
+              width: 300px;
+            }
+          }
+        }
+      }
+
+      // Row for error message server
+      &-8 {
+        height: 5%;
+
+        @include breakpoint-size(ms-small) {
+          height: 8%;
+        }
+
+        @include breakpoint-size(ms-medium) {
+          height: 10%;
+        }
+
+        @include breakpoint-size(ms-extra-large) {
+          height: 10%;
+        }
+
+        ion-col {
+          .error {
+            ion-label {
+              @include message-error(1.2rem, var(--ion-color-error));
+
+              @include breakpoint-size(ms-small) {
+                font-size: var(--font-size-sm);
+              }
+
+              @include breakpoint-size(ms-medium) {
+                font-size: var(--font-size-md);
+              }
+
+              @include breakpoint-size(ms-extra-large) {
+                font-size: var(--font-size-xl);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

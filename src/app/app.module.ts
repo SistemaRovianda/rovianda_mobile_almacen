@@ -21,7 +21,12 @@ const DECLARATIONS = [AppComponent];
 
 const IMPORTS = [
   BrowserModule,
-  IonicModule.forRoot(),
+  IonicModule.forRoot({
+    scrollPadding: true,
+    scrollAssist: true,
+    inputBlurring: true,
+    inputShims: true,
+  }),
   AppRoutingModule,
   AngularFireAuthModule,
   StoreModule.forRoot(reducers, {
