@@ -12,45 +12,88 @@ form {
   height: 100%;
   .form-input,
   ion-datetime,
-  ion-textarea {
+  ion-textarea,
+  ion-select {
     color: $color-text-tertiary;
     margin-top: 0 20px;
     width: 100%;
 
-    .ion-label {
-      --color: black;
+    @include breakpoint-size(ms-extra-small) {
+      font-size: var(--fs-text-xsm);
+    }
+
+    @include breakpoint-size(ms-small) {
+      font-size: var(--fs-text-sm);
+    }
+
+    @include breakpoint-size(ms-extra-large) {
+      font-size: var(--fs-text-xl);
+    }
+  }
+
+  ion-row {
+    ion-item {
       @include breakpoint-size(ms-extra-small) {
-        font-size: var(--fs-text-title-xsm);
+        font-size: var(--fs-text-xsm);
       }
 
       @include breakpoint-size(ms-small) {
-        font-size: var(--fs-text-title-sm);
+        font-size: var(--fs-text-sm);
       }
 
       @include breakpoint-size(ms-extra-large) {
-        font-size: var(--fs-text-title-xl);
+        font-size: var(--fs-text-xl);
+      }
+    }
+
+    ion-label.ion-label {
+      --color: black;
+      margin: 10px 0;
+
+      @include breakpoint-size(ms-extra-small) {
+        font-size: var(--fs-text-xsm);
+      }
+
+      @include breakpoint-size(ms-small) {
+        font-size: var(--fs-text-sm);
+      }
+
+      @include breakpoint-size(ms-extra-large) {
+        font-size: var(--fs-text-xl);
       }
     }
   }
+
   .error {
     margin-top: 2%;
     color: tomato;
     height: 2%;
     transform: 2s;
     @include breakpoint-size(ms-extra-small) {
-      font-size: var(--fs-text-title-xsm);
+      font-size: var(--fs-text-error-xsm);
     }
 
     @include breakpoint-size(ms-small) {
-      font-size: var(--fs-text-title-sm);
+      font-size: var(--fs-text-error-sm);
     }
 
     @include breakpoint-size(ms-extra-large) {
-      font-size: var(--fs-text-title-xl);
+      font-size: var(--fs-text-error-xl);
     }
   }
 
   ion-textarea {
     width: 100vw;
+    @include breakpoint-size(ms-extra-small) {
+      font-size: var(--fs-text-xsm);
+    }
+
+    @include breakpoint-size(ms-small) {
+      font-size: var(--fs-text-sm);
+    }
+
+    @include breakpoint-size(ms-extra-large) {
+      font-size: var(--fs-text-xl);
+    }
   }
 }

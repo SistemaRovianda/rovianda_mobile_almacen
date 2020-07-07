@@ -12,12 +12,25 @@ form {
   height: 100%;
   width: 100%;
   .form-input,
-  ion-datetime {
+  ion-datetime,
+  ion-select {
     color: $color-text-tertiary;
     margin-top: 20px;
     width: 100%;
 
-    .ion-label {
+    @include breakpoint-size(ms-extra-small) {
+      font-size: var(--fs-text-xsm);
+    }
+
+    @include breakpoint-size(ms-small) {
+      font-size: var(--fs-text-sm);
+    }
+
+    @include breakpoint-size(ms-extra-large) {
+      font-size: var(--fs-text-xl);
+    }
+
+    ion-label {
       --color: black;
       @include breakpoint-size(ms-extra-small) {
         font-size: var(--fs-text-title-xsm);
@@ -38,15 +51,15 @@ form {
     height: 2%;
     transform: 2s;
     @include breakpoint-size(ms-extra-small) {
-      font-size: var(--fs-text-title-xsm);
+      font-size: var(--fs-text-error-xsm);
     }
 
     @include breakpoint-size(ms-small) {
-      font-size: var(--fs-text-title-sm);
+      font-size: var(--fs-text-error-sm);
     }
 
     @include breakpoint-size(ms-extra-large) {
-      font-size: var(--fs-text-title-xl);
+      font-size: var(--fs-text-error-xl);
     }
   }
   ion-button {

@@ -59,31 +59,18 @@ $color-primary: #e2bd53;
       box-sizing: border-box;
       ion-item {
         color: $color-text-ternary;
-
-        @include breakpoint-size(ms-extra-small) {
-          font-size: var(--fs-text-title-xsm);
-        }
-
-        @include breakpoint-size(ms-small) {
-          font-size: var(--fs-text-title-sm);
-        }
-
-        @include breakpoint-size(ms-extra-large) {
-          font-size: var(--fs-text-title-xl);
-        }
-
         .item-form {
           color: $color-text-ternary;
           @include breakpoint-size(ms-extra-small) {
-            font-size: var(--fs-text-title-xsm);
+            font-size: var(--fs-text-xsm);
           }
 
           @include breakpoint-size(ms-small) {
-            font-size: var(--fs-text-title-sm);
+            font-size: var(--fs-text-sm);
           }
 
           @include breakpoint-size(ms-extra-large) {
-            font-size: var(--fs-text-title-xl);
+            font-size: var(--fs-text-xl);
           }
         }
         &.item-has-focus {
@@ -91,14 +78,41 @@ $color-primary: #e2bd53;
             color: #e2bd53;
           }
         }
+
+        ion-label {
+          --color: black;
+          margin: 10px 0;
+          @include breakpoint-size(ms-extra-small) {
+            font-size: var(--fs-text-xsm);
+          }
+
+          @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-sm);
+          }
+
+          @include breakpoint-size(ms-extra-large) {
+            font-size: var(--fs-text-xl);
+          }
+        }
       }
     }
     .error {
       margin-top: 1vh;
       height: 2vh;
-      font-size: 2.7vw;
       color: red;
       transition: all 2s;
+
+      @include breakpoint-size(ms-extra-small) {
+        font-size: var(--fs-text-error-xsm);
+      }
+
+      @include breakpoint-size(ms-small) {
+        font-size: var(--fs-text-error-sm);
+      }
+
+      @include breakpoint-size(ms-extra-large) {
+        font-size: var(--fs-text-error-xl);
+      }
     }
   }
   .footer-container {
@@ -113,13 +127,26 @@ $color-primary: #e2bd53;
     .row-button {
       width: 100%;
       padding: 0 30%;
-      .button {
+      ion-button {
         --ion-color-primary: #e2bd53;
         --padding-top: 3%;
         width: 100%;
         height: 35%;
         margin-top: 10%;
-        font-size: 2.7vw;
+
+        ion-grid ion-col {
+          @include breakpoint-size(ms-extra-small) {
+            font-size: var(--fs-text-xsm) !important;
+          }
+
+          @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-sm) !important;
+          }
+
+          @include breakpoint-size(ms-extra-large) {
+            font-size: var(--fs-text-xl) !important;
+          }
+        }
       }
     }
   }

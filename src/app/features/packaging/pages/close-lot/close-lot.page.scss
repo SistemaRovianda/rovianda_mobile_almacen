@@ -45,17 +45,43 @@ $color-text-ternary: black;
       box-sizing: border-box;
 
       ion-item {
-        font-size: 1.3rem;
         color: $color-text-ternary;
 
         .item-form {
-          font-size: 1.3rem;
           color: $color-text-ternary;
+
+          @include breakpoint-size(ms-extra-small) {
+            font-size: var(--fs-text-xsm);
+          }
+
+          @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-sm);
+          }
+
+          @include breakpoint-size(ms-extra-large) {
+            font-size: var(--fs-text-xl);
+          }
         }
 
         &.item-has-focus {
           ion-label {
             color: #e2bd53;
+          }
+        }
+
+        ion-label {
+          --color: black;
+          margin: 10px 0;
+          @include breakpoint-size(ms-extra-small) {
+            font-size: var(--fs-text-xsm);
+          }
+
+          @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-sm);
+          }
+
+          @include breakpoint-size(ms-extra-large) {
+            font-size: var(--fs-text-xl);
           }
         }
       }
@@ -64,9 +90,19 @@ $color-text-ternary: black;
     .error {
       margin-top: 1vh;
       height: 2vh;
-      font-size: 2.7vw;
       color: red;
       transition: all 2s;
+      @include breakpoint-size(ms-extra-small) {
+        font-size: var(--fs-text-error-xsm);
+      }
+
+      @include breakpoint-size(ms-small) {
+        font-size: var(--fs-text-error-sm);
+      }
+
+      @include breakpoint-size(ms-extra-large) {
+        font-size: var(--fs-text-error-xl);
+      }
     }
   }
   .footer-container {
@@ -83,13 +119,26 @@ $color-text-ternary: black;
     .row-button {
       padding: 0 30%;
 
-      .button {
+      ion-button {
         --ion-color-primary: #e2bd53;
         --padding-top: 3%;
         width: 100%;
         height: 35%;
         margin-top: 10%;
-        font-size: 3vw;
+
+        ion-grid ion-col {
+          @include breakpoint-size(ms-extra-small) {
+            font-size: var(--fs-text-xsm) !important;
+          }
+
+          @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-sm) !important;
+          }
+
+          @include breakpoint-size(ms-extra-large) {
+            font-size: var(--fs-text-xl) !important;
+          }
+        }
       }
     }
   }
@@ -98,7 +147,17 @@ $color-text-ternary: black;
 ::ng-deep ion-action-sheet {
   --background: white !important;
   --color: black !important;
-  font-size: 3vw !important;
+  @include breakpoint-size(ms-extra-small) {
+    font-size: var(--fs-text-xsm);
+  }
+
+  @include breakpoint-size(ms-small) {
+    font-size: var(--fs-text-sm);
+  }
+
+  @include breakpoint-size(ms-extra-large) {
+    font-size: var(--fs-text-xl);
+  }
 }
 
 ::ng-deep .action-sheet-button {

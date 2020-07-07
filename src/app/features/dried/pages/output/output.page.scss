@@ -46,14 +46,27 @@ $color-text-tertiary: var(--ion-color-tertiary);
   }
   .row-button {
     padding: 0 30%;
-    .button {
+    ion-button {
       --ion-color-primary: #e2bd53;
       --padding-top: 3%;
       width: 100%;
       height: 35%;
       margin-top: 10%;
-      font-size: 3vw;
       text-transform: none;
+    }
+
+    ion-grid ion-col {
+      @include breakpoint-size(ms-extra-small) {
+        font-size: var(--fs-text-xsm) !important;
+      }
+
+      @include breakpoint-size(ms-small) {
+        font-size: var(--fs-text-sm) !important;
+      }
+
+      @include breakpoint-size(ms-extra-large) {
+        font-size: var(--fs-text-xl) !important;
+      }
     }
   }
 }
