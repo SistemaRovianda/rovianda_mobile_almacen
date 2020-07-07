@@ -1,39 +1,90 @@
+@import "../../../../../theme/mixins.scss";
+
 $color-text-primary: #575552;
 $color-text-secondary: #717171;
 $color-text-ternary: black;
 $color-primary: #e2bd53;
 
 .exit-lot-container {
+  overflow: auto;
   width: 100%;
   height: 100%;
   background-color: white;
+
   .header-container {
     color: $color-text-primary;
     font-weight: 700;
-    font-size: 4.5vw;
     margin-top: 5%;
     margin-left: 5%;
     margin-bottom: 5%;
+
+    @include breakpoint-size(ms-extra-small) {
+      font-size: var(--fs-text-title-xsm);
+    }
+
+    @include breakpoint-size(ms-small) {
+      margin: 20px;
+      font-size: var(--fs-text-title-sm);
+    }
+
+    @include breakpoint-size(ms-extra-large) {
+      margin: 25px;
+      font-size: var(--fs-text-title-xl);
+    }
   }
+
   .body-container {
     width: 100%;
-    height: 60%;
+    height: auto;
     padding: 0 5%;
     box-sizing: border-box;
     .subtitle {
       color: $color-primary;
-      font-size: 3.8vw;
+
+      @include breakpoint-size(ms-extra-small) {
+        font-size: var(--fs-text-title-xsm);
+      }
+
+      @include breakpoint-size(ms-small) {
+        font-size: var(--fs-text-title-sm);
+      }
+
+      @include breakpoint-size(ms-extra-large) {
+        font-size: var(--fs-text-title-xl);
+      }
     }
     ion-row {
       margin: 0;
       margin-top: 4%;
       box-sizing: border-box;
       ion-item {
-        font-size: 4.2vw;
         color: $color-text-ternary;
+
+        @include breakpoint-size(ms-extra-small) {
+          font-size: var(--fs-text-title-xsm);
+        }
+
+        @include breakpoint-size(ms-small) {
+          font-size: var(--fs-text-title-sm);
+        }
+
+        @include breakpoint-size(ms-extra-large) {
+          font-size: var(--fs-text-title-xl);
+        }
+
         .item-form {
-          font-size: 1.3rem;
           color: $color-text-ternary;
+          @include breakpoint-size(ms-extra-small) {
+            font-size: var(--fs-text-title-xsm);
+          }
+
+          @include breakpoint-size(ms-small) {
+            font-size: var(--fs-text-title-sm);
+          }
+
+          @include breakpoint-size(ms-extra-large) {
+            font-size: var(--fs-text-title-xl);
+          }
         }
         &.item-has-focus {
           ion-label {

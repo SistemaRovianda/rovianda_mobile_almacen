@@ -1,5 +1,7 @@
-$color-secundary: #707070;
-$color-text-secondary: #b6b6b6;
+@import "../../../../../theme/mixins.scss";
+
+$color-secundary: var(--ion-color-secondary);
+$color-text-tertiary: var(--ion-color-tertiary);
 
 .container {
   width: 100vw;
@@ -11,21 +13,41 @@ form {
   .form-input,
   ion-datetime,
   ion-textarea {
-    color: $color-text-secondary;
+    color: $color-text-tertiary;
     margin-top: 0 20px;
     width: 100%;
 
     .ion-label {
       --color: black;
-      font-size: 1.5rem;
+      @include breakpoint-size(ms-extra-small) {
+        font-size: var(--fs-text-title-xsm);
+      }
+
+      @include breakpoint-size(ms-small) {
+        font-size: var(--fs-text-title-sm);
+      }
+
+      @include breakpoint-size(ms-extra-large) {
+        font-size: var(--fs-text-title-xl);
+      }
     }
   }
   .error {
     margin-top: 2%;
     color: tomato;
-    font-size: 1.7vw;
     height: 2%;
     transform: 2s;
+    @include breakpoint-size(ms-extra-small) {
+      font-size: var(--fs-text-title-xsm);
+    }
+
+    @include breakpoint-size(ms-small) {
+      font-size: var(--fs-text-title-sm);
+    }
+
+    @include breakpoint-size(ms-extra-large) {
+      font-size: var(--fs-text-title-xl);
+    }
   }
 
   ion-textarea {

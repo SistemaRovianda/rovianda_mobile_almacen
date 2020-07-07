@@ -1,39 +1,63 @@
-$color-text-primary: #575552;
-$color-text-secondary: #b2b2b2;
+@import "../../../../../theme/mixins.scss";
 
-  .title-menu {
-    color: $color-text-primary;
-    font-size: 3.8vw;
-    margin-top: 5%;
-    font-weight: 700;
-    margin-left: 5%;
-  }
-  .subtitle-menu {
-    color: $color-text-secondary;
-    margin-top: 4%;
-    font-size: 3.4vw;
-    margin-left: 5%;
-    margin-bottom: 15%;
-  }
-  .footer {
-    height: 30%;
-    ion-row {
-      height: 75%;
-    }
-    .row-stepper {
-      height: 25%;
-    }
-    .row-button {
-      padding: 0 30%;
-      .button {
-        --ion-color-primary: #e2bd53;
-        --padding-top: 3%;
-        width: 100%;
-        height: 35%;
-        margin-top: 10%;
-        font-size: 3vw;
-        text-transform: none;
-      }
-    }
+$color-text-secondary: var(--ion-color-secondary);
+$color-text-tertiary: var(--ion-color-tertiary);
+
+.title-menu {
+  color: $color-text-secondary;
+  font-size: 3.8vw;
+  margin-top: 5%;
+  font-weight: 700;
+  margin-left: 5%;
+
+  @include breakpoint-size(ms-extra-small) {
+    font-size: var(--fs-text-title-xsm);
   }
 
+  @include breakpoint-size(ms-small) {
+    font-size: var(--fs-text-title-sm);
+  }
+
+  @include breakpoint-size(ms-extra-large) {
+    font-size: var(--fs-text-title-xl);
+  }
+}
+.subtitle-menu {
+  color: $color-text-tertiary;
+  margin-top: 4%;
+  margin-left: 5%;
+  margin-bottom: 15%;
+
+  @include breakpoint-size(ms-extra-small) {
+    font-size: var(--fs-text-title-xsm);
+  }
+
+  @include breakpoint-size(ms-small) {
+    font-size: var(--fs-text-title-sm);
+  }
+
+  @include breakpoint-size(ms-extra-large) {
+    font-size: var(--fs-text-title-xl);
+  }
+}
+.footer {
+  height: 30%;
+  ion-row {
+    height: 75%;
+  }
+  .row-stepper {
+    height: 25%;
+  }
+  .row-button {
+    padding: 0 30%;
+    .button {
+      --ion-color-primary: #e2bd53;
+      --padding-top: 3%;
+      width: 100%;
+      height: 35%;
+      margin-top: 10%;
+      font-size: 3vw;
+      text-transform: none;
+    }
+  }
+}

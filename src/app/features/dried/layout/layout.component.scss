@@ -1,16 +1,32 @@
-$color-text-primary: #575552;
-$color-text-secondary: #b2b2b2;
-$color-primary: #e2bd53;
+@import "../../../../theme/mixins.scss";
+
+$color-text-secondary: var(--ion-color-secondary);
+$color-text-tertiary: var(--ion-color-tertiary);
+$color-primary: var(--ion-color-primary);
 
 .title-menu {
-  color: $color-text-primary;
+  color: $color-text-secondary;
   font-size: 4vw;
   margin-top: 5%;
   font-weight: 700;
   margin-left: 5%;
+
+  @include breakpoint-size(ms-extra-small) {
+    margin: 15px;
+  }
+
+  @include breakpoint-size(ms-small) {
+    margin: 20px;
+    font-size: var(--fs-text-title-sm);
+  }
+
+  @include breakpoint-size(ms-extra-large) {
+    margin: 25px;
+    font-size: var(--fs-text-title-xl);
+  }
 }
 .subtitle-menu {
-  color: $color-text-secondary;
+  color: $color-text-tertiary;
   margin-top: 4%;
   font-size: 3.4vw;
   margin-left: 5%;
@@ -25,11 +41,15 @@ $color-primary: #e2bd53;
       height: 50%;
       ion-col {
         padding: 4% 8%;
+        @include breakpoint-size(ms-landscape) {
+          padding: 1% 8%;
+        }
+
         box-sizing: border-box;
         ion-button {
           height: 100%;
           width: 100%;
-          --background: $color-text-primary;
+          --background: $color-text-secondary;
           border-radius: 5px;
           font-size: 4vw;
           font-weight: 500;
@@ -39,6 +59,11 @@ $color-primary: #e2bd53;
       }
       .segment-odd {
         padding: 4% 8%;
+
+        @include breakpoint-size(ms-landscape) {
+          padding: 1% 8%;
+        }
+
         ion-button {
           max-width: 200%;
         }
@@ -69,6 +94,6 @@ $color-primary: #e2bd53;
 }
 
 .segment-button-checked {
-  background-color: $color-text-primary !important;
+  background-color: $color-text-secondary !important;
   color: white;
 }

@@ -5,6 +5,7 @@
       <h1 class="title-menu">Menú</h1>
     </ion-col>
   </ion-row>
+
   <ion-segment class="body">
     <ion-grid>
       <ion-row>
@@ -12,6 +13,7 @@
           <ion-button
             [routerLink]="['/packaging/open-lot']"
             style="--background: #575552;"
+            class="text-button"
             >Abrir lote</ion-button
           >
         </ion-col>
@@ -19,6 +21,7 @@
           <ion-button
             [routerLink]="['/packaging/close-lot']"
             style="--background: #575552;"
+            class="text-button"
             >Cerrar lote</ion-button
           >
         </ion-col>
@@ -28,12 +31,14 @@
           <ion-button
             [routerLink]="['/packaging/exit-lot']"
             style="--background: #575552;"
+            class="text-button"
             >Salida</ion-button
           >
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-segment>
+
   <!-- <ion-grid class="footer">
     <ion-row class="row-stepper">
       <ion-col size="12"

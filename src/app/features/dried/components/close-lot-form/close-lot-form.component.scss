@@ -1,5 +1,7 @@
-$color-secundary: #707070;
-$color-text-secondary: #b6b6b6;
+@import "../../../../../theme/mixins.scss";
+
+$color-secondary: var(--ion-color-secondary);
+$color-text-tertiary: var(--ion-color-tertiary);
 
 .container {
   width: 100vw;
@@ -11,31 +13,62 @@ form {
   width: 100%;
   .form-input,
   ion-datetime {
-    color: $color-text-secondary;
+    color: $color-text-tertiary;
     margin-top: 20px;
     width: 100%;
 
     .ion-label {
       --color: black;
-      font-size: 1.5rem;
+      @include breakpoint-size(ms-extra-small) {
+        font-size: var(--fs-text-title-xsm);
+      }
+
+      @include breakpoint-size(ms-small) {
+        font-size: var(--fs-text-title-sm);
+      }
+
+      @include breakpoint-size(ms-extra-large) {
+        font-size: var(--fs-text-title-xl);
+      }
     }
   }
   .error {
     margin-top: 2%;
     color: tomato;
-    font-size: 1.7vw;
     height: 2%;
     transform: 2s;
+    @include breakpoint-size(ms-extra-small) {
+      font-size: var(--fs-text-title-xsm);
+    }
+
+    @include breakpoint-size(ms-small) {
+      font-size: var(--fs-text-title-sm);
+    }
+
+    @include breakpoint-size(ms-extra-large) {
+      font-size: var(--fs-text-title-xl);
+    }
   }
   ion-button {
     height: 10%;
     width: 100%;
     text-transform: none;
-    font-size: 3vw;
     font-weight: 20;
     margin: 0;
     margin-top: 18%;
     border-radius: 5px;
-    --ion-color-primary: #e2bd53;
+    --ion-color-primary: var(--ion-color-primary);
+
+    @include breakpoint-size(ms-extra-small) {
+      font-size: var(--fs-text-title-xsm);
+    }
+
+    @include breakpoint-size(ms-small) {
+      font-size: var(--fs-text-title-sm);
+    }
+
+    @include breakpoint-size(ms-extra-large) {
+      font-size: var(--fs-text-title-xl);
+    }
   }
 }
