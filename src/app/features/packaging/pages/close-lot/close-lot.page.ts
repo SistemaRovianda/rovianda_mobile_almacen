@@ -1,23 +1,16 @@
 import { Component, OnInit } from "@angular/core";
-import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
-import {
-  LotInterface,
-  STATUS_LOT,
-  lotResponse,
-} from "src/app/shared/Models/lot.interface";
-import { ProductInterface } from "src/app/shared/Models/product.interface";
-import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import { AlertController } from "@ionic/angular";
 import * as fromStepperActions from "src/app/features/packaging/store/stepper/stepper-packaging.actions";
+import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
+import { lotResponse, STATUS_LOT } from "src/app/shared/Models/lot.interface";
+import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dialog.component";
 import {
-  SELECT_PACKAGING_LOTS,
-  SELECT_PACKAGING_PRODUCTS,
   SELECT_PACKAGING_LOADING,
+  SELECT_PACKAGING_LOTS,
 } from "../../store/packaging/packaging.select";
-import * as fromPackagingActions from "src/app/features/packaging/store/packaging/packaging.actions";
-import { closeLotStartLoad } from "../../store/close-lot/close-lot.actions";
 
 @Component({
   selector: "app-close-lot",
@@ -42,7 +35,7 @@ export class CloseLotPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
-    private alertCtrl: AlertController
+    public modalController: ModalController
   ) {
     this.loading = false;
     this.lotForm = this.fb.group({
@@ -77,36 +70,27 @@ export class CloseLotPage implements OnInit {
   }
 
   requestCloseLot() {
-    this.createAlert();
+    this.openModal();
   }
 
-  async createAlert() {
-    const alert = await this.alertCtrl.create({
-      header: "Cerrar Lote",
-      message: "Presione 'Confirmar' para cerrar el lote",
-      buttons: [
-        {
-          text: "Cancelar",
-          role: "cancel",
-        },
-        {
-          text: "Confirmar",
-          handler: () => {
-            this.store.dispatch(
-              closeLotStartLoad({
-                lot: {
-                  loteId: this.serie.value.loteId,
-                  productId: this.product.value,
-                  date: new Date(this.date.value).toISOString().split("T")[0],
-                  status: "CLOSED",
-                },
-              })
-            );
-          },
-        },
-      ],
+  async openModal() {
+    const lot = {
+      loteId: this.serie.value.loteId,
+      productId: this.product.value,
+      date: new Date(this.date.value).toISOString().split("T")[0],
+      status: "CLOSED",
+    };
+
+    const modal = await this.modalController.create({
+      component: MessageDialogComponent,
+      cssClass: "modal-size",
+      componentProps: {
+        lot: lot,
+        action: "cerrar",
+        type: "close",
+      },
     });
-    await alert.present();
+    return await modal.present();
   }
 
   get serie() {

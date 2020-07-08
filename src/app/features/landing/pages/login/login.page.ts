@@ -1,25 +1,18 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  AbstractControl,
-  Validators,
-  FormBuilder,
-  FormGroup,
-} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
 import * as fromLoginActions from "src/app/features/landing/store/login/login.action";
-import {
-  SELECT_IS_LOADING,
-  SELECT_LOGIN_ERROR,
-} from "../../store/login/login.selector";
-import { emailValidator } from "src/app/shared/Validators/email.validator";
-import { passwordValidator } from "src/app/shared/Validators/password.validator";
-import { StoreValidator } from "src/app/shared/Validators/store.validator";
 import {
   ERROR_EMAIL_NOT_FOUND,
   ERROR_PASSWORD_INVALID,
 } from "src/app/providers/conts";
+import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { StoreValidator } from "src/app/shared/Validators/store.validator";
 import { noWhiteSpace } from "src/app/shared/Validators/whitespace.validator";
+import {
+  SELECT_IS_LOADING,
+  SELECT_LOGIN_ERROR,
+} from "../../store/login/login.selector";
 
 @Component({
   selector: "app-login",

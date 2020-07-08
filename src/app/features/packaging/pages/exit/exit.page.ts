@@ -1,15 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
 import { FormBuilder, Validators } from "@angular/forms";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
-import { AlertController } from "@ionic/angular";
-import * as fromStepperActions from "src/app/features/packaging/store/stepper/stepper-packaging.actions";
-import * as fromExitActions from "src/app/features/packaging/store/exit/exit.actions";
 import * as fromExitSelector from "src/app/features/packaging/store/exit/exit.selector";
+import * as fromStepperActions from "src/app/features/packaging/store/stepper/stepper-packaging.actions";
+import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
-import { Router } from "@angular/router";
 import { noWhiteSpace } from "src/app/shared/Validators/whitespace.validator";
+import { GenerateReportComponent } from "../../dialogs/generate-report/generate-report.component";
 @Component({
   selector: "app-exit",
   templateUrl: "./exit.page.html",
@@ -29,8 +28,7 @@ export class ExitPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
-    private alertCtrl: AlertController,
-    private router: Router
+    public modalController: ModalController
   ) {}
 
   exitForm = this.fb.group({
@@ -43,10 +41,6 @@ export class ExitPage implements OnInit {
 
   ngOnInit() {
     this.exitForm.valueChanges.subscribe((_) => this.checkValues());
-    // this.store
-    //   .select(fromExitSelector.SELECT_PACKAGING_EXIT_LOADING)
-    //   .subscribe((tempLoading) => (this.loading = tempLoading));
-
     this.store
       .select(fromExitSelector.SELECT_PACKAGING_EXIT_PRODUCTS)
       .subscribe((tempProducts) => (this.products = tempProducts));
@@ -62,38 +56,28 @@ export class ExitPage implements OnInit {
   }
 
   requestExit() {
-    this.createAlert();
+    this.openModal();
   }
 
-  async createAlert() {
-    const alert = await this.alertCtrl.create({
-      message: "Una vez que genere el reporte este no podrá ser modificado",
-      buttons: [
-        {
-          text: "Cancelar",
-          role: "cancel",
-        },
-        {
-          text: "Confirmar",
-          handler: () => {
-            this.store.dispatch(
-              fromExitActions.exitLoadRequest({
-                request: {
-                  loteId: this.loteId.value,
-                  productId: this.product.value,
-                  quantity: this.quantity.value,
-                  name: this.name.value,
-                  date: new Date(this.date.value).toISOString().split("T")[0],
-                },
-              })
-            );
-            // this.router.navigate(["/packaging/print-report"]);
-          },
-        },
-      ],
+  async openModal() {
+    const request = {
+      loteId: this.loteId.value,
+      productId: this.product.value,
+      quantity: this.quantity.value,
+      name: this.name.value,
+      date: new Date(this.date.value).toISOString().split("T")[0],
+    };
+
+    const modal = await this.modalController.create({
+      component: GenerateReportComponent,
+      cssClass: "modal-size",
+      componentProps: {
+        request: request,
+      },
     });
-    await alert.present();
+    return await modal.present();
   }
+
   get date() {
     return this.exitForm.get("date");
   }

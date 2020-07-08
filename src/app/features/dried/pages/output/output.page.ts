@@ -6,14 +6,11 @@ import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
 import { Entrance, ExitLot } from "src/app/shared/Models/dried.interface";
 import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
 import { lotResponse } from "src/app/shared/Models/lot.interface";
-import { ProductInterface } from "src/app/shared/Models/product.interface";
+import * as fromStepper from "../../../packaging/store/stepper/stepper-packaging.actions";
+import { ExitLotFormComponent } from "../../components/exit-lot-form/exit-lot-form.component";
 import { GenerateReportComponent } from "../../dialogs/generate-report/generate-report.component";
 import * as fromCatalogLotsActions from "../../store/catalog-lots/catalog-lots.actions";
 import * as fromCatalogLots from "../../store/catalog-lots/catalog-lots.selector";
-import * as fromCatalogProductsActions from "../../store/catalog-products/catalog-products.actions";
-import * as fromCatalogProducts from "../../store/catalog-products/catalog-products.selector";
-import { ExitLotFormComponent } from "../../components/exit-lot-form/exit-lot-form.component";
-import * as fromStepper from "../../../packaging/store/stepper/stepper-packaging.actions";
 
 @Component({
   selector: "app-exit-lot",

@@ -1,23 +1,16 @@
 import { Component, OnInit } from "@angular/core";
-import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
 import { FormBuilder, Validators } from "@angular/forms";
+import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import * as fromStepperActions from "../../store/stepper/stepper-packaging.actions";
-import * as fromPackagingActios from "../../store/packaging/packaging.actions";
+import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
+import { lotResponse, STATUS_LOT } from "src/app/shared/Models/lot.interface";
+import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dialog.component";
 import {
-  LotInterface,
-  STATUS_LOT,
-  lotResponse,
-} from "src/app/shared/Models/lot.interface";
-import {
-  SELECT_PACKAGING_LOTS,
-  SELECT_PACKAGING_PRODUCTS,
   SELECT_PACKAGING_LOADING,
+  SELECT_PACKAGING_LOTS,
 } from "../../store/packaging/packaging.select";
-import { ProductInterface } from "src/app/shared/Models/product.interface";
-import { AlertController } from "@ionic/angular";
-import { openLotStarLoad } from "../../store/open-lot/open-lot.actions";
+import * as fromStepperActions from "../../store/stepper/stepper-packaging.actions";
 
 @Component({
   selector: "app-open-lot",
@@ -40,11 +33,11 @@ export class OpenLotePage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
-    private alert: AlertController
+    public modalController: ModalController
   ) {}
 
   lotForm = this.fb.group({
-    serie: ["", [Validators.required],],
+    serie: ["", [Validators.required]],
     product: ["", [Validators.required]],
     date: [new Date().toISOString(), [Validators.required]],
     status: [this.status.OPENED],
@@ -73,7 +66,7 @@ export class OpenLotePage implements OnInit {
   }
 
   requestOpenLote() {
-    this.createAlert();
+    this.openModal();
   }
 
   checkValues() {
@@ -88,32 +81,23 @@ export class OpenLotePage implements OnInit {
     this.product.setValue("");
   }
 
-  async createAlert() {
-    const alert = await this.alert.create({
-      header: "Abrir Lote",
-      message: "Presione 'Confirmar' para abrir el lote",
-      buttons: [
-        {
-          text: "Cancelar",
-          role: "cancel",
-        },
-        {
-          text: "Confirmar",
-          handler: () => {
-            this.store.dispatch(
-              openLotStarLoad({
-                lot: {
-                  loteId: this.serie.value.loteId,
-                  productId: this.product.value,
-                  date: new Date(this.date.value).toISOString().split("T")[0],
-                  status: "OPENED",
-                },
-              })
-            );
-          },
-        },
-      ],
+  async openModal() {
+    const lot = {
+      loteId: this.serie.value.loteId,
+      productId: this.product.value,
+      date: new Date(this.date.value).toISOString().split("T")[0],
+      status: "OPENED",
+    };
+
+    const modal = await this.modalController.create({
+      component: MessageDialogComponent,
+      cssClass: "modal-size",
+      componentProps: {
+        lot: lot,
+        action: "abrir",
+        type: "open",
+      },
     });
-    await alert.present();
+    return await modal.present();
   }
 }

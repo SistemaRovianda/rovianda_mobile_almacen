@@ -1,10 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { signOut } from "src/app/features/landing/store/login/login.action";
+import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
 import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
 import { MenuButtonInterface } from "src/app/shared/Models/menu-button.interface";
-import { Store } from "@ngrx/store";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import { loadMenuOption } from "../../store/menu/menu.action";
-import { signOut } from "src/app/features/landing/store/login/login.action";
 
 @Component({
   selector: "app-menu",

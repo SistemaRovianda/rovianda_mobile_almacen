@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import { Entrance } from "src/app/shared/Models/dried.interface";
+import { LotInterface } from "src/app/shared/Models/lot.interface";
 import * as fromActionsClose from "../../store/close-lot/close-lot.actions";
 import * as fromActions from "../../store/open-lot/open-lot.actions";
 
@@ -12,19 +12,16 @@ import * as fromActions from "../../store/open-lot/open-lot.actions";
   styleUrls: ["./message-dialog.component.scss"],
 })
 export class MessageDialogComponent implements OnInit {
-  entrance: Entrance;
+  lot: LotInterface;
   action: string;
   type: string;
-  warehouseDriefId: string;
 
   constructor(
     public modalController: ModalController,
     private store: Store<AppStateInterface>
   ) {}
 
-  ngOnInit() {
-    console.log("warehouseDriefId -->  ", this.warehouseDriefId);
-  }
+  ngOnInit() {}
 
   cancel() {
     this.modalController.dismiss();
@@ -33,16 +30,14 @@ export class MessageDialogComponent implements OnInit {
   save() {
     if (this.type == "open") {
       this.store.dispatch(
-        fromActions.openLot({
-          payload: this.entrance,
-          warehouseDriefId: this.warehouseDriefId,
+        fromActions.openLotStarLoad({
+          lot: this.lot,
         })
       );
     } else {
       this.store.dispatch(
-        fromActionsClose.closeLot({
-          payload: this.entrance,
-          warehouseDriefId: this.warehouseDriefId,
+        fromActionsClose.closeLotStartLoad({
+          lot: this.lot,
         })
       );
     }

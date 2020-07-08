@@ -8,6 +8,7 @@ import { ExitPage } from "./exit.page";
 import { Routes, RouterModule } from "@angular/router";
 import { ComponentsModule } from "src/app/shared/components/components.module";
 import { StepperModule } from "src/app/shared/components/stepper/stepper.module";
+import { GenerateReportModule } from "../../dialogs/generate-report/generate-report.module";
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
     ComponentsModule,
     ReactiveFormsModule,
     StepperModule,
+    GenerateReportModule,
   ],
   declarations: [ExitPage],
 })

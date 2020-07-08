@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { MenuButtonInterface } from "src/app/shared/Models/menu-button.interface";
+import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { MenuButtonInterface } from "src/app/shared/Models/menu-button.interface";
 import { StartLoadMenuOption } from "../../store/menu/menu.action";
-import { SELECT_IS_LOADING_MENU } from "../../store/menu/menu.selector";
 
 @Component({
   selector: "app-button-menu",

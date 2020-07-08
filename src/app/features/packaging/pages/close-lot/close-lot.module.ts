@@ -5,7 +5,8 @@ import { IonicModule } from "@ionic/angular";
 import { CloseLotPage } from "./close-lot.page";
 import { Routes, RouterModule } from "@angular/router";
 import { ComponentsModule } from "src/app/shared/components/components.module";
-import { StepperModule } from 'src/app/shared/components/stepper/stepper.module';
+import { StepperModule } from "src/app/shared/components/stepper/stepper.module";
+import { MessageDialogModule } from "../../dialogs/message-dialog/message-dialog.module";
 const routes: Routes = [
   {
     path: "",
@@ -21,7 +22,8 @@ const routes: Routes = [
     // RouterModule.forChild(routes),
     ComponentsModule,
     ReactiveFormsModule,
-    StepperModule
+    StepperModule,
+    MessageDialogModule,
   ],
   declarations: [CloseLotPage],
 })
