@@ -16,6 +16,7 @@ import { AuthGuard } from "./shared/guards/auth.guard";
 import { IsAuthGuard } from "./shared/guards/is-auth.guard";
 import { effects } from "./shared/store/effects/index.effects";
 import { metaReducers, reducers } from "./shared/store/reducers/index.reducer";
+import { IonicStorageModule } from "@ionic/storage";
 
 const DECLARATIONS = [AppComponent];
 
@@ -29,6 +30,7 @@ const IMPORTS = [
   }),
   AppRoutingModule,
   AngularFireAuthModule,
+  IonicStorageModule.forRoot(),
   StoreModule.forRoot(reducers, {
     metaReducers,
     runtimeChecks: {

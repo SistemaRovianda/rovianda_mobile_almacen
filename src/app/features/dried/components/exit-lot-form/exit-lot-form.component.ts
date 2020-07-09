@@ -23,7 +23,7 @@ export class ExitLotFormComponent implements OnInit {
     this.form = fb.group({
       loteId: ["", Validators.required],
       productId: ["", Validators.required],
-      observations: ["", [noWhiteSpace]],
+      observations: ["", []],
       date: [""],
     });
   }

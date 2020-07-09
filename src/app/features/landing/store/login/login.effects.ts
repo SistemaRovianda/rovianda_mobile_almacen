@@ -7,13 +7,15 @@ import * as fromLoginActions from "src/app/features/landing/store/login/login.ac
 import * as fromUserActions from "src/app/features/landing/store/user/user.action";
 import { AuthService } from "src/app/shared/Services/auth.service";
 import { dispatch } from "rxjs/internal/observable/pairs";
+import { Storage } from "@ionic/storage";
 
 @Injectable()
 export class LogginEffects {
   constructor(
     private action$: Actions,
     private _authService: AuthService,
-    private _router: Router
+    private _router: Router,
+    private _storage: Storage
   ) {}
 
   signInEffect$ = createEffect(() =>
@@ -48,7 +50,8 @@ export class LogginEffects {
       exhaustMap((action) =>
         this._authService.getTokenCurrentUser().pipe(
           switchMap(({ currentToken }) => {
-            localStorage.setItem("token", currentToken);
+            // localStorage.setItem("token", currentToken);
+            this._storage.set("token", currentToken);
             return [
               fromUserActions.loadUser({ currentToken }),
               fromLoginActions.signAuthSuccess({ uid: action.uid }),
@@ -57,7 +60,7 @@ export class LogginEffects {
           catchError((error) =>
             of(
               fromLoginActions.finishLoad(),
-              fromLoginActions.signInFailure({error})
+              fromLoginActions.signInFailure({ error })
             )
           )
         )
@@ -72,7 +75,8 @@ export class LogginEffects {
         this._authService.getUserData(action.uid).pipe(
           delay(3000),
           switchMap(({ name, lastSurname, firstSurname, email, rol }) => {
-            localStorage.setItem("role", rol);
+            // localStorage.setItem("role", rol);
+            this._storage.set("role", rol);
             return [
               fromUserActions.loadUser({
                 name,
@@ -86,7 +90,7 @@ export class LogginEffects {
           catchError((error) =>
             of(
               fromLoginActions.finishLoad(),
-              fromLoginActions.signInFailure({error})
+              fromLoginActions.signInFailure({ error })
             )
           )
         )
@@ -107,7 +111,7 @@ export class LogginEffects {
           catchError((error) =>
             of(
               fromLoginActions.finishLoad(),
-              fromLoginActions.signInFailure({error})
+              fromLoginActions.signInFailure({ error })
             )
           )
         )
