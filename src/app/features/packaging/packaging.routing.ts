@@ -43,10 +43,11 @@ const routes: Routes = [
       },
       {
         path: "exit-lot",
-        component: ExitPage,
+        data: { type: "PACKING", status: "OPENED" },
         resolve: {
-          exit: PackagingExitResolver,
+          exit: PackagingLotsResolver,
         },
+        component: ExitPage,
       },
       {
         path: "print-report",

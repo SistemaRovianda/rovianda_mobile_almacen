@@ -3,12 +3,15 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
 import * as fromExitSelector from "src/app/features/packaging/store/exit/exit.selector";
+import * as fromLotSelector from "src/app/features/packaging/store/packaging/packaging.select";
 import * as fromStepperActions from "src/app/features/packaging/store/stepper/stepper-packaging.actions";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
 import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
+import { lotResponse } from "src/app/shared/Models/lot.interface";
 import { noWhiteSpace } from "src/app/shared/Validators/whitespace.validator";
 import { GenerateReportComponent } from "../../dialogs/generate-report/generate-report.component";
+import { Observable } from "rxjs";
 @Component({
   selector: "app-exit",
   templateUrl: "./exit.page.html",
@@ -24,6 +27,8 @@ export class ExitPage implements OnInit {
   loading: boolean;
 
   products: ProductInterface[];
+
+  lots$: Observable<lotResponse[]>;
 
   constructor(
     private fb: FormBuilder,
@@ -41,9 +46,11 @@ export class ExitPage implements OnInit {
 
   ngOnInit() {
     this.exitForm.valueChanges.subscribe((_) => this.checkValues());
-    this.store
-      .select(fromExitSelector.SELECT_PACKAGING_EXIT_PRODUCTS)
-      .subscribe((tempProducts) => (this.products = tempProducts));
+    // this.store
+    //   .select(fromExitSelector.SELECT_PACKAGING_EXIT_PRODUCTS)
+    //   .subscribe((tempProducts) => (this.products = tempProducts));
+
+    this.lots$ = this.store.select(fromLotSelector.SELECT_PACKAGING_LOTS);
   }
 
   checkValues() {
@@ -59,9 +66,14 @@ export class ExitPage implements OnInit {
     this.openModal();
   }
 
+  selectLot(evt) {
+    console.log("lote de proveedor: ", evt);
+    this.products = evt.detail.value.products;
+  }
+
   async openModal() {
     const request = {
-      loteId: this.loteId.value,
+      loteId: this.loteId.value.loteId,
       productId: this.product.value,
       quantity: this.quantity.value,
       name: this.name.value,
