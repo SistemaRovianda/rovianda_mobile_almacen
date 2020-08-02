@@ -24,19 +24,10 @@
         <ion-col>
           <ion-item>
             <ion-label position="floating">Lote de proveedor</ion-label>
-            <!-- <ion-input
-              class="item-form"
-              placeholder="Ingresa lote proveedor"
-              formControlName="loteId"
-            ></ion-input> -->
-
-
             <ion-select value="peperoni" [interfaceOptions]="customOptions" interface="action-sheet"
               formControlName="loteId" (ionChange)="selectLot($event)" placeholder="Selecciones Lote de proveedor">
               <ion-select-option *ngFor="let lot of lots$ | async" [value]="lot">{{lot.loteId}}</ion-select-option>
             </ion-select>
-
-
           </ion-item>
           <div class="error">
             <ion-label *ngIf="exitForm.hasError('required', 'loteId') &&
@@ -101,7 +92,7 @@
       <ion-button (click)="requestExit()" class="button" color="primary" [disabled]="exitForm.invalid">
         <ion-grid>
           <ion-row *ngIf="!loading">
-            <ion-col size="10" class="label">Crear reporte</ion-col>
+            <ion-col size="10" class="label">Registrar salida</ion-col>
             <ion-col size="2">
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </ion-col>
@@ -109,11 +100,6 @@
           <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
         </ion-grid>
       </ion-button>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        {{exitForm.value | json}}
-      </ion-col>
     </ion-row>
   </ion-grid>
 </div>
