@@ -10,7 +10,10 @@ import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dia
 import {
   SELECT_PACKAGING_LOADING,
   SELECT_PACKAGING_LOTS,
+  SELECT_PACKAGING_PRODUCTS,
 } from "../../store/packaging/packaging.select";
+import { ProductInterface } from 'src/app/shared/Models/product.interface';
+import { packagingSelectLot } from '../../store/packaging/packaging.actions';
 
 @Component({
   selector: "app-close-lot",
@@ -23,6 +26,8 @@ export class CloseLotPage implements OnInit {
     titlePath: "Regresar",
     title: "Empaque",
   };
+
+  products: ProductInterface[] = [];
 
   lots: lotResponse[] = [];
 
@@ -40,7 +45,6 @@ export class CloseLotPage implements OnInit {
     this.loading = false;
     this.lotForm = this.fb.group({
       serie: [{ value: "", disabled: this.loading }, [Validators.required]],
-      product: ["", [Validators.required]],
       date: [new Date().toISOString(), [Validators.required]],
       status: [this.status.CLOSED],
     });
@@ -48,6 +52,9 @@ export class CloseLotPage implements OnInit {
 
   ngOnInit() {
     this.lotForm.valueChanges.subscribe((_) => this.checkValues());
+    this.store
+      .select(SELECT_PACKAGING_PRODUCTS)
+      .subscribe((products) => (this.products = products));
     this.store
       .select(SELECT_PACKAGING_LOTS)
       .subscribe((tempLots) => (this.lots = tempLots));
@@ -65,8 +72,9 @@ export class CloseLotPage implements OnInit {
     );
   }
 
-  selectLot() {
-    this.product.setValue("");
+  selectLot(evt) {
+    let productId: string = evt.detail.value.productId;
+    this.store.dispatch(packagingSelectLot({ productId: productId, typeLots: "PACKING" }));
   }
 
   requestCloseLot() {
@@ -75,8 +83,7 @@ export class CloseLotPage implements OnInit {
 
   async openModal() {
     const lot = {
-      loteId: this.serie.value.loteId,
-      productId: this.product.value,
+      warehouseId: this.serie.value.warehouseId,
       date: new Date(this.date.value).toISOString().split("T")[0],
       status: "CLOSED",
     };

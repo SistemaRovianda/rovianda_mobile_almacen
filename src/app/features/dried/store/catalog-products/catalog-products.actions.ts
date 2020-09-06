@@ -7,7 +7,7 @@ const FETCH_ALL_PRODUCTS_SUCCESS = "['PRODUCTS'] Fetch All Products Success";
 
 const FETCH_ALL_PRODUCTS_ERROR = "['PRODUCTS'] Fetch All Products Error";
 
-export const fetchAllProducts = createAction(FETCH_ALL_PRODUCTS);
+export const fetchAllProducts = createAction(FETCH_ALL_PRODUCTS, props<{ typeProduct: string, status: string }>());
 
 export const fetchAllProductsSuccess = createAction(
   FETCH_ALL_PRODUCTS_SUCCESS,

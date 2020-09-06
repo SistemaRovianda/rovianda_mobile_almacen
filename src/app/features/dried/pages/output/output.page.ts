@@ -5,12 +5,13 @@ import { Observable } from "rxjs";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
 import { Entrance, ExitLot } from "src/app/shared/Models/dried.interface";
 import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
-import { lotResponse } from "src/app/shared/Models/lot.interface";
 import * as fromStepper from "../../../packaging/store/stepper/stepper-packaging.actions";
 import { ExitLotFormComponent } from "../../components/exit-lot-form/exit-lot-form.component";
 import { GenerateReportComponent } from "../../dialogs/generate-report/generate-report.component";
-import * as fromCatalogLotsActions from "../../store/catalog-lots/catalog-lots.actions";
-import * as fromCatalogLots from "../../store/catalog-lots/catalog-lots.selector";
+
+import * as fromCatalogProductsActions from "../..//store/catalog-products/catalog-products.actions";
+import * as fromCatalogoProducts from "../../store/catalog-products/catalog-products.selector";
+import { ProductInterface } from 'src/app/shared/Models/product.interface';
 
 @Component({
   selector: "app-exit-lot",
@@ -26,22 +27,22 @@ export class OutputPageComponent implements OnInit {
   @ViewChild(ExitLotFormComponent, { static: true })
   exitLotFormComponent: ExitLotFormComponent;
 
-  lots$: Observable<lotResponse[]> = this.store.select(
-    fromCatalogLots.fetchAllLots
+  products$: Observable<ProductInterface[]> = this.store.select(
+    fromCatalogoProducts.fetchAllProducts
   );
 
   constructor(
     public modalController: ModalController,
     private store: Store<AppStateInterface>
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.exitLotFormComponent.form.valueChanges.subscribe((_) =>
       this.checkForm()
     );
     this.store.dispatch(
-      fromCatalogLotsActions.fetchAllLots({
-        typeLot: "DRIEF",
+      fromCatalogProductsActions.fetchAllProducts({
+        typeProduct: "DRIEF",
         status: "OPENED",
       })
     );

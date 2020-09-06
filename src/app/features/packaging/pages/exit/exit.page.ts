@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
-import * as fromExitSelector from "src/app/features/packaging/store/exit/exit.selector";
 import * as fromLotSelector from "src/app/features/packaging/store/packaging/packaging.select";
 import * as fromStepperActions from "src/app/features/packaging/store/stepper/stepper-packaging.actions";
 import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
@@ -12,6 +11,7 @@ import { lotResponse } from "src/app/shared/Models/lot.interface";
 import { noWhiteSpace } from "src/app/shared/Validators/whitespace.validator";
 import { GenerateReportComponent } from "../../dialogs/generate-report/generate-report.component";
 import { Observable } from "rxjs";
+import { packagingSelectLot } from '../../store/packaging/packaging.actions';
 @Component({
   selector: "app-exit",
   templateUrl: "./exit.page.html",
@@ -34,7 +34,7 @@ export class ExitPage implements OnInit {
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
     public modalController: ModalController
-  ) {}
+  ) { }
 
   exitForm = this.fb.group({
     date: [new Date().toISOString(), [Validators.required]],
@@ -46,9 +46,14 @@ export class ExitPage implements OnInit {
 
   ngOnInit() {
     this.exitForm.valueChanges.subscribe((_) => this.checkValues());
-    // this.store
-    //   .select(fromExitSelector.SELECT_PACKAGING_EXIT_PRODUCTS)
-    //   .subscribe((tempProducts) => (this.products = tempProducts));
+
+    this.store
+      .select(fromLotSelector.SELECT_PACKAGING_PRODUCTS)
+      .subscribe((products) => (this.products = products));
+
+    this.store
+      .select(fromLotSelector.SELECT_PACKAGING_LOADING)
+      .subscribe((tempLoading) => (this.loading = tempLoading));
 
     this.lots$ = this.store.select(fromLotSelector.SELECT_PACKAGING_LOTS);
   }
@@ -66,14 +71,16 @@ export class ExitPage implements OnInit {
     this.openModal();
   }
 
-  selectLot(evt) {
+  selectProduct(evt) {
     console.log("lote de proveedor: ", evt);
-    this.products = evt.detail.value.products;
+    let productId = evt.detail.value.productId;
+    this.store.dispatch(packagingSelectLot({ productId: productId, typeLots: "PACKING" }));
+    this.product.setValue(productId);
   }
 
   async openModal() {
     const request = {
-      loteId: this.loteId.value.loteId,
+      loteId: this.loteId.value, // Se envia warehouseId
       productId: this.product.value,
       quantity: this.quantity.value,
       name: this.name.value,

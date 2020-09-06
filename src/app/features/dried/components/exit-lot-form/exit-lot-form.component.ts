@@ -4,7 +4,10 @@ import isEmpty from "lodash.isempty";
 import * as moment from "moment";
 import { lotResponse } from "src/app/shared/Models/lot.interface";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
-import { noWhiteSpace } from "src/app/shared/Validators/whitespace.validator";
+import { Store } from '@ngrx/store';
+import { AppStateInterface } from 'src/app/shared/Models/app-state.interface';
+import { LOTS_SELECTOR } from '../../store/catalog-lots/catalog-lots.selector';
+import { fetchAllLots } from '../../store/catalog-lots/catalog-lots.actions';
 
 @Component({
   selector: "exit-lot-form",
@@ -13,13 +16,14 @@ import { noWhiteSpace } from "src/app/shared/Validators/whitespace.validator";
 })
 export class ExitLotFormComponent implements OnInit {
   form: FormGroup;
-  @Input() lots: lotResponse[] = [];
+
+  @Input() products: ProductInterface[] = [];
 
   @Output("onSubmit") submit = new EventEmitter();
 
-  filterProducts: ProductInterface[] = [];
+  lots: lotResponse[] = [];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private _store: Store<AppStateInterface>) {
     this.form = fb.group({
       loteId: ["", Validators.required],
       productId: ["", Validators.required],
@@ -28,24 +32,30 @@ export class ExitLotFormComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._store.select(LOTS_SELECTOR).subscribe(res => this.lots = res);
+  }
 
   onSubmit() {
-    const { loteId, date, ...value } = this.form.value;
+    const { date, ...value } = this.form.value;
 
     const payload = {
       ...value,
-      loteId: loteId.loteId,
-      productId: parseInt(this.form.get("productId").value),
       date: moment().format("YYYY/MM/DD"),
     };
 
     this.submit.emit(payload);
   }
 
-  change() {
-    const value: lotResponse = this.form.get("loteId").value;
-    this.filterProducts = value.products;
+  onChangeLot(evt) {
+    console.log("product: ", evt.detail.value);
+    this.form.get("loteId").setValue(evt.detail.value.lot);
+  }
+
+  selectProduct(evt) {
+    console.log("producto seleccionado: ", evt.detail.value.productId);
+    this.form.get('productId').setValue(evt.detail.value.productId);
+    this._store.dispatch(fetchAllLots({ productId: evt.detail.value.productId, typeLot: "DRIEF" }))
   }
 
   disabled(e) {

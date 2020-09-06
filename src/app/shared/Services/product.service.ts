@@ -11,7 +11,7 @@ export class ProductService {
   url;
 
   constructor(private http: HttpClient) {
-    this.url = `${environment.basePath}/products`;
+    this.url = `${environment.basePath}/product/catalog`;
   }
 
   products: ProductInterface[] = [
@@ -41,16 +41,16 @@ export class ProductService {
     },
   ];
 
-  getProducts(loteId: number): Observable<any> {
-    return new Observable((observer) => {
-      observer.next(
-        this.products.filter((product) => {
-          return product.loteId === loteId;
-        })
-      );
-      observer.complete();
-    });
-  }
+  // getProducts(loteId: number): Observable<any> {
+  //   return new Observable((observer) => {
+  //     observer.next(
+  //       this.products.filter((product) => {
+  //         return product.loteId === loteId;
+  //       })
+  //     );
+  //     observer.complete();
+  //   });
+  // }
 
   getAllProductsPacking(): Observable<any> {
     return this.http.get<ProductInterface[]>(`${this.url}/PACKING`);
@@ -58,5 +58,9 @@ export class ProductService {
 
   getAllProductsDried(): Observable<any> {
     return this.http.get<ProductInterface[]>(`${this.url}/DRIEF`);
+  }
+
+  getProducts(type: string, status: string): Observable<any>{
+    return this.http.get<ProductInterface[]>(`${this.url}?type=${type}&status=${status}`) 
   }
 }

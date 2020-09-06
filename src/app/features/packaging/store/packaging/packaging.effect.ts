@@ -18,14 +18,14 @@ export class PackagingEffects {
     private router: Router
   ) {}
 
-  loadLotsEffect$ = createEffect(() =>
+  loadProductsEffect$ = createEffect(() =>
     this.action$.pipe(
       ofType(fromPackagingActions.packagingStartLoad),
       exhaustMap((action) =>
-        this.lotsService.getLots(action.lotsType, action.status).pipe(
+        this.productsService.getProducts(action.lotsType, action.status).pipe(
           delay(5000),
-          switchMap((lots) => [
-            fromPackagingActions.packagingLoadLots({ lots }),
+          switchMap((products) => [
+            fromPackagingActions.packagingLoadProducts({ products }),
             fromPackagingActions.packagingFinishLoad(),
           ])
         )
@@ -33,15 +33,21 @@ export class PackagingEffects {
     )
   );
 
-  loadProductsEffect$ = createEffect(() =>
+  // loadProductsEffect$ = createEffect(() => 
+  //         this.action$.pipe(
+  //           ofType(fromPackagingActions.packagingLoadLots)
+  //         )
+  // )
+
+  loadLotsEffect$ = createEffect(() =>
     this.action$.pipe(
       ofType(fromPackagingActions.packagingSelectLot),
       exhaustMap((action) =>
-        this.productsService
-          .getProducts(action.lot)
+        this.lotsService
+          .getLots(action.productId, action.typeLots)
           .pipe(
-            switchMap((products) => [
-              fromPackagingActions.packagingLoadProducts({ products }),
+            switchMap((lots) => [
+              fromPackagingActions.packagingLoadLots({ lots }),
               fromPackagingActions.packagingFinishLoad(),
             ])
           )

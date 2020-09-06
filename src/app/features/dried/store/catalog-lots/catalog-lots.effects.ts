@@ -9,13 +9,13 @@ import * as fromActions from "./catalog-lots.actions";
   providedIn: "root",
 })
 export class CatalogLotsEffects {
-  constructor(private actions$: Actions, private lotsService: LotsService) {}
+  constructor(private actions$: Actions, private lotsService: LotsService) { }
 
   products$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromActions.fetchAllLots),
       exhaustMap((action) =>
-        this.lotsService.getLots(action.typeLot, action.status).pipe(
+        this.lotsService.getLots(action.productId, action.typeLot).pipe(
           map((lots) => fromActions.fetchAllLotsSuccess({ lots })),
           catchError((error) => of(fromActions.fetchAllLotsError(error)))
         )

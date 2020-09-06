@@ -1,12 +1,14 @@
 import { ProductInterface } from "./product.interface";
 
 export interface LotInterface {
-  loteId: number;
+  loteId?: number;
   name?: string;
   productId?: number;
   quantity?: number;
   date?: string;
   status?: string;
+  lot?: string;
+  warehouseId?: string;
 }
 
 type statusLot = "OPENED" | "CLOSED" | "PENDING";

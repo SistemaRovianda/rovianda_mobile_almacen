@@ -3,6 +3,7 @@ import { ItemBackInterface } from "../../Models/item-back.interface";
 import { Store } from "@ngrx/store";
 import { AppStateInterface } from "../../Models/app-state.interface";
 import { SELECT_OPTION_SELECTED } from "src/app/features/menu/store/menu/menu.selector";
+import { packagingClearLots } from 'src/app/features/packaging/store/packaging/packaging.actions';
 
 @Component({
   selector: "app-header",
@@ -12,7 +13,7 @@ import { SELECT_OPTION_SELECTED } from "src/app/features/menu/store/menu/menu.se
 export class HeaderComponent implements OnInit {
   @Input() itemBack: ItemBackInterface;
 
-  @Output()
+  @Output('onBack')
   back = new EventEmitter<string>();
 
   constructor(private store: Store<AppStateInterface>) {}
@@ -21,5 +22,6 @@ export class HeaderComponent implements OnInit {
 
   onBack() {
     this.back.emit("back");
+    this.store.dispatch(packagingClearLots());
   }
 }

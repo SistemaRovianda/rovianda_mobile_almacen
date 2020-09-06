@@ -12,13 +12,13 @@ export class CatalogProductsEffects {
   constructor(
     private actions$: Actions,
     private productsService: ProductService
-  ) {}
+  ) { }
 
   products$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromActions.fetchAllProducts),
-      exhaustMap(() =>
-        this.productsService.getAllProductsDried().pipe(
+      exhaustMap((action) =>
+        this.productsService.getProducts(action.typeProduct, action.status).pipe(
           map((products) => fromActions.fetchAllProductsSuccess({ products })),
           catchError((error) => of(fromActions.fetchAllProductsError(error)))
         )

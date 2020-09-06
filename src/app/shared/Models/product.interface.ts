@@ -1,6 +1,8 @@
 export interface ProductInterface {
-  loteId: number;
-  description: string;
+  productId ?: string;
+  product?: string;
+  loteId?: number;
+  description?: string;
   id?: number;
   warehouseDriefId?: string;
   quantity?: string;

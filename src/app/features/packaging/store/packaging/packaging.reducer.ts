@@ -1,5 +1,5 @@
 import { PackagingInterface } from "src/app/shared/Models/packaging.interface";
-import { createReducer, on } from "@ngrx/store";
+import { createReducer, on, State } from "@ngrx/store";
 import * as fromPackagingActions from "./packaging.actions";
 import * as fromOpenLotActions from "../open-lot/open-lot.actions";
 import * as fromCloseLotActions from "../close-lot/close-lot.actions";
@@ -40,5 +40,9 @@ export const PackagingReducer = createReducer<PackagingInterface>(
   on(fromCloseLotActions.closeLotStartLoad, (state) => ({
     ...state,
     loading: true,
+  })),
+  on(fromPackagingActions.packagingClearLots, (state) => ({
+    ...state,
+    lots: []
   }))
 );

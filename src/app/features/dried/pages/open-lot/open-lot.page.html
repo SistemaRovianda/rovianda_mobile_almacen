@@ -8,18 +8,14 @@
       </ion-col>
     </ion-row>
     <ion-row size="12">
-      <open-lot-form
-        #form
-        (onSubmit)="onSubmit($event)"
-        [lots]="lots$ | async"
-      ></open-lot-form>
+      <open-lot-form #form (onSubmit)="onSubmit($event)" [products]="products$ | async"></open-lot-form>
     </ion-row>
   </ion-grid>
   <ion-grid class="footer">
     <ion-row class="row-stepper">
       <ion-col size="12">
-        <warehouse-stepper></warehouse-stepper
-      ></ion-col>
+        <warehouse-stepper></warehouse-stepper>
+      </ion-col>
     </ion-row>
     <ion-row class="row-button">
       <ion-button (click)="form.onSubmit()" [disabled]="form.form.invalid">

@@ -11,7 +11,7 @@
       </ion-col>
     </ion-row>
     <ion-row size="12">
-      <exit-lot-form #form (onSubmit)="onSubmit($event)" [lots]="lots$|async"></exit-lot-form>
+      <exit-lot-form #form (onSubmit)="onSubmit($event)" [products]="products$ | async"></exit-lot-form>
     </ion-row>
   </ion-grid>
   <ion-grid class="footer">

@@ -35,7 +35,7 @@ export const packagingLoadLots = createAction(
 
 export const packagingSelectLot = createAction(
   PACKAGING_SELECT_LOT,
-  props<{ lot: number }>()
+  props<{ productId: string, typeLots: string}>()
 );
 
 export const packagingLoadProducts = createAction(
@@ -44,3 +44,5 @@ export const packagingLoadProducts = createAction(
 );
 
 export const packagingLoadSuccess = createAction(PACKAGING_LOAD_SUCCESS);
+
+export const packagingClearLots = createAction('[PACKAGING] Clear lots');
