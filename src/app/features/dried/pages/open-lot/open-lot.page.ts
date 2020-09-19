@@ -10,7 +10,7 @@ import { OpenLotFormComponent } from "../../components/open-lot-form/open-lot-fo
 import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dialog.component";
 import * as fromCatalogProductsActions from "../..//store/catalog-products/catalog-products.actions";
 import * as fromCatalogoProducts from "../../store/catalog-products/catalog-products.selector";
-import { ProductInterface } from 'src/app/shared/Models/product.interface';
+import { ProductInterface } from "src/app/shared/Models/product.interface";
 
 @Component({
   selector: "open-lot",
@@ -34,7 +34,7 @@ export class OpenLotPageComponent implements OnInit {
   constructor(
     public modalController: ModalController,
     private store: Store<AppStateInterface>
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.openLotFormComponent.form.valueChanges.subscribe((_) =>
@@ -58,7 +58,6 @@ export class OpenLotPageComponent implements OnInit {
   }
 
   onSubmit(event) {
-    console.log("event: ", event);
     this.openModal(event.data, event.warehouseDriefId);
   }
 

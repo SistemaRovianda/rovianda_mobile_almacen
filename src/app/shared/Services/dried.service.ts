@@ -18,12 +18,10 @@ export class DriedService {
   }
 
   openLot(body: Entrance, warehouseDriefId: string): Observable<any> {
-    console.log("openLot: ", body);
     return this.http.patch<any>(`${this.url}/status/${warehouseDriefId}`, body);
   }
 
   closeLot(body: Entrance, warehouseDriefId: string): Observable<any> {
-    console.log("closeLot: ", body, warehouseDriefId);
     return this.http.patch<any>(`${this.url}/status/${warehouseDriefId}`, body);
   }
 

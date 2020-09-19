@@ -22,9 +22,7 @@ export class MessageDialogComponent implements OnInit {
     private store: Store<AppStateInterface>
   ) {}
 
-  ngOnInit() {
-    console.log("warehouseDriefId -->  ", this.warehouseDriefId);
-  }
+  ngOnInit() {}
 
   cancel() {
     this.modalController.dismiss();

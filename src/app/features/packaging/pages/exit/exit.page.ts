@@ -11,7 +11,7 @@ import { lotResponse } from "src/app/shared/Models/lot.interface";
 import { noWhiteSpace } from "src/app/shared/Validators/whitespace.validator";
 import { GenerateReportComponent } from "../../dialogs/generate-report/generate-report.component";
 import { Observable } from "rxjs";
-import { packagingSelectLot } from '../../store/packaging/packaging.actions';
+import { packagingSelectLot } from "../../store/packaging/packaging.actions";
 @Component({
   selector: "app-exit",
   templateUrl: "./exit.page.html",
@@ -34,7 +34,7 @@ export class ExitPage implements OnInit {
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
     public modalController: ModalController
-  ) { }
+  ) {}
 
   exitForm = this.fb.group({
     date: [new Date().toISOString(), [Validators.required]],
@@ -72,9 +72,10 @@ export class ExitPage implements OnInit {
   }
 
   selectProduct(evt) {
-    console.log("lote de proveedor: ", evt);
     let productId = evt.detail.value.productId;
-    this.store.dispatch(packagingSelectLot({ productId: productId, typeLots: "PACKING" }));
+    this.store.dispatch(
+      packagingSelectLot({ productId: productId, typeLots: "PACKING" })
+    );
     this.product.setValue(productId);
   }
 
