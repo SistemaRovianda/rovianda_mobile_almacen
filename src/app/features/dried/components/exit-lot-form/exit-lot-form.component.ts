@@ -4,10 +4,10 @@ import isEmpty from "lodash.isempty";
 import * as moment from "moment";
 import { lotResponse } from "src/app/shared/Models/lot.interface";
 import { ProductInterface } from "src/app/shared/Models/product.interface";
-import { Store } from '@ngrx/store';
-import { AppStateInterface } from 'src/app/shared/Models/app-state.interface';
-import { LOTS_SELECTOR } from '../../store/catalog-lots/catalog-lots.selector';
-import { fetchAllLots } from '../../store/catalog-lots/catalog-lots.actions';
+import { Store } from "@ngrx/store";
+import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { LOTS_SELECTOR } from "../../store/catalog-lots/catalog-lots.selector";
+import { fetchAllLots } from "../../store/catalog-lots/catalog-lots.actions";
 
 @Component({
   selector: "exit-lot-form",
@@ -23,7 +23,10 @@ export class ExitLotFormComponent implements OnInit {
 
   lots: lotResponse[] = [];
 
-  constructor(private fb: FormBuilder, private _store: Store<AppStateInterface>) {
+  constructor(
+    private fb: FormBuilder,
+    private _store: Store<AppStateInterface>
+  ) {
     this.form = fb.group({
       loteId: ["", Validators.required],
       productId: ["", Validators.required],
@@ -33,7 +36,7 @@ export class ExitLotFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._store.select(LOTS_SELECTOR).subscribe(res => this.lots = res);
+    this._store.select(LOTS_SELECTOR).subscribe((res) => (this.lots = res));
   }
 
   onSubmit() {
@@ -49,13 +52,12 @@ export class ExitLotFormComponent implements OnInit {
 
   onChangeLot(evt) {
     console.log("product: ", evt.detail.value);
-    this.form.get("loteId").setValue(evt.detail.value.lot);
   }
 
   selectProduct(evt) {
-    console.log("producto seleccionado: ", evt.detail.value.productId);
-    this.form.get('productId').setValue(evt.detail.value.productId);
-    this._store.dispatch(fetchAllLots({ productId: evt.detail.value.productId, typeLot: "DRIEF" }))
+    this._store.dispatch(
+      fetchAllLots({ productId: evt.detail.value, typeLot: "DRIEF" })
+    );
   }
 
   disabled(e) {

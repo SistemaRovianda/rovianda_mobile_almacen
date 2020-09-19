@@ -5,39 +5,62 @@
     <ion-row>
       <ion-item>
         <ion-label position="floating">Producto*</ion-label>
-        <ion-select class="item-form" interface="action-sheet" placeholder="Seleciona Lote"
-          (ionChange)="selectLot($event)" [disabled]="products.length ==0">
+        <ion-select
+          class="item-form"
+          interface="action-sheet"
+          placeholder="Selecione un producto"
+          (ionChange)="selectLot($event)"
+          [disabled]="products.length ==0"
+          formControlName="product"
+        >
           <ion-select-option *ngFor="let product of products" [value]="product">
-            {{product.product}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-row>
-    <!-- <div class="error">
-      <ion-label *ngIf="lotForm.hasError('required', 'serie') &&
-      (lotForm.controls.serie.touched || lotForm.controls.serie.dirty)">
-        Por favor seleccione un lote
-      </ion-label>
-    </div> -->
-    <ion-row>
-      <ion-item>
-        <ion-label position="floating">Lote de proveedor*</ion-label>
-        <ion-select class="item-form" interface="action-sheet" placeholder="Seleccione un producto"
-          formControlName="serie" [disabled]="lots.length == 0">
-          <ion-select-option *ngFor="let lot of lots" [value]="lot">{{lot.lot}}</ion-select-option>
+            {{product.product}}</ion-select-option
+          >
         </ion-select>
       </ion-item>
     </ion-row>
     <div class="error">
-      <ion-label *ngIf="lotForm.hasError('required', 'seire') &&
-      (lotForm.controls.serie.touched || lotForm.controls.serie.dirty)">
-        Por favor seleccione un producto
+      <ion-label
+        *ngIf="lotForm.hasError('required', 'product') &&
+      (lotForm.controls.product.touched || lotForm.controls.product.dirty)"
+      >
+        Seleccione un producto
+      </ion-label>
+    </div>
+    <ion-row>
+      <ion-item>
+        <ion-label position="floating">Lote de proveedor*</ion-label>
+        <ion-select
+          class="item-form"
+          interface="action-sheet"
+          placeholder="Seleccione un lote"
+          formControlName="serie"
+          [disabled]="lots.length == 0"
+        >
+          <ion-select-option *ngFor="let lot of lots" [value]="lot"
+            >{{lot.lot}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-row>
+    <div class="error">
+      <ion-label
+        *ngIf="lotForm.hasError('required', 'serie') &&
+      (lotForm.controls.serie.touched || lotForm.controls.serie.dirty)"
+      >
+        Seleccione un lote
       </ion-label>
     </div>
     <ion-row>
       <ion-item>
         <ion-label position="floating">Fecha de terminaci&oacute;n*</ion-label>
-        <ion-datetime class="item-form" placeholder="Ingresar fecha" displayFormat="MM/DD/YYYY" formControlName="date"
-          disabled>
+        <ion-datetime
+          class="item-form"
+          placeholder="Ingresar fecha"
+          displayFormat="MM/DD/YYYY"
+          formControlName="date"
+          disabled
+        >
         </ion-datetime>
       </ion-item>
     </ion-row>
@@ -54,7 +77,12 @@
       </ion-col>
     </ion-row>
     <ion-row class="row-button">
-      <ion-button color="primary" class="button" (click)="requestCloseLot()" [disabled]="lotForm.invalid">
+      <ion-button
+        color="primary"
+        class="button"
+        (click)="requestCloseLot()"
+        [disabled]="lotForm.invalid"
+      >
         <ion-grid>
           <ion-col *ngIf="!loading" size="12">Cerrar lote</ion-col>
           <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>

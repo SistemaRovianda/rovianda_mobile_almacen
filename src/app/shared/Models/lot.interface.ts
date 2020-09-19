@@ -22,4 +22,6 @@ export const STATUS_LOT: { [type in statusLot]: type } = {
 export interface lotResponse {
   loteId: string;
   products: ProductInterface[];
+  lot?: any;
+  warehouseId?: any;
 }

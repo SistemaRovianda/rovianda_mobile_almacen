@@ -12,8 +12,8 @@ import {
   SELECT_PACKAGING_LOTS,
   SELECT_PACKAGING_PRODUCTS,
 } from "../../store/packaging/packaging.select";
-import { ProductInterface } from 'src/app/shared/Models/product.interface';
-import { packagingSelectLot } from '../../store/packaging/packaging.actions';
+import { ProductInterface } from "src/app/shared/Models/product.interface";
+import { packagingSelectLot } from "../../store/packaging/packaging.actions";
 
 @Component({
   selector: "app-close-lot",
@@ -44,6 +44,7 @@ export class CloseLotPage implements OnInit {
   ) {
     this.loading = false;
     this.lotForm = this.fb.group({
+      product: [{ value: "", disabled: this.loading }, [Validators.required]],
       serie: [{ value: "", disabled: this.loading }, [Validators.required]],
       date: [new Date().toISOString(), [Validators.required]],
       status: [this.status.CLOSED],
@@ -74,7 +75,9 @@ export class CloseLotPage implements OnInit {
 
   selectLot(evt) {
     let productId: string = evt.detail.value.productId;
-    this.store.dispatch(packagingSelectLot({ productId: productId, typeLots: "PACKING" }));
+    this.store.dispatch(
+      packagingSelectLot({ productId: productId, typeLots: "PACKING" })
+    );
   }
 
   requestCloseLot() {

@@ -12,8 +12,8 @@ import {
   SELECT_PACKAGING_PRODUCTS,
 } from "../../store/packaging/packaging.select";
 import * as fromStepperActions from "../../store/stepper/stepper-packaging.actions";
-import { ProductInterface } from 'src/app/shared/Models/product.interface';
-import { packagingSelectLot } from '../../store/packaging/packaging.actions';
+import { ProductInterface } from "src/app/shared/Models/product.interface";
+import { packagingSelectLot } from "../../store/packaging/packaging.actions";
 
 @Component({
   selector: "app-open-lot",
@@ -39,9 +39,10 @@ export class OpenLotePage implements OnInit {
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
     public modalController: ModalController
-  ) { }
+  ) {}
 
   lotForm = this.fb.group({
+    product: ["", [Validators.required]],
     serie: ["", [Validators.required]],
     date: [new Date().toISOString(), [Validators.required]],
     status: [this.status.OPENED],
@@ -56,7 +57,9 @@ export class OpenLotePage implements OnInit {
       .select(SELECT_PACKAGING_LOADING)
       .subscribe((tempLoading) => (this.loading = tempLoading));
 
-    this.store.select(SELECT_PACKAGING_LOTS).subscribe(lots => (this.lots = lots));
+    this.store
+      .select(SELECT_PACKAGING_LOTS)
+      .subscribe((lots) => (this.lots = lots));
   }
 
   get serie() {
@@ -86,7 +89,9 @@ export class OpenLotePage implements OnInit {
 
   selectLot(evt) {
     let productId: string = evt.detail.value.productId;
-    this.store.dispatch(packagingSelectLot({ productId: productId, typeLots: "PACKING" }));
+    this.store.dispatch(
+      packagingSelectLot({ productId: productId, typeLots: "PACKING" })
+    );
   }
 
   async openModal() {

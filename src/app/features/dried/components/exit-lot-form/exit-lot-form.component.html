@@ -2,13 +2,17 @@
   <ion-grid fixed>
     <ion-row>
       <ion-item class="form-input">
-        <ion-label class="ion-label" position="floating">
-          Producto*
-        </ion-label>
-        <ion-select style="--placeholder-color: black; --placeholder-opacity: 0.9;" placeholder="Seleccione lote*"
-          interface="action-sheet" (ionChange)="selectProduct($event)" [disabled]="disabled(products)">
+        <ion-label class="ion-label" position="floating"> Producto* </ion-label>
+        <ion-select
+          style="--placeholder-color: black; --placeholder-opacity: 0.9"
+          placeholder="Seleccione un producto"
+          interface="action-sheet"
+          (ionChange)="selectProduct($event)"
+          [disabled]="disabled(products)"
+          formControlName="productId"
+        >
           <ng-container *ngFor="let product of products">
-            <ion-select-option [value]="product">
+            <ion-select-option [value]="product.productId">
               {{ product.product }}
             </ion-select-option>
           </ng-container>
@@ -16,22 +20,31 @@
       </ion-item>
     </ion-row>
     <div class="error">
-      <ion-label *ngIf="
-          form.hasError('required', 'loteId') &&
-          (form.controls.loteId.touched || form.controls.loteId.dirty)
-        ">
+      <ion-label
+        *ngIf="
+          form.hasError('required', 'productId') &&
+          (form.controls.productId.touched || form.controls.productId.dirty)
+        "
+      >
         Este campo es requerido.
       </ion-label>
     </div>
 
     <ion-row>
       <ion-item class="form-input">
-        <ion-label class="ion-label" position="floating">Lote de proveedor*</ion-label>
+        <ion-label class="ion-label" position="floating"
+          >Lote de proveedor*</ion-label
+        >
 
-        <ion-select placeholder="Seleccione un producto*" interface="action-sheet" (ionChange)="onChangeLot($event)"
-          [disabled]="disabled(lots)">
+        <ion-select
+          placeholder="Seleccione un lote"
+          interface="action-sheet"
+          (ionChange)="onChangeLot($event)"
+          [disabled]="disabled(lots)"
+          formControlName="loteId"
+        >
           <ng-container *ngFor="let lot of lots">
-            <ion-select-option [value]="lot">
+            <ion-select-option [value]="lot.lot">
               {{ lot.lot }}
             </ion-select-option>
           </ng-container>
@@ -39,17 +52,21 @@
       </ion-item>
     </ion-row>
     <div class="error">
-      <ion-label *ngIf="
-          form.hasError('required', 'productId') &&
-          (form.controls.productId.touched || form.controls.productId.dirty)
-        ">
+      <ion-label
+        *ngIf="
+          form.hasError('required', 'loteId') &&
+          (form.controls.loteId.touched || form.controls.loteId.dirty)
+        "
+      >
         Este campo es requerido.
       </ion-label>
     </div>
 
     <ion-row>
       <ion-item class="form-input">
-        <ion-label class="ion-label" position="floating">Observaciones</ion-label>
+        <ion-label class="ion-label" position="floating"
+          >Observaciones</ion-label
+        >
         <ion-textarea rows="3" formControlName="observations"></ion-textarea>
       </ion-item>
     </ion-row>

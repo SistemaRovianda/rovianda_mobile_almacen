@@ -2,86 +2,135 @@
 <div class="exit-lot-container">
   <h1 class="header-container">Informaci&oacute;n principal</h1>
   <form class="body-container" [formGroup]="exitForm">
-    <ion-label class="subtitle">
-      Salida
-    </ion-label>
+    <ion-label class="subtitle"> Salida </ion-label>
     <ion-grid>
-      <ion-row>
-        <ion-col size="6">
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="5">
           <ion-item>
             <ion-label position="floating">Fecha</ion-label>
-            <ion-datetime class="item-form" placeholder="Ingresar fecha" displayFormat="MM/DD/YYYY"
-              formControlName="date" disabled>
+            <ion-datetime
+              class="item-form"
+              placeholder="Ingresar fecha"
+              displayFormat="MM/DD/YYYY"
+              formControlName="date"
+              disabled
+            >
             </ion-datetime>
           </ion-item>
           <div class="error">
-            <ion-label *ngIf="exitForm.hasError('required', 'date') &&
-            (exitForm.controls.date.touched || exitForm.controls.date.dirty)">
+            <ion-label
+              *ngIf="exitForm.hasError('required', 'date') &&
+            (exitForm.controls.date.touched || exitForm.controls.date.dirty)"
+            >
               Seleccione una fecha
             </ion-label>
           </div>
         </ion-col>
-        <ion-col>
+        <ion-col size="6">
           <ion-item>
             <ion-label position="floating">Producto*</ion-label>
-            <ion-select value="peperoni" [interfaceOptions]="customOptions" interface="action-sheet"
-              (ionChange)="selectProduct($event)" placeholder="Seleccione un producto">
-              <ion-select-option *ngFor="let product of products" [value]="product">{{product.product}}
+            <ion-select
+              value="peperoni"
+              class="item-form"
+              [interfaceOptions]="customOptions"
+              interface="action-sheet"
+              (ionChange)="selectProduct($event)"
+              placeholder="Seleccione un producto"
+              formControlName="product"
+            >
+              <ion-select-option
+                *ngFor="let product of products"
+                [value]="product"
+                >{{product.product}}
               </ion-select-option>
             </ion-select>
           </ion-item>
           <div class="error">
-            <ion-label *ngIf="exitForm.hasError('required', 'loteId') &&
-            (exitForm.controls.loteId.touched || exitForm.controls.loteId.dirty)">
+            <ion-label
+              *ngIf="exitForm.hasError('required', 'product') &&
+            (exitForm.controls.product.touched || exitForm.controls.product.dirty)"
+            >
               Seleccione un producto
             </ion-label>
           </div>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col size="6">
+
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="5" class="ion-no-margin ion-justify-content-center">
           <ion-item>
             <ion-label position="floating">Lote*</ion-label>
-            <ion-select class="item-form" interface="action-sheet" placeholder="Seleccione un lote"
-              formControlName="loteId" [disabled]="loading">
-              <ion-select-option *ngFor="let lot of lots$ | async " [value]="lot.warehouseId">{{lot.lot}}
+            <ion-select
+              class="item-form"
+              interface="action-sheet"
+              placeholder="Seleccione un lote"
+              formControlName="loteId"
+              [disabled]="loading"
+            >
+              <ion-select-option
+                *ngFor="let lot of lots$ | async "
+                [value]="lot.warehouseId"
+                >{{lot.lot}}
               </ion-select-option>
             </ion-select>
           </ion-item>
           <div class="error">
-            <ion-label *ngIf="exitForm.hasError('required', 'product') &&
-            (exitForm.controls.product.touched || exitForm.controls.product.dirty)">
+            <ion-label
+              *ngIf="exitForm.hasError('required', 'loteId') &&
+            (exitForm.controls.loteId.touched || exitForm.controls.loteId.dirty)"
+            >
               Seleccione un lote
             </ion-label>
           </div>
         </ion-col>
-        <ion-col size="6">
+        <ion-col size="6" class="ion-justify-content-center">
           <ion-item>
-            <ion-label position="floating">Cantidad*</ion-label>
-            <ion-input type="number" class="item-form" placeholder="Ingresa cantidad" formControlName="quantity">
+            <ion-label
+              position="floating"
+              class="ion-no-margin"
+              style="margin: 0 0 6px 0 !important"
+              >Cantidad*</ion-label
+            >
+            <ion-input
+              type="number"
+              class="item-form"
+              placeholder="Ingresa cantidad"
+              formControlName="quantity"
+            >
             </ion-input>
           </ion-item>
           <div class="error">
-            <ion-label *ngIf="exitForm.hasError('required', 'quantity') &&
-            (exitForm.controls.quantity.touched || exitForm.controls.quantity.dirty)">
+            <ion-label
+              *ngIf="exitForm.hasError('required', 'quantity') &&
+            (exitForm.controls.quantity.touched || exitForm.controls.quantity.dirty)"
+            >
               Ingrese una cantidad
             </ion-label>
           </div>
         </ion-col>
       </ion-row>
+
       <ion-row>
-        <ion-item>
-          <ion-label position="floating">Nombre de quien saco*</ion-label>
-          <ion-input class="item-form" placeholder="Ingresa nombre" formControlName="name"></ion-input>
-        </ion-item>
+        <ion-col size="5">
+          <ion-item>
+            <ion-label position="floating">Nombre de quien saco*</ion-label>
+            <ion-input
+              class="item-form"
+              placeholder="Ingresa nombre"
+              formControlName="name"
+            ></ion-input>
+          </ion-item>
+          <div class="error">
+            <ion-label
+              *ngIf="exitForm.hasError('required', 'name') &&
+            (exitForm.controls.name.touched || exitForm.controls.name.dirty)"
+            >
+              Por favor ingrese un nombre
+            </ion-label>
+          </div>
+        </ion-col>
       </ion-row>
     </ion-grid>
-    <div class="error">
-      <ion-label *ngIf="exitForm.hasError('required', 'name') &&
-      (exitForm.controls.name.touched || exitForm.controls.name.dirty)">
-        Por favor ingrese un nombre
-      </ion-label>
-    </div>
   </form>
   <ion-grid class="footer-container">
     <ion-row class="row-stepper">
@@ -90,7 +139,12 @@
       </ion-col>
     </ion-row>
     <ion-row class="row-button">
-      <ion-button (click)="requestExit()" class="button" color="primary" [disabled]="exitForm.invalid">
+      <ion-button
+        (click)="requestExit()"
+        class="button"
+        color="primary"
+        [disabled]="exitForm.invalid"
+      >
         <ion-grid>
           <ion-row *ngIf="!loading">
             <ion-col size="10" class="label">Registrar salida</ion-col>
