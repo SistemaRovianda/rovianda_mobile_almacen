@@ -76,13 +76,12 @@ export class ExitPage implements OnInit {
     this.store.dispatch(
       packagingSelectLot({ productId: productId, typeLots: "PACKING" })
     );
-    this.product.setValue(productId);
   }
 
   async openModal() {
     const request = {
       loteId: this.loteId.value, // Se envia warehouseId
-      productId: this.product.value,
+      productId: this.product.value.productId,
       quantity: this.quantity.value,
       name: this.name.value,
       date: new Date(this.date.value).toISOString().split("T")[0],
