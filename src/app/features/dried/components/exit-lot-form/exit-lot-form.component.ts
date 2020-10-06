@@ -56,11 +56,19 @@ export class ExitLotFormComponent implements OnInit {
 
   selectProduct(evt) {
     this._store.dispatch(
-      fetchAllLots({ productId: evt.detail.value, typeLot: "DRIEF" })
+      fetchAllLots({
+        productId: evt.detail.value,
+        typeLot: "DRIEF",
+        status: "OPENED",
+      })
     );
   }
 
   disabled(e) {
     return isEmpty(e);
+  }
+
+  get product() {
+    return this.form.get("productId");
   }
 }

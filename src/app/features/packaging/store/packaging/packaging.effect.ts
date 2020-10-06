@@ -33,7 +33,7 @@ export class PackagingEffects {
     )
   );
 
-  // loadProductsEffect$ = createEffect(() => 
+  // loadProductsEffect$ = createEffect(() =>
   //         this.action$.pipe(
   //           ofType(fromPackagingActions.packagingLoadLots)
   //         )
@@ -44,7 +44,7 @@ export class PackagingEffects {
       ofType(fromPackagingActions.packagingSelectLot),
       exhaustMap((action) =>
         this.lotsService
-          .getLots(action.productId, action.typeLots)
+          .getLots(action.productId, action.typeLots, action.status)
           .pipe(
             switchMap((lots) => [
               fromPackagingActions.packagingLoadLots({ lots }),

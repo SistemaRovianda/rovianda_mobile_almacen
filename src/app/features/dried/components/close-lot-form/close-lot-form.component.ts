@@ -67,11 +67,19 @@ export class CloseLotFormComponent implements OnInit {
 
   selectProduct(evt) {
     this._store.dispatch(
-      fetchAllLots({ productId: evt.detail.value.productId, typeLot: "DRIEF" })
+      fetchAllLots({
+        productId: evt.detail.value.productId,
+        typeLot: "DRIEF",
+        status: "OPENED",
+      })
     );
   }
 
   disabled(e) {
     return isEmpty(e);
+  }
+
+  get product() {
+    return this.form.get("productId");
   }
 }

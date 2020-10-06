@@ -37,7 +37,7 @@
           placeholder="Seleccione un lote"
           (ionChange)="onChangeLot($event)"
           interface="action-sheet"
-          [disabled]="disabled(lots)"
+          [disabled]="!product.value"
           formControlName="loteId"
         >
           <ng-container *ngFor="let lot of lots">

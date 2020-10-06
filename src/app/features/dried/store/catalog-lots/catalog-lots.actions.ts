@@ -9,7 +9,7 @@ const FETCH_ALL_LOTS_ERROR = "['LOTS'] Fetch All Lots Error";
 
 export const fetchAllLots = createAction(
   FETCH_ALL_LOTS,
-  props<{ productId: string; typeLot: string }>()
+  props<{ productId: string; typeLot: string; status: string }>()
 );
 
 export const fetchAllLotsSuccess = createAction(

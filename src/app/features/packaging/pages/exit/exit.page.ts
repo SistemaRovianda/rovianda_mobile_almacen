@@ -74,7 +74,11 @@ export class ExitPage implements OnInit {
   selectProduct(evt) {
     let productId = evt.detail.value.productId;
     this.store.dispatch(
-      packagingSelectLot({ productId: productId, typeLots: "PACKING" })
+      packagingSelectLot({
+        productId: productId,
+        typeLots: "PACKING",
+        status: "OPENED",
+      })
     );
   }
 

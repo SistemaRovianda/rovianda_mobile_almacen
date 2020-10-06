@@ -76,7 +76,11 @@ export class CloseLotPage implements OnInit {
   selectLot(evt) {
     let productId: string = evt.detail.value.productId;
     this.store.dispatch(
-      packagingSelectLot({ productId: productId, typeLots: "PACKING" })
+      packagingSelectLot({
+        productId: productId,
+        typeLots: "PACKING",
+        status: "OPENED",
+      })
     );
   }
 

@@ -27,7 +27,9 @@ export class LotsService {
   //   return this.http.get<any>(`${this.url}/lots`, { params });
   // }
 
-  getLots(productId: string, type: string): Observable<any>{
-    return this.http.get<LotInterface>(`${this.url}/product/lots/${productId}?type=${type}`)
+  getLots(productId: string, type: string, status: string): Observable<any> {
+    return this.http.get<LotInterface>(
+      `${this.url}/product/lots/${productId}?type=${type}&status=${status}`
+    );
   }
 }
