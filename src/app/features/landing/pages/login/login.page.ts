@@ -6,9 +6,9 @@ import {
   ERROR_EMAIL_NOT_FOUND,
   ERROR_PASSWORD_INVALID,
 } from "src/app/providers/conts";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import { StoreValidator } from "src/app/shared/Validators/store.validator";
-import { noWhiteSpace } from "src/app/shared/Validators/whitespace.validator";
+import { AppStateInterface } from "src/app/shared/models/app-state.interface";
+import { StoreValidator } from "src/app/shared/validators/store.validator";
+import { noWhiteSpace } from "src/app/shared/validators/whitespace.validator";
 import {
   SELECT_IS_LOADING,
   SELECT_LOGIN_ERROR,

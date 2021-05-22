@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
-import { lotResponse, STATUS_LOT } from "src/app/shared/Models/lot.interface";
+import { AppStateInterface } from "src/app/shared/models/app-state.interface";
+import { ItemBackInterface } from "src/app/shared/models/item-back.interface";
+import { lotResponse, STATUS_LOT } from "src/app/shared/models/lot.interface";
 import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dialog.component";
 import {
   SELECT_PACKAGING_LOADING,
@@ -12,7 +12,7 @@ import {
   SELECT_PACKAGING_PRODUCTS,
 } from "../../store/packaging/packaging.select";
 import * as fromStepperActions from "../../store/stepper/stepper-packaging.actions";
-import { ProductInterface } from "src/app/shared/Models/product.interface";
+import { ProductInterface } from "src/app/shared/models/product.interface";
 import { packagingSelectLot } from "../../store/packaging/packaging.actions";
 
 @Component({

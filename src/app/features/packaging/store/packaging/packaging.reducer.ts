@@ -1,4 +1,4 @@
-import { PackagingInterface } from "src/app/shared/Models/packaging.interface";
+import { PackagingInterface } from "src/app/shared/models/packaging.interface";
 import { createReducer, on, State } from "@ngrx/store";
 import * as fromPackagingActions from "./packaging.actions";
 import * as fromOpenLotActions from "../open-lot/open-lot.actions";

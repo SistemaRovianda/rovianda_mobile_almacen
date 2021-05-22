@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
-import { StepperPackagingInterface } from "src/app/shared/Models/Stepper-packaging.interface";
-import { StepperInterface } from "src/app/shared/Models/stepper.interface";
+import { StepperPackagingInterface } from "src/app/shared/models/Stepper-packaging.interface";
+import { StepperInterface } from "src/app/shared/models/stepper.interface";
 
 const PACKAGING_STEPPER_NEXT = "[STEPPER-PACKAGING] Packaging Stepper Next";
 

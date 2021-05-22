@@ -1,11 +1,12 @@
 import { createReducer, on } from "@ngrx/store";
-import { Entrance } from "src/app/shared/Models/dried.interface";
+import { Entrance } from "src/app/shared/models/dried.interface";
 import * as fromActions from "./open-lot.actions";
 
 export interface newState {
   entrance: Entrance;
   error: string;
   loading: boolean;
+  
 }
 
 const initialState: newState = {
@@ -13,6 +14,8 @@ const initialState: newState = {
     loteId: "",
     productId: null,
     date: "",
+    openingDate: "",
+    closingDate: ""
   },
   error: null,
   loading: false,

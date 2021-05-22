@@ -2,10 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import isEmpty from "lodash.isempty";
 import * as moment from "moment";
-import { lotResponse, STATUS_LOT } from "src/app/shared/Models/lot.interface";
-import { ProductInterface } from "src/app/shared/Models/product.interface";
+import { lotResponse, STATUS_LOT } from "src/app/shared/models/lot.interface";
+import { ProductInterface } from "src/app/shared/models/product.interface";
 import { Store } from "@ngrx/store";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { AppStateInterface } from "src/app/shared/models/app-state.interface";
 import { LOTS_SELECTOR } from "../../store/catalog-lots/catalog-lots.selector";
 import { fetchAllLots } from "../../store/catalog-lots/catalog-lots.actions";
 

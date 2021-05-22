@@ -1,7 +1,7 @@
 import { Injectable, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { API_ENDPOINT_PROVIDER } from "src/app/providers/tokens";
-import { Entrance, ExitLot } from "../Models/dried.interface";
+import { Entrance, ExitLot } from "../models/dried.interface";
 import { Observable, of } from "rxjs";
 
 @Injectable({

@@ -3,16 +3,16 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
 import * as fromStepperActions from "src/app/features/packaging/store/stepper/stepper-packaging.actions";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
-import { lotResponse, STATUS_LOT } from "src/app/shared/Models/lot.interface";
+import { AppStateInterface } from "src/app/shared/models/app-state.interface";
+import { ItemBackInterface } from "src/app/shared/models/item-back.interface";
+import { lotResponse, STATUS_LOT } from "src/app/shared/models/lot.interface";
 import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dialog.component";
 import {
   SELECT_PACKAGING_LOADING,
   SELECT_PACKAGING_LOTS,
   SELECT_PACKAGING_PRODUCTS,
 } from "../../store/packaging/packaging.select";
-import { ProductInterface } from "src/app/shared/Models/product.interface";
+import { ProductInterface } from "src/app/shared/models/product.interface";
 import { packagingSelectLot } from "../../store/packaging/packaging.actions";
 
 @Component({

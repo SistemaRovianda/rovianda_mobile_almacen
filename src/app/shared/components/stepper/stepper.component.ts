@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { SELECT_STEPS } from "src/app/features/packaging/store/stepper/stepper-packaging.select";
-import { StepperInterface } from "src/app/shared/Models/stepper.interface";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { StepperInterface } from "src/app/shared/models/stepper.interface";
+import { AppStateInterface } from "src/app/shared/models/app-state.interface";
 import * as fromStepperActions from "../../../features/packaging/store/stepper/stepper-packaging.actions";
 
 @Component({

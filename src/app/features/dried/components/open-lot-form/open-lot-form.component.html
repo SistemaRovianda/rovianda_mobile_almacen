@@ -43,7 +43,7 @@
         >
           <ng-container *ngFor="let lot of lots">
             <ion-select-option [value]="lot">
-              {{ lot.lot }}
+              Lote: {{ lot.lot }} Recepción: {{lot.date}}
             </ion-select-option>
           </ng-container>
         </ion-select>

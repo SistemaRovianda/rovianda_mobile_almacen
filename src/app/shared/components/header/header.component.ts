@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { ItemBackInterface } from "../../Models/item-back.interface";
+import { ItemBackInterface } from "../../models/item-back.interface";
 import { Store } from "@ngrx/store";
-import { AppStateInterface } from "../../Models/app-state.interface";
+import { AppStateInterface } from "../../models/app-state.interface";
 import { SELECT_OPTION_SELECTED } from "src/app/features/menu/store/menu/menu.selector";
 import { packagingClearLots } from 'src/app/features/packaging/store/packaging/packaging.actions';
 

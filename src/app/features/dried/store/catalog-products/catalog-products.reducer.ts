@@ -1,4 +1,4 @@
-import { ProductInterface } from "src/app/shared/Models/product.interface";
+import { ProductInterface } from "src/app/shared/models/product.interface";
 import { createReducer, on } from "@ngrx/store";
 import * as fromActions from "./catalog-products.actions";
 

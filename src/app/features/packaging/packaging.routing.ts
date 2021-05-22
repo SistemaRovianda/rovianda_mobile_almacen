@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { PackagingExitResolver } from "src/app/shared/Resolvers/packaging-exit.resolver";
+import { PackagingExitResolver } from "src/app/shared/resolvers/packaging-exit.resolver";
 import { CloseLotPageModule } from "./pages/close-lot/close-lot.module";
 import { CloseLotPage } from "./pages/close-lot/close-lot.page";
 import { ExitPageModule } from "./pages/exit/exit.module";
@@ -11,8 +11,8 @@ import { PackagingMenuModule } from "./pages/packaging-menu/packaging-menu.modul
 import { PackagingMenuPage } from "./pages/packaging-menu/packaging-menu.page";
 import { ReportPageModule } from "./pages/report/report.module";
 import { ReportPage } from "./pages/report/report.page";
-import { PackagingLotsResolver } from "src/app/shared/Resolvers/packaging-lots.resolver";
-import { MenuResolver } from "src/app/shared/Resolvers/menu.resolver";
+import { PackagingLotsResolver } from "src/app/shared/resolvers/packaging-lots.resolver";
+import { MenuResolver } from "src/app/shared/resolvers/menu.resolver";
 
 const routes: Routes = [
   {

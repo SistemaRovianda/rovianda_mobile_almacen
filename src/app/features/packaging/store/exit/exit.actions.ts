@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
-import { ProductInterface } from "src/app/shared/Models/product.interface";
-import { LotInterface } from "src/app/shared/Models/lot.interface";
+import { ProductInterface } from "src/app/shared/models/product.interface";
+import { LotInterface } from "src/app/shared/models/lot.interface";
 
 const EXIT_START_LOAD = "[EXIT] Start Load";
 

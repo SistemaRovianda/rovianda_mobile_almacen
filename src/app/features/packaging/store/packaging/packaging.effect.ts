@@ -2,11 +2,11 @@ import { Injectable } from "@angular/core";
 import { Actions, ofType, createEffect } from "@ngrx/effects";
 import * as fromPackagingActions from "./packaging.actions";
 import { exhaustMap, delay, switchMap, tap, catchError } from "rxjs/operators";
-import { LotsService } from "src/app/shared/Services/lots.service";
-import { ProductService } from "src/app/shared/Services/product.service";
+import { LotsService } from "src/app/shared/services/lots.service";
+import { ProductService } from "src/app/shared/services/product.service";
 import { Router } from "@angular/router";
 import { from, of } from "rxjs";
-import { ToastService } from "src/app/shared/Services/toast.service";
+import { ToastService } from "src/app/shared/services/toast.service";
 
 @Injectable()
 export class PackagingEffects {

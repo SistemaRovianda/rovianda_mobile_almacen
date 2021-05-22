@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { LotInterface } from "src/app/shared/Models/lot.interface";
+import { LotInterface } from "src/app/shared/models/lot.interface";
 
 const OPEN_LOT_START_LOAD = "[OPEN LOT] Start Load";
 

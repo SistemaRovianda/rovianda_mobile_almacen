@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { PackagingService } from "src/app/shared/Services/packaging.service";
+import { PackagingService } from "src/app/shared/services/packaging.service";
 import { openLotStarLoad } from "./open-lot.actions";
 import { exhaustMap, delay, switchMap, catchError } from "rxjs/operators";
 import * as fromPackagingActions from "src/app/features/packaging/store/packaging/packaging.actions";
 import { of } from "rxjs";
 import { Router } from "@angular/router";
-import { ToastService } from "src/app/shared/Services/toast.service";
+import { ToastService } from "src/app/shared/services/toast.service";
 
 @Injectable()
 export class OpenLoteEffects {

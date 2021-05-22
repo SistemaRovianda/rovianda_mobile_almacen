@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { MenuButtonInterface } from "src/app/shared/Models/menu-button.interface";
+import { MenuButtonInterface } from "src/app/shared/models/menu-button.interface";
 
 const START_LOAD_MENU_OPTION = "[MENU] Start Load Menu Option";
 

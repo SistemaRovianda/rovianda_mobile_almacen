@@ -2,7 +2,9 @@ export interface Entrance {
   loteId: string;
   productId: number;
   date: string;
-  status?: string;
+  status?: string;  
+  openingDate:string,
+  closingDate:string
 }
 
 export interface ExitLot {
@@ -11,4 +13,6 @@ export interface ExitLot {
   observations: string;
   date: string;
   status?: string;
+  openingDate:string;
+  closingDate:string;
 }

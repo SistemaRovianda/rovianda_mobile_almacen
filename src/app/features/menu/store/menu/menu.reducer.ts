@@ -1,4 +1,4 @@
-import { MenuPageInterface } from "src/app/shared/Models/menu-page.interface";
+import { MenuPageInterface } from "src/app/shared/models/menu-page.interface";
 import { createReducer, on } from "@ngrx/store";
 import * as fromMenuActions from "./menu.action";
 

@@ -2,9 +2,9 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
 import { catchError, exhaustMap, map } from "rxjs/operators";
-import { DriedService } from "src/app/shared/Services/dried.service";
+import { DriedService } from "src/app/shared/services/dried.service";
 import * as fromActions from "./close-lot.actions";
-import { ToastService } from "src/app/shared/Services/toast.service";
+import { ToastService } from "src/app/shared/services/toast.service";
 
 @Injectable({
   providedIn: "root",

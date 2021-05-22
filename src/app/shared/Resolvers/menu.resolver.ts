@@ -5,7 +5,7 @@ import {
 } from "@angular/router";
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { AppStateInterface } from "../Models/app-state.interface";
+import { AppStateInterface } from "../models/app-state.interface";
 import { packagingStepperInit } from "src/app/features/packaging/store/stepper/stepper-packaging.actions";
 
 @Injectable()

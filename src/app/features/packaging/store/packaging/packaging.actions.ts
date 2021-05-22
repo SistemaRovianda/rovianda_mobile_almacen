@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
-import { LotInterface, lotResponse } from "src/app/shared/Models/lot.interface";
-import { ProductInterface } from "src/app/shared/Models/product.interface";
+import { LotInterface, lotResponse } from "src/app/shared/models/lot.interface";
+import { ProductInterface } from "src/app/shared/models/product.interface";
 
 const PACKAGING_START_LOAD = "[PACKAGING] Packaging Start Load";
 

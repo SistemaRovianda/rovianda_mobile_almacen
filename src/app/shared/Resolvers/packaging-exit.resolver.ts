@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { AppStateInterface } from "../Models/app-state.interface";
+import { AppStateInterface } from "../models/app-state.interface";
 import {
   Resolve,
   ActivatedRouteSnapshot,

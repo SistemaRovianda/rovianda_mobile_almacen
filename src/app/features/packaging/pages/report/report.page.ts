@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
+import { ItemBackInterface } from "src/app/shared/models/item-back.interface";
 
 @Component({
   selector: "app-report",

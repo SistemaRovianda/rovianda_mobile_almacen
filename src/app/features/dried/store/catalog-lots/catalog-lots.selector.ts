@@ -1,5 +1,5 @@
 import { createSelector } from "@ngrx/store";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { AppStateInterface } from "src/app/shared/models/app-state.interface";
 
 const CATALOG_LOTS = (state: AppStateInterface) => state.catalogLots;
 

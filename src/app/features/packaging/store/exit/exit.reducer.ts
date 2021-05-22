@@ -1,4 +1,4 @@
-import { PackagingExitInterface } from "src/app/shared/Models/packaging-exit.interface";
+import { PackagingExitInterface } from "src/app/shared/models/packaging-exit.interface";
 import { createReducer, on } from "@ngrx/store";
 import * as fromPackagingExitActions from "./exit.actions";
 

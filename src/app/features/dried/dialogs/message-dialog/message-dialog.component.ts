@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import { Entrance } from "src/app/shared/Models/dried.interface";
+import { AppStateInterface } from "src/app/shared/models/app-state.interface";
+import { Entrance } from "src/app/shared/models/dried.interface";
 import * as fromActionsClose from "../../store/close-lot/close-lot.actions";
 import * as fromActions from "../../store/open-lot/open-lot.actions";
 

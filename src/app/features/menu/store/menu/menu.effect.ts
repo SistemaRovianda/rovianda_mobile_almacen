@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { Actions, ofType, createEffect } from "@ngrx/effects";
 import * as fromMenuActions from "./menu.action";
 import { delay, exhaustMap, switchMap, catchError, tap } from "rxjs/operators";
-import { StepperInterface } from "src/app/shared/Models/stepper.interface";
+import { StepperInterface } from "src/app/shared/models/stepper.interface";
 
 @Injectable()
 export class MenuEffects {

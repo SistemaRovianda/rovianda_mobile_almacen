@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
-import { MenuButtonInterface } from "src/app/shared/Models/menu-button.interface";
+import { ItemBackInterface } from "src/app/shared/models/item-back.interface";
+import { MenuButtonInterface } from "src/app/shared/models/menu-button.interface";
 
 @Component({
   selector: "app-layout",

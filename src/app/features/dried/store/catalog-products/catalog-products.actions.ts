@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { ProductInterface } from "src/app/shared/Models/product.interface";
+import { ProductInterface } from "src/app/shared/models/product.interface";
 
 const FETCH_ALL_PRODUCTS = "['PRODUCTS'] Fetch All Products";
 

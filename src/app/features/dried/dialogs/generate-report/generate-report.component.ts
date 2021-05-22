@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { ExitLot } from "src/app/shared/Models/dried.interface";
+import { ExitLot } from "src/app/shared/models/dried.interface";
 import { ModalController } from "@ionic/angular";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { AppStateInterface } from "src/app/shared/models/app-state.interface";
 import { Store } from "@ngrx/store";
 import * as fromActions from "../../store/output/output.actions";
 

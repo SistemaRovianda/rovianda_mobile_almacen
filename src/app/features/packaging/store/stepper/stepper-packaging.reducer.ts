@@ -1,7 +1,7 @@
 import * as fromStepperActions from "./stepper-packaging.actions";
-import { StepperPackagingInterface } from "src/app/shared/Models/Stepper-packaging.interface";
+import { StepperPackagingInterface } from "src/app/shared/models/Stepper-packaging.interface";
 import { createReducer, on } from "@ngrx/store";
-import { StepperInterface } from "src/app/shared/Models/stepper.interface";
+import { StepperInterface } from "src/app/shared/models/stepper.interface";
 
 const STATE_INITIAL_STEPPER: StepperPackagingInterface = {
   steps: [

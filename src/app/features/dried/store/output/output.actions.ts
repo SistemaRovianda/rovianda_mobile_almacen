@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { ExitLot } from "src/app/shared/Models/dried.interface";
+import { ExitLot } from "src/app/shared/models/dried.interface";
 
 const OUTPUT = "['LOT'] Outout Lot";
 

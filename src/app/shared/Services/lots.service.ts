@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { API_ENDPOINT_PROVIDER } from "src/app/providers/tokens";
-import { lotResponse, LotInterface } from "../Models/lot.interface";
+import { lotResponse, LotInterface } from "../models/lot.interface";
 
 @Injectable({
   providedIn: "root",

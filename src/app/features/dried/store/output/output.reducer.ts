@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { ExitLot } from "src/app/shared/Models/dried.interface";
+import { ExitLot } from "src/app/shared/models/dried.interface";
 import * as fromActions from "./output.actions";
 
 export interface stateClosetLot {
@@ -14,6 +14,8 @@ const initialState: stateClosetLot = {
     productId: null,
     observations: "",
     date: "",
+    closingDate:"",
+    openingDate:""
   },
   error: null,
   loading: false,

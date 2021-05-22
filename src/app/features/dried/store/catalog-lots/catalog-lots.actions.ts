@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { lotResponse } from "src/app/shared/Models/lot.interface";
+import { lotResponse } from "src/app/shared/models/lot.interface";
 
 const FETCH_ALL_LOTS = "['LOTS'] Fetch All Lots";
 

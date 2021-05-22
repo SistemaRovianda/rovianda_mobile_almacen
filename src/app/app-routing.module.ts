@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
-import { PackagingExitResolver } from "./shared/Resolvers/packaging-exit.resolver";
+import { PackagingExitResolver } from "./shared/resolvers/packaging-exit.resolver";
 import { IsAuthGuard } from "./shared/guards/is-auth.guard";
 import { AuthGuard } from "./shared/guards/auth.guard";
 

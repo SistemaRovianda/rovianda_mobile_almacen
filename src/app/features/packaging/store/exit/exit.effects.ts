@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { ProductService } from "src/app/shared/Services/product.service";
+import { ProductService } from "src/app/shared/services/product.service";
 import * as fromExitActions from "./exit.actions";
 import { exhaustMap, delay, switchMap, catchError } from "rxjs/operators";
 import { of, from } from "rxjs";
-import { PackagingService } from "src/app/shared/Services/packaging.service";
+import { PackagingService } from "src/app/shared/services/packaging.service";
 import { Router } from "@angular/router";
-import { ToastService } from "src/app/shared/Services/toast.service";
+import { ToastService } from "src/app/shared/services/toast.service";
 
 @Injectable()
 export class ExitEffects {

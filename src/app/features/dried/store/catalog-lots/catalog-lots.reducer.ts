@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import * as fromActions from "./catalog-lots.actions";
-import { lotResponse } from "src/app/shared/Models/lot.interface";
+import { lotResponse } from "src/app/shared/models/lot.interface";
 
 export interface stateLots {
   lots: lotResponse[];

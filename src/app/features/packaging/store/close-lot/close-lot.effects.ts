@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { PackagingService } from "src/app/shared/Services/packaging.service";
+import { PackagingService } from "src/app/shared/services/packaging.service";
 import * as fromPackagingActions from "src/app/features/packaging/store/packaging/packaging.actions";
 import { closeLotStartLoad } from "./close-lot.actions";
 import { exhaustMap, delay, switchMap, catchError } from "rxjs/operators";

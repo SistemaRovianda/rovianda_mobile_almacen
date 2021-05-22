@@ -9,7 +9,7 @@ import { menuReducer } from "src/app/features/menu/store/menu/menu.reducer";
 import { exitReducer } from "src/app/features/packaging/store/exit/exit.reducer";
 import { PackagingReducer } from "src/app/features/packaging/store/packaging/packaging.reducer";
 import { StepperInitialReducer } from "src/app/features/packaging/store/stepper/stepper-packaging.reducer";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
+import { AppStateInterface } from "src/app/shared/models/app-state.interface";
 import { closeLotReducer } from "src/app/features/dried/store/close-lot/close-lot.reducer";
 
 export const reducers: ActionReducerMap<AppStateInterface> = {

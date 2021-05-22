@@ -2,16 +2,16 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { AppStateInterface } from "src/app/shared/Models/app-state.interface";
-import { Entrance } from "src/app/shared/Models/dried.interface";
-import { ItemBackInterface } from "src/app/shared/Models/item-back.interface";
+import { AppStateInterface } from "src/app/shared/models/app-state.interface";
+import { Entrance } from "src/app/shared/models/dried.interface";
+import { ItemBackInterface } from "src/app/shared/models/item-back.interface";
 import * as fromStepper from "../../../packaging/store/stepper/stepper-packaging.actions";
 import { CloseLotFormComponent } from "../../components/close-lot-form/close-lot-form.component";
 import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dialog.component";
 
 import * as fromCatalogProductsActions from "../..//store/catalog-products/catalog-products.actions";
 import * as fromCatalogoProducts from "../../store/catalog-products/catalog-products.selector";
-import { ProductInterface } from 'src/app/shared/Models/product.interface';
+import { ProductInterface } from 'src/app/shared/models/product.interface';
 
 @Component({
   selector: "close-lot",

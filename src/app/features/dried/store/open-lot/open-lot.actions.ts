@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { Entrance } from "src/app/shared/Models/dried.interface";
+import { Entrance } from "src/app/shared/models/dried.interface";
 
 const OPEN_LOT = "['LOT'] Open Lot";
 
