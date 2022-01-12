@@ -40,7 +40,7 @@
           [disabled]="lots.length == 0"
         >
           <ng-container *ngFor="let lot of lots">
-            <ion-select-option [value]="lot">Lote: {{lot.lot}} Recepción: {{lot.date}}</ion-select-option>
+            <ion-select-option [value]="lot">Lote: {{lot.lot}} Recepción: {{dateParseStr(lot.date)}}</ion-select-option>
           </ng-container>
         </ion-select>
       </ion-item>

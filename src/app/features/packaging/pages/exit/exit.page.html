@@ -70,7 +70,7 @@
               <ion-select-option
                 *ngFor="let lot of lots$ | async "
                 [value]="lot.warehouseId"
-                >Lote: {{lot.lot}} Apertura: {{lot.openingDate}}
+                >Lote: {{lot.lot}} Apertura: {{lot.openingDate?dateParseStr(lot.openingDate):''}}
               </ion-select-option>
             </ion-select>
           </ion-item>

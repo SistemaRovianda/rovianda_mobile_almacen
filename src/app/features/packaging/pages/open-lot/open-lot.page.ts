@@ -14,6 +14,7 @@ import {
 import * as fromStepperActions from "../../store/stepper/stepper-packaging.actions";
 import { ProductInterface } from "src/app/shared/models/product.interface";
 import { packagingSelectLot } from "../../store/packaging/packaging.actions";
+import { SELECT_PACKAGING_EXIT_LOADING } from "../../store/exit/exit.selector";
 
 @Component({
   selector: "app-open-lot",
@@ -115,5 +116,9 @@ export class OpenLotePage implements OnInit {
       },
     });
     return await modal.present();
+  }
+  dateParseStr(date:string){
+    let dateSplited = date.split("-");
+    return `${dateSplited[2]}/${dateSplited[1]}/${dateSplited[0]}`;
   }
 }

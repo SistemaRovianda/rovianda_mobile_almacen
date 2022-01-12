@@ -38,7 +38,7 @@
           [disabled]="lots.length == 0"
         >
           <ion-select-option *ngFor="let lot of lots" [value]="lot"
-            >Lote: {{lot.lot}} Apertura: {{lot.openingDate}}</ion-select-option
+            >Lote: {{lot.lot}} Apertura: {{dateParseStr(lot.openingDate)}}</ion-select-option
           >
         </ion-select>
       </ion-item>

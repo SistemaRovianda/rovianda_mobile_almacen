@@ -1,6 +1,17 @@
 <form [formGroup]="form" class="container" (ngSubmit)="onSubmit()">
   <ion-grid fixed>
     <ion-row>
+      <ion-item>
+        <ion-label position="floating">Fecha</ion-label>
+        <ion-datetime
+          class="item-form"
+          placeholder="Ingresar fecha"
+          displayFormat="MM/DD/YYYY"
+          formControlName="date"
+          disabled
+        >
+        </ion-datetime>
+      </ion-item>
       <ion-item class="form-input">
         <ion-label class="ion-label" position="floating"> Producto* </ion-label>
         <ion-select
@@ -45,7 +56,7 @@
         >
           <ng-container *ngFor="let lot of lots">
             <ion-select-option [value]="lot.lot">
-              Lote: {{ lot.lot}} Apertura: {{lot.openingDate}}
+              Lote: {{ lot.lot}} Apertura: {{lot.openingDate?dateParseStr(lot.openingDate):''}}
             </ion-select-option>
           </ng-container>
         </ion-select>

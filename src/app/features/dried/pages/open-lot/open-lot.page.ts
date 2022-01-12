@@ -11,6 +11,7 @@ import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dia
 import * as fromCatalogProductsActions from "../..//store/catalog-products/catalog-products.actions";
 import * as fromCatalogoProducts from "../../store/catalog-products/catalog-products.selector";
 import { ProductInterface } from "src/app/shared/models/product.interface";
+import { SELECT_DRIEF_OPEN_LOADING } from "../../store/open-lot/open-lot.selector";
 
 @Component({
   selector: "open-lot",
@@ -46,6 +47,9 @@ export class OpenLotPageComponent implements OnInit {
         status: "PENDING",
       })
     );
+    this.store.select(SELECT_DRIEF_OPEN_LOADING).subscribe((isLoading)=>{
+      this.isLoading=isLoading;
+    })
   }
 
   checkForm() {
@@ -56,9 +60,11 @@ export class OpenLotPageComponent implements OnInit {
       })
     );
   }
-
+  isLoading:boolean=false;
   onSubmit(event) {
-    this.openModal(event.data, event.warehouseDriefId);
+    if(!this.isLoading){
+      this.openModal(event.data, event.warehouseDriefId);
+    }
   }
 
   async openModal(entrance: Entrance, warehouseDriefId: string) {

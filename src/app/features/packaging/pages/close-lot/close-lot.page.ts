@@ -118,4 +118,9 @@ export class CloseLotPage implements OnInit {
   get date() {
     return this.lotForm.get("date");
   }
+
+  dateParseStr(date:string){
+    let dateSplited = date.split("-");
+    return `${dateSplited[2]}/${dateSplited[1]}/${dateSplited[0]}`;
+  }
 }

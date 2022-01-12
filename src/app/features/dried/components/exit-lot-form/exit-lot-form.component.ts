@@ -31,7 +31,7 @@ export class ExitLotFormComponent implements OnInit {
       loteId: ["", Validators.required],
       productId: ["", Validators.required],
       observations: ["", []],
-      date: [""],
+      date: [moment().format("DD/MM/YYYY")],
     });
   }
 
@@ -70,5 +70,10 @@ export class ExitLotFormComponent implements OnInit {
 
   get product() {
     return this.form.get("productId");
+  }
+
+  dateParseStr(date:string){
+    let dateSplited = date.split("-");
+    return `${dateSplited[2]}/${dateSplited[1]}/${dateSplited[0]}`;
   }
 }

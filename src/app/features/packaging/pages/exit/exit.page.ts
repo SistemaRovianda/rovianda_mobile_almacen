@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
 import { Store } from "@ngrx/store";
 import * as fromLotSelector from "src/app/features/packaging/store/packaging/packaging.select";
+import * as exitSelectors from "src/app/features/packaging/store/exit/exit.selector";
 import * as fromStepperActions from "src/app/features/packaging/store/stepper/stepper-packaging.actions";
 import { AppStateInterface } from "src/app/shared/models/app-state.interface";
 import { ItemBackInterface } from "src/app/shared/models/item-back.interface";
@@ -52,7 +53,7 @@ export class ExitPage implements OnInit {
       .subscribe((products) => (this.products = products));
 
     this.store
-      .select(fromLotSelector.SELECT_PACKAGING_LOADING)
+      .select(exitSelectors.SELECT_PACKAGING_EXIT_LOADING)
       .subscribe((tempLoading) => (this.loading = tempLoading));
 
     this.lots$ = this.store.select(fromLotSelector.SELECT_PACKAGING_LOTS);
@@ -119,5 +120,10 @@ export class ExitPage implements OnInit {
 
   get name() {
     return this.exitForm.get("name");
+  }
+
+  dateParseStr(date:string){
+    let dateSplited = date.split("-");
+    return `${dateSplited[2]}/${dateSplited[1]}/${dateSplited[0]}`;
   }
 }

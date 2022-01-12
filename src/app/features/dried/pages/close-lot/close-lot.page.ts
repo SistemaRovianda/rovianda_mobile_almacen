@@ -12,6 +12,7 @@ import { MessageDialogComponent } from "../../dialogs/message-dialog/message-dia
 import * as fromCatalogProductsActions from "../..//store/catalog-products/catalog-products.actions";
 import * as fromCatalogoProducts from "../../store/catalog-products/catalog-products.selector";
 import { ProductInterface } from 'src/app/shared/models/product.interface';
+import { SELECT_CLOSE_DRIEF_LOADING } from "../../store/close-lot/close-lot.selectors";
 
 @Component({
   selector: "close-lot",
@@ -36,7 +37,7 @@ export class CloseLotPageComponent implements OnInit {
     public modalController: ModalController,
     private store: Store<AppStateInterface>
   ) { }
-
+    isLoading:boolean=false;
   ngOnInit() {
     this.closeLotFormComponent.form.valueChanges.subscribe((_) =>
       this.checkForm()
@@ -47,6 +48,9 @@ export class CloseLotPageComponent implements OnInit {
         status: "OPENED",
       })
     );
+    this.store.select(SELECT_CLOSE_DRIEF_LOADING).subscribe((isLoading)=>{
+      this.isLoading=isLoading;
+    })
   }
 
   checkForm() {

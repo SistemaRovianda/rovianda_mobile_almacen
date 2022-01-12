@@ -20,10 +20,10 @@
     <ion-row class="row-button">
       <ion-button (click)="form.onSubmit()" [disabled]="form.form.invalid">
         <ion-grid>
-          <ion-col>
+          <ion-col *ngIf="!isLoading">
             Abrir lote
           </ion-col>
-          <ion-spinner *ngIf="false" name="crescent"></ion-spinner>
+          <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
         </ion-grid>
       </ion-button>
     </ion-row>

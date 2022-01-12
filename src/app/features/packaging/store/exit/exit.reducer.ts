@@ -31,8 +31,8 @@ export const exitReducer = createReducer(
     ...state,
     loading: true,
   })),
-  on(fromPackagingExitActions.exitLoadRequest, (state, { request }) => ({
+  on(fromPackagingExitActions.exitLoadRequestSuccess,(state)=>({
     ...state,
-    request,
+    isLoading: false
   }))
 );

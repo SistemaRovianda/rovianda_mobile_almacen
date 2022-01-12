@@ -6,7 +6,6 @@ export interface newState {
   entrance: Entrance;
   error: string;
   loading: boolean;
-  
 }
 
 const initialState: newState = {

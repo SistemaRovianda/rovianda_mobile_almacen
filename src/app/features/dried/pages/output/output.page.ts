@@ -12,6 +12,7 @@ import { GenerateReportComponent } from "../../dialogs/generate-report/generate-
 import * as fromCatalogProductsActions from "../..//store/catalog-products/catalog-products.actions";
 import * as fromCatalogoProducts from "../../store/catalog-products/catalog-products.selector";
 import { ProductInterface } from 'src/app/shared/models/product.interface';
+import { SELECT_DRIEF_EXIT_LOADING } from "../../store/output/output.selectors";
 
 @Component({
   selector: "app-exit-lot",
@@ -35,7 +36,7 @@ export class OutputPageComponent implements OnInit {
     public modalController: ModalController,
     private store: Store<AppStateInterface>
   ) { }
-
+    isLoading:boolean=false;
   ngOnInit() {
     this.exitLotFormComponent.form.valueChanges.subscribe((_) =>
       this.checkForm()
@@ -46,6 +47,9 @@ export class OutputPageComponent implements OnInit {
         status: "OPENED",
       })
     );
+    this.store.select(SELECT_DRIEF_EXIT_LOADING).subscribe((isLoading)=>{
+      this.isLoading=isLoading;
+    })
   }
   checkForm() {
     this.store.dispatch(
@@ -57,7 +61,9 @@ export class OutputPageComponent implements OnInit {
   }
 
   onSubmit(entrance: ExitLot) {
+    if(!this.isLoading){
     this.openModal(entrance);
+    }
   }
 
   async openModal(exitLot: Entrance) {
